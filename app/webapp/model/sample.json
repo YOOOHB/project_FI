@@ -1,0 +1,52 @@
+{
+    "RequestOrder": [
+        {
+            "ReqNum": "1000000001",
+            "ReqGood": "초코파이",
+            "ReqQty": 20,
+            "Requester": "김민규",
+            "ReqDate": "2022-03-16",
+            "ReqStatus": "A"
+        },
+        {
+            "ReqNum": "1000000002",
+            "ReqGood": "몽쉘",
+            "ReqQty": 100,
+            "Requester": "나윤수",
+            "ReqDate": "2022-08-18",
+            "ReqStatus": "B"
+        },
+        {
+            "ReqNum": "1000000003",
+            "ReqGood": "촉촉한초코칩",
+            "ReqQty": 50000,
+            "Requester": "유해빈",
+            "ReqDate": "2022-10-10",
+            "ReqStatus": "C"
+        },
+        {
+            "ReqNum": "1000000004",
+            "ReqGood": "칸쵸",
+            "ReqQty": 153,
+            "Requester": "김민지",
+            "ReqDate": "2022-01-18",
+            "ReqStatus": "B"
+        },
+        {
+            "ReqNum": "1000000005",
+            "ReqGood": "홈런볼",
+            "ReqQty": 213,
+            "Requester": "이미리",
+            "ReqDate": "2022-08-19",
+            "ReqStatus": "A"
+        },
+        {
+            "ReqNum": "1000000006",
+            "ReqGood": "빼빼로",
+            "ReqQty": 563,
+            "Requester": "전혜연",
+            "ReqDate": "2022-09-27",
+            "ReqStatus": "C"
+        }
+    ]
+}

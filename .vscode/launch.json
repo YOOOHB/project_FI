@@ -1,0 +1,31 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    // {
+    //   "command": "cds run --with-mocks --in-memory?",
+    //   "name": "cds run",
+    //   "request": "launch",
+    //   "type": "node-terminal",
+    //   "skipFiles": [
+    //     "<node_internals>/**"
+    //   ]
+    // }
+    {
+      "name": "run project_FI",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/app/node_modules/@sap/approuter/approuter.js",
+      "args":[],
+      "cwd": "${workspaceFolder}/app",
+      "env": {
+      "PORT": "6004",
+      "MOCK_LOOKUP_DIRS": "[\"./\"]",
+      "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/project_FI/app\"}"
+      }
+    }
+
+  ]
+}

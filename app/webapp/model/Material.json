@@ -1,0 +1,54 @@
+{
+    "productList": [
+        {
+            "category": "핸드폰",
+            "code": "phone-001",
+            "name": "액정",
+            "unit": "EA",
+            "cost": "200,000",
+            "date": "2022-11-28",
+            "etc": "",
+            "produce": "A"
+        },
+        {
+            "category": "핸드폰",
+            "code": "phone-002",
+            "name": "보조 렌즈",
+            "unit": "EA",
+            "cost": "47,000",
+            "date": "2022-11-05",
+            "etc": "추후 사용 가능성 있음",
+            "produce": "B"
+        },
+        {
+            "category": "핸드폰",
+            "code": "phone-003",
+            "name": "3G 모뎀",
+            "unit": "EA",
+            "cost": "200,000",
+            "date": "2022-11-28",
+            "etc": "",
+            "produce": "C"
+        },
+        {
+            "category": "핸드폰",
+            "code": "phone-004",
+            "name": "DMB 안테나",
+            "unit": "EA",
+            "cost": "15,000",
+            "date": "2022-11-05",
+            "etc": "",
+            "produce": "D"
+        },
+        {
+            "category": "티비",
+            "code": "tv-001",
+            "name": "메인 보드",
+            "unit": "EA",
+            "cost": "500,000",
+            "date": "2022-10-28",
+            "etc": "",
+            "produce": "A"
+        }
+    ]
+}
