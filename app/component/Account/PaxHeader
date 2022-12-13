@@ -1,0 +1,97 @@
+* xmls에 대하여
+
+    xmls란 라이브러리 or 패키지 쓸 때 쓰는 것 <별칭(alias):라이브러리 기능
+    하위 컨트롤 라이브러리 패키지도 따로 지정 해줘야함(상위 라이브러리 선언을 했다 하더라도)
+    eg. sap.ui.layout 선언하더라도 sap.ui.layout.form 선언 해야 사용 가능
+    xml 파일에서는 몇몇의 특수문자는 사용 X ( eg. & : &amp; 등등 )
+
+    이벤트 함수 호출 시 .함수 이름 (함수이름X)
+    SDK 에서 Event description에 depreciated 써있는 거는 곧 사라질 기능이기 때문에 굳이 쓰지 말 것
+
+* controllers에 대하여
+
+    화면에서의 동작을 정의
+    파일명.controllers.js(파일명.js X)
+
+    sap.ui.define([
+                    "sap/ui/core/mvc/Controller",
+                    "sap/m/MessageToast",
+                    "sap/ui/model/json/JSONModel"],
+        function (Controller, MessageToast, JSONModel) { 
+    // 컨트롤러에서 사용할 sap 모듈 및 라이브러리 선언
+    // function의 괄호 안에는 선언한 라이브러리를 기반으로 '차례대로' 별칭 재 선언
+    // sap/ui/core/Controlle <-- 반드시 선언 (현재 파일을 mvc 모델의 controllers로 사용하겠다고 선언하는 의미)
+
+    return Controller.extend("project2.controller.app", {
+    // 현재 사용하고 있는 파일 경로 작성
+
+    //컨트롤러 로직 작성할 때, 함수 간의 구분은 쉼표(,)로 한다.
+
+* JSON model에 대하여
+
+    Controller에서 생선한 객체 혹은 배열은 View 파일에 바로 업로드할 수 없기 때문에
+    JSON 구조로 데이터를 만든 후 jSON 모델로 변환
+    (*View 파일에 로드 가능한 데이터 : Odata Model, Json Model, XML model)
+
+    var oData = {                                   // 1. 사전단계
+            recipient : {                           // JSON Model 구조를
+                name : "World"                      // JSON (객체) 형태로 선언
+            }
+        };
+        var oModel = new JSONModel(oData);          // 2. JSON 모델 객체 생성
+        this.getView().setModel(oModel, "test");    // 3. View에 모델 연결
+
+
+* i18n 작동 원리
+    i18n의 리소스 번들을 생성해 놓으면 Manifest.json 파일에서 리소스 번들을 모델로 선언
+    i18n : 해외 근로자 등 외국인들도 볼 수 있어야 하기 때문에 i18n을 통해 자동 번역
+
+* Component.js
+    구성요소 컨트롤러이며 런타임 메타데이터와 구성요소 메서드 제공
+    컴퍼넌트 기틍을 한다고 알리는 "sap/ui/core/UIComponent"를 반드시 선언
+
+ * Manifest.json -> 설명문 (descript for apps) (한번 제대로 살펴볼 것)
+    1. SAPUI5의 버전
+    2. sap.app의 id
+    3. 모델 선언
+    4. 리소스
+    5. 라우팅
+    6. root view - 가장 먼저 로드되는 xml 파일
+
+* nested view VS fragment
+  -> fragment 의 컨트롤러는 호출한 파일의 컨트롤러에 상속
+  -> 반면 nested view는 따로 컨트롤러 필요
+  -> 따라서 fragment는 보통 팝업 창을 띄울 때 많이 사용
+
+
+  * parameter 들은 모두 함수
+
+  * padEnd(2,0) -> 2자리로 만드는데 뒤에 0을 붙여라
+
+
+
+
+
+
+
+
+
+      // var oBundle = this.getView().getModel("i18n").getResourceBundle();
+    //             var sRecipient = this.getView().getModel().getProperty("/recipient/name_1");
+    //             var sMsg = oBundle.getText("helloMsg", [sRecipient]);
+    //             MessageToast.show("sMsg")
+    
+    
+    
+    // handleMessageToastPress: function(oEvent) {
+    //     var msg = '힝\n속았지.';
+    //     MessageToast.show(msg);
+    // },
+    // handleMessageToastPress1: function(oEvent) {
+    //     var msg = '또\n속았지.';
+    //     MessageToast.show(msg);
+    // },
+    // handleMessageToastPress2: function(oEvent) {
+    //     var msg = 'ㅋㅋ바보';
+    //     MessageToast.show(msg);
+    // }

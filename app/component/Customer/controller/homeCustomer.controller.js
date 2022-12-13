@@ -5,6 +5,6 @@ sap.ui.define([
 ) {
     "use strict";
 
-    return Controller.extend("project1.controller.home", {
+    return Controller.extend("project3.controller.homeCustomer", {
     });
 });

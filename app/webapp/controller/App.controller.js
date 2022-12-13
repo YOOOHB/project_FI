@@ -9,24 +9,11 @@ sap.ui.define(
         onInit() {
         },
 
-        onHome: function() {
-          this.getOwnerComponent().getRouter().navTo("home");
+        onAccount: function() {
+          this.getOwnerComponent().getRouter().navTo("Account");
         },
-        
-        onMenuEvent: function(oEvent) {
-          let a = oEvent.getParameter("item");
-
-        },
-
-        onRequest: function() {
-          this.getOwnerComponent().getRouter().navTo("Request");
-        },
-        onCompany: function() {
-          this.getOwnerComponent().getRouter().navTo("Partner");
-        }
-        ,
-        onMaterial: function() {
-          this.getOwnerComponent().getRouter().navTo("Material");
+        onCustomer: function() {
+          this.getOwnerComponent().getRouter().navTo("Customer");
         }
       });
     }

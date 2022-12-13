@@ -1,0 +1,29 @@
+/* .start {
+    color: rgb(137,137,137);
+}
+
+.menu{
+    color:green;
+    font-weight: bold;
+}
+
+.menu2{
+    font-weight: bold;
+}
+
+.Hyundai{
+    color: rgb(59, 117, 241)
+} */
+
+html[dir="ltr"] .myAppDemoWT .myCustomButton.sapMBtn {
+    margin-right : 0.125rem
+}
+
+html[dir="ltr"] .myAppDemoWT .myCustomButton.sapMBtn {
+    margin-left : 0.125rem
+}
+
+.myAppDemoWT .myCustomText {
+    display: inline-block;
+    font-weight: bold;
+}

@@ -1,0 +1,10 @@
+<mvc:View 
+  controllerName="project3.controller.homeCustomer"
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns="sap.m" 
+  displayBlock="true">
+  <MessagePage
+    text="고객 마스터 화면입니다." 
+    icon="sap-icon://home">
+  </MessagePage>
+</mvc:View>

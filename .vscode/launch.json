@@ -18,14 +18,13 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/app/node_modules/@sap/approuter/approuter.js",
-      "args":[],
+      "args": [],
       "cwd": "${workspaceFolder}/app",
       "env": {
-      "PORT": "6004",
-      "MOCK_LOOKUP_DIRS": "[\"./\"]",
-      "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/project_FI/app\"}"
+        "PORT": "6004",
+        "MOCK_LOOKUP_DIRS": "[\"./\"]",
+        "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/project_FI/app\"}"
       }
     }
-
   ]
 }

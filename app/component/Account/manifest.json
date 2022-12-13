@@ -1,7 +1,7 @@
 {
   "_version": "1.42.0",
   "sap.app": {
-    "id": "project1",
+    "id": "project2",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -58,20 +58,6 @@
         "sap.ushell": {}
       }
     },
-    "componentUsages": {
-        "AccountComponent": {
-          "name": "project2",
-          "settings": {},
-          "componentData": {},
-          "lazy": true
-        },
-        "CustomerComponent": {
-          "name": "project3",
-          "settings": {},
-          "componentData": {},
-          "lazy": true
-        }
-    },
     
     "contentDensities": {
       "compact": true,
@@ -81,10 +67,10 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project1.i18n.i18n"
+          "bundleName": "project2.i18n.i18n"
         }
       },
-      "compnay": {
+      "company": {
         "dataSource": "companyService",
         "preload": true,
         "settings": {
@@ -107,56 +93,30 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "project1.view",
+        "viewPath": "project2.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "home",
-          "pattern": "",
-          "target": "home"
-        },
-        {
-          "name": "Account",
-          "pattern": "Account",
-          "target": {
-            "name": "Account",
-            "prefix": "Account"
-          }
-        },
-        {
-          "name": "Customer",
-          "pattern": "Customer",
-          "target": {
-            "name": "Customer",
-            "prefix": "Customer"
-          }
+          "name": "homeAccount",
+          "pattern": "homeAccount",
+          "target": "homeAccount"
         }
       ],
       "targets": {
-        "home": {
+        "homeAccount": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "home",
-          "viewName": "home"
-        },
-        "Account": {
-          "type": "Component",
-          "usage": "AccountComponent",
-          "title": "Account"
-        },
-        "Customer": {
-          "type": "Component",
-          "usage": "CustomerComponent",
-          "title": "Customer"
+          "viewId": "homeAccount",
+          "viewName": "homeAccount"
         }
       }
     },
-    "rootView": {
-      "viewName": "project1.view.App",
+    "rootView": {z
+      "viewName": "project2.view.App",
       "type": "XML",
       "async": true,
       "id": "App"
