@@ -1,0 +1,134 @@
+<mvc:View controllerName="project2.controller.detailAccount"
+	xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+	xmlns:m="sap.m"
+    xmlns:ui="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <ObjectPageLayout id="ObjectPageLayout"
+		showTitleInHeaderContent="true"
+		selectedSection="paymentSubSection"
+		useIconTabBar="true"
+		upperCaseAnchorBar="false"
+		showFooter="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<heading>
+                    <m:HBox>
+                        <m:Button icon="sap-icon://nav-back" press=".onBack"/>
+                        <m:Title text="G/L 계정 번호" wrapping="true" />
+                    </m:HBox>
+				</heading>
+
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<sections>
+            <ObjectPageSection titleUppercase="false" title="일반">
+				<subSections>
+					<ObjectPageSubSection title="일반" titleUppercase="false">
+						<form:SimpleForm layout="ResponsiveGridLayout">
+                            <form:content>
+                                <m:VBox>
+                                    <m:HBox>
+                                        <m:Label text="계정과목표 : " class="sapUiTinyMarginBegin"/>
+                                        <m:Text text="d" class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:layoutData>
+                                            <layout:GridData span="XL2 L2 M2 S2" />
+                                        </m:layoutData>
+                                    </m:HBox>
+                                    <m:HBox>
+                                        <m:Label text="계정 유형 : " class="sapUiTinyMarginBegin"/>
+                                        <m:Text text="d" class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:layoutData>
+                                            <layout:GridData span="XL2 L2 M2 S2" />
+                                        </m:layoutData>
+                                    </m:HBox>
+                                    <m:HBox>
+                                        <m:Label text="계정 그룹 : " class="sapUiTinyMarginBegin"/>
+                                        <m:Text text="d" class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:layoutData>
+                                            <layout:GridData span="XL2 L2 M2 S2" />
+                                        </m:layoutData>
+                                    </m:HBox>
+                                    <m:HBox>
+                                        <m:Label id="createDay" text="생성일 : " class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:Text text="d" class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:layoutData>
+                                            <layout:GridData span="XL2 L2 M2 S2" />
+                                        </m:layoutData>
+                                    </m:HBox>
+                                    <m:HBox>
+                                        <m:Label text="생성자 : " class="sapUiTinyMarginBegin"/>
+                                        <m:Text text="d" class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:layoutData>
+                                            <layout:GridData span="XL2 L2 M2 S2" />
+                                        </m:layoutData>
+                                    </m:HBox>
+									<m:HBox>
+                                        <m:Label text="내역 : " class="sapUiTinyMarginBegin"/>
+                                       <m:Text text="d" class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:layoutData>
+                                            <layout:GridData span="XL2 L2 M2 S2" />
+                                        </m:layoutData>
+                                    </m:HBox>
+                                </m:VBox>
+                            </form:content>
+                        </form:SimpleForm>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false">
+				<subSections>
+					<ObjectPageSubSection title="회사 코드 데이터" titleUppercase="false">
+                        <ui:Table id="idProductsTable"
+                            visibleRowCountMode="Auto"
+                            minAutoRowCount="2"
+                            rows="{path: '>/', sorter: {path: 'Name'}}"
+                            selectionMode="None" width="auto">
+							 <ui:extension>
+                                <m:OverflowToolbar>
+                                    <m:Title id="TableName" text="회사코드지정()"/>
+                                </m:OverflowToolbar>
+                            </ui:extension>
+                            <ui:columns>
+                                <ui:Column
+                                    label="회사 코드">
+                                    <ui:template>
+                                        <m:Text text="{>}" />
+                                    </ui:template>
+                                </ui:Column>
+                                <ui:Column
+                                    label="회사 이름">
+                                    <ui:template>
+                                        <m:Text text="{>}" />
+                                    </ui:template>
+                                </ui:Column>
+                                <ui:Column
+                                    label="계정 통화">
+                                    <ui:template>
+                                        <m:Text text="{>}" />
+                                    </ui:template>
+                                </ui:Column>
+                                <ui:Column label="계정과목표">
+                                    <ui:template>
+                                        <m:Text text="{>}" />
+                                    </ui:template>
+                                </ui:Column>
+                            </ui:columns>
+                        </ui:Table>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections> 
+		<footer>
+            <m:OverflowToolbar>
+                <m:ToolbarSpacer/>
+                <m:Button type="Default" text="뒤로" press=".onBack"/>
+            </m:OverflowToolbar>
+        </footer> 
+	</ObjectPageLayout>
+</mvc:View>
+

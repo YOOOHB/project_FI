@@ -1,4 +1,4 @@
-namespace project_FI.company;
+namespace project_FI.customer;
 
 entity Customer {
     key customerNumber : Integer @title : '고객 번호';
@@ -31,5 +31,25 @@ entity Customer {
 
 entity CountryRegion {
     key countryCode : String @title : '국가 코드';
-        country     : String @title : '국가/지역 이름';
+    key country     : String @title : '국가/지역 이름';
+};
+
+entity OrderHold {
+    key orderHold_key : String @title : '국가 코드';
+    key orderHold_kor : String @title : '국가/지역 이름';
+};
+
+entity CustomerClass {
+    key customer_key : String @title : '국가 코드';
+    key customer_kor : String @title : '국가/지역 이름';
+};
+
+entity RequestHold {
+    key requestHold_key : String @title : '국가 코드';
+    key requestHold_kor : String @title : '국가/지역 이름';
+};
+
+entity lgForm {
+    key lgForm_key : String @title : '국가 코드';
+    key lgForm_kor : String @title : '국가/지역 이름';
 };

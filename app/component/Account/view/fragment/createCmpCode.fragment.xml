@@ -1,0 +1,51 @@
+<core:FragmentDefinition controllerName="project2.controller.createAccount"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+	xmlns:t="sap.ui.table"
+	xmlns:layout="sap.ui.layout">
+	<Dialog id="createCmpCode" title="회사 코드 생성">
+		
+		<form:SimpleForm layout="ResponsiveGridLayout">
+			<form:content>
+				<VBox>
+					<HBox>
+						<Label text="회사 코드 : " class="sapUiTinyMarginBegin"/>
+						<Input id="COA2" class="sapUiTinyMarginBegin" width="auto"
+						valueStateText="값을 입력하세요."/>
+						<layoutData>
+							<layout:GridData span="XL2 L2 M2 S2" />
+						</layoutData>
+					</HBox>
+					<HBox>
+						<Label text="회사 이름 : " class="sapUiTinyMarginBegin"/>
+						<Input id="COA3" class="sapUiTinyMarginBegin" width="auto"/>
+						<layoutData>
+							<layout:GridData span="XL2 L2 M2 S2" />
+						</layoutData>
+					</HBox>
+					<HBox>
+						<Label text="계정 통화 : " class="sapUiTinyMarginBegin"/>
+						<Input id="COA4" class="sapUiTinyMarginBegin" width="auto"/>
+						<layoutData>
+							<layout:GridData span="XL2 L2 M2 S2" />
+						</layoutData>
+					</HBox>
+					<HBox>
+						<Label text="계정과목표 : " class="sapUiTinyMarginBegin"/>
+						<Input id="COA5" class="sapUiTinyMarginBegin" width="auto"/>
+						<layoutData>
+							<layout:GridData span="XL2 L2 M2 S2" />
+						</layoutData>
+					</HBox>
+				</VBox>
+			</form:content>
+		</form:SimpleForm>
+		
+		<buttons>
+			<Button text="생성" press=".onAcceptcreateCmpCodeFragment"/>
+			<Button text="취소" press=".onBackcreateCmpCodeFragment"/>
+		</buttons>
+	</Dialog>
+	
+</core:FragmentDefinition>
