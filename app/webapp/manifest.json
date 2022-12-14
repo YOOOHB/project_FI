@@ -84,7 +84,7 @@
           "bundleName": "project1.i18n.i18n"
         }
       },
-      "compnay": {
+      "company": {
         "dataSource": "companyService",
         "preload": true,
         "settings": {
@@ -122,16 +122,14 @@
           "name": "Account",
           "pattern": "Account",
           "target": {
-            "name": "Account",
-            "prefix": "Account"
+            "name": "Account"
           }
         },
         {
           "name": "Customer",
           "pattern": "Customer",
           "target": {
-            "name": "Customer",
-            "prefix": "Customer"
+            "name": "Customer"
           }
         }
       ],
