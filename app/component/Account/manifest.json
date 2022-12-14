@@ -104,6 +104,7 @@
           "target": "homeAccount"
         },
         {
+<<<<<<< HEAD
           "name": "createAccount",
           "pattern": "",
           "target": "createAccount"
@@ -114,6 +115,8 @@
           "target": "detailAccount"
         },
         {
+=======
+>>>>>>> b563569 (hyeyeon)
           "name": "Account",
           "pattern": "Account",
           "target": "Account"
@@ -127,6 +130,7 @@
           "viewId": "homeAccount",
           "viewName": "homeAccount"
         },
+<<<<<<< HEAD
         "createAccount": {
           "viewType": "XML",
           "transition": "slide",
@@ -141,6 +145,8 @@
           "viewId": "detailAccount",
           "viewName": "detailAccount"
         },
+=======
+>>>>>>> b563569 (hyeyeon)
         "Account": {
           "viewType": "XML",
           "transition": "slide",
