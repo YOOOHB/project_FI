@@ -9,7 +9,11 @@
 				<Label text="G/L 계정 : " />
 				<Input
 				id="GLNum2"
+<<<<<<< HEAD
 				class="sapUiSmallMarginTop"
+=======
+				class="sapUiSmallMarginBottom"
+>>>>>>> 60359ec (test)
 				type="Text"
 				showValueHelp="true"
 				valueHelpIconSrc="sap-icon://search"

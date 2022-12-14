@@ -122,16 +122,14 @@
           "name": "Account",
           "pattern": "Account",
           "target": {
-            "name": "Account",
-            "prefix": "prefix_Account"
+            "name": "Account"
           }
         },
         {
           "name": "Customer",
           "pattern": "Customer",
           "target": {
-            "name": "Customer",
-            "prefix": "prefix_Customer"
+            "name": "Customer"
           }
         }
       ],

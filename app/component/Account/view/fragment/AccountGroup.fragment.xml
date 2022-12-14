@@ -1,5 +1,6 @@
-<core:FragmentDefinition controllerName="project2.controller.createAccount"
+<core:FragmentDefinition   
 	xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
 	xmlns:core="sap.ui.core"
 	xmlns:t="sap.ui.table"
 	xmlns:layout="sap.ui.layout">
