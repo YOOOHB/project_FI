@@ -101,8 +101,13 @@
       "routes": [
         {
           "name": "homeAccount",
-          "pattern": "homeAccount",
+          "pattern": "",
           "target": "homeAccount"
+        },
+        {
+          "name": "Account",
+          "pattern": "Account",
+          "target": "Account"
         }
       ],
       "targets": {
@@ -112,10 +117,17 @@
           "clearControlAggregation": false,
           "viewId": "homeAccount",
           "viewName": "homeAccount"
+        },
+        "Account": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Account",
+          "viewName": "Account"
         }
       }
     },
-    "rootView": {z
+    "rootView": {
       "viewName": "project2.view.App",
       "type": "XML",
       "async": true,
