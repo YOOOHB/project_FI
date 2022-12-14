@@ -16,8 +16,8 @@
       "toolsId": "c10f1357-0656-479d-94ee-58a1a29f844c"
     },
     "dataSources": {
-      "companyService": {
-        "uri": "/company/",
+      "AccountService": {
+        "uri": "/Account/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -69,8 +69,8 @@
           "bundleName": "project2.i18n.i18n"
         }
       },
-      "company": {
-        "dataSource": "companyService",
+      "Account": {
+        "dataSource": "AccountService",
         "preload": true,
         "settings": {
           "operationMode": "Server",
@@ -106,7 +106,7 @@
         {
 
           "name": "createAccount",
-          "pattern": "",
+          "pattern": "createAccount",
           "target": "createAccount"
         },
         {
@@ -144,7 +144,6 @@
           "viewId": "detailAccount",
           "viewName": "detailAccount"
         },
-
         "Account": {
           "viewType": "XML",
           "transition": "slide",

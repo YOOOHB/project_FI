@@ -12,9 +12,9 @@ sap.ui.define([
     const EdmType = exportLibrary.EdmType;
     return Controller.extend("project2.controller.Account",{
       
-        onInit: async function(){
-            this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
-        },
+    onInit: async function(){
+        this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
+    },
     onMy: async function(){
         Account = await $.ajax({
             type:"get",

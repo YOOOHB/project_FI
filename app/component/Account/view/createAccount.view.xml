@@ -17,7 +17,7 @@
 			<ObjectPageDynamicHeaderTitle>
 				<heading>
                     <m:HBox>
-                        <m:Button icon="sap-icon://nav-back" press=".onBack"/>
+                        <m:Button type="Back" press=".onBack" class="sapUiTinyMarginTop"/>
                         <m:Title text="G/L 계정 마스터 데이터 생성" wrapping="true" />
                     </m:HBox>
 				</heading>
