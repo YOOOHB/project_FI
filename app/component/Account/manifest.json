@@ -129,6 +129,7 @@
           "viewId": "homeAccount",
           "viewName": "homeAccount"
         },
+<<<<<<< HEAD
 
         "createAccount": {
           "viewType": "XML",
@@ -144,6 +145,8 @@
           "viewId": "detailAccount",
           "viewName": "detailAccount"
         },
+=======
+>>>>>>> b563569 (hyeyeon)
         "Account": {
           "viewType": "XML",
           "transition": "slide",
