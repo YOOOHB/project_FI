@@ -95,6 +95,16 @@
           "target": "homeCustomer"
         },
         {
+          "name": "detailCustomerP",
+          "pattern": "detailCustomerP",
+          "target": "detailCustomerP"
+        },
+        {
+          "name": "detailCustomerO",
+          "pattern": "detailCustomerO",
+          "target": "detailCustomerO"
+        },
+        {
           "name": "Customer",
           "pattern": "Customer",
           "target": "Customer"
@@ -107,6 +117,20 @@
           "clearControlAggregation": false,
           "viewId": "homeCustomer",
           "viewName": "homeCustomer"
+        },
+        "detailCustomerP": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "detailCustomerP",
+          "viewName": "detailCustomerP"
+        },
+        "detailCustomerO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "detailCustomerO",
+          "viewName": "detailCustomerO"
         },
         "Customer": {
           "viewType": "XML",

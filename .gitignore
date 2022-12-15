@@ -13,6 +13,7 @@ target/
 .gen/
 
 # MTA
+
 *_mta_build_tmp
 *.mtar
 mta_archives/
@@ -28,3 +29,6 @@ mta_archives/
 # IDEs
 # .vscode
 # .idea
+
+# auto generated wildcard
+db/.env

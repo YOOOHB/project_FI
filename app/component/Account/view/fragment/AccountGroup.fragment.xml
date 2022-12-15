@@ -1,0 +1,55 @@
+<core:FragmentDefinition controllerName="project2.controller.createAccount"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:t="sap.ui.table"
+	xmlns:layout="sap.ui.layout">
+	<Dialog id="AccountGroup" title="계정 그룹">
+		<content>
+			<VBox>
+				<Label text="검색 및 선택 : " />
+				<Input
+				id="GL"
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				showValueHelp="true"
+				valueHelpIconSrc="sap-icon://search"
+				valueHelpRequest="onSearchAccountGroupFragment"/>
+			</VBox>
+		</content>
+
+		<t:Table id="SPrdTable" rows="{Product>/ProductList}" selectionMode="None"
+				width="auto" cellClick=".onCellClickAccountGroup"> 
+			<t:extension>
+				<OverflowToolbar>
+					<Title id="SPrdTableName" text="항목"/>
+				</OverflowToolbar>
+			</t:extension>
+			<t:columns>
+				<t:Column hAlign="Center" sortProperty="code" filterProperty="code">
+					<Label text="계정그룹"/>
+					<t:template>
+						<Text text="{>}"/>
+					</t:template>
+				</t:Column>
+				<t:Column hAlign="Center" sortProperty="name" filterProperty="name">
+					<Label text="계정과목표"/>
+					<t:template>
+						<Text text="{>}" />
+					</t:template>
+				</t:Column>
+				<t:Column hAlign="Center" sortProperty="name" filterProperty="name">
+					<Label text="의미"/>
+					<t:template>
+						<Text text="{>}" />
+					</t:template>
+				</t:Column>
+			</t:columns>
+		</t:Table>
+
+		<buttons>
+			<Button text="선택" press=".onAccountGroupFragment"/>
+			<Button text="취소" press=".onBackAccountGroupFragment"/>
+		</buttons>
+	</Dialog>
+	
+</core:FragmentDefinition>

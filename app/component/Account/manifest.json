@@ -58,7 +58,6 @@
         "sap.ushell": {}
       }
     },
-    
     "contentDensities": {
       "compact": true,
       "cozy": true
@@ -103,6 +102,21 @@
           "name": "homeAccount",
           "pattern": "",
           "target": "homeAccount"
+        },
+        {
+          "name": "createAccount",
+          "pattern": "",
+          "target": "createAccount"
+        },
+        {
+          "name": "detailAccount",
+          "pattern": "detailAccount",
+          "target": "detailAccount"
+        },
+        {
+          "name": "Account",
+          "pattern": "Account",
+          "target": "Account"
         }
       ],
       "targets": {
@@ -112,6 +126,27 @@
           "clearControlAggregation": false,
           "viewId": "homeAccount",
           "viewName": "homeAccount"
+        },
+        "createAccount": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "createAccount",
+          "viewName": "createAccount"
+        },
+        "detailAccount": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "detailAccount",
+          "viewName": "detailAccount"
+        },
+        "Account": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Account",
+          "viewName": "Account"
         }
       }
     },
