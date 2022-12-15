@@ -47,7 +47,7 @@ sap.ui.define(
            });
       }
 
-
+        // pull 성공!!
 		
       });
     }
