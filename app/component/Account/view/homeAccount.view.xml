@@ -5,11 +5,22 @@
 <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
 		<content class="panelbottomline">
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" > <!--header="" press="" 프로퍼티,이벤트 추가-->
+			<HBox width="100%" height="3rem">
+                <Title text="component/Account"  />
+            </HBox>
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Account.view.xml" press=".onAccount">  
 				<TileContent>
 					<ImageContent src="sap-icon://survey"/>
 				</TileContent>
 			</GenericTile>
+			<HBox width="100%" height="3rem"/>
+			<HBox width="100%" height="3rem">
+				<Title text="Account Overview"/>
+			</HBox>
+
+
+
+
 		</content>
 	</Panel>
 </ScrollContainer>

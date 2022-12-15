@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+		xmlns="sap.ui.comp.valuehelpdialog"
+		xmlns:m="sap.m"
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+			title="Product"
+			ok=".onValueHelpWithSuggestionsOkPress"
+			cancel=".onValueHelpWithSuggestionsCancelPress"
+			supportRanges="true"
+			key="ProductCode"
+			descriptionKey="ProductName">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarWithSuggestionsSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem
+							groupName="__$INTERNAL$"
+							name="ProductCode"
+							label="Product Code"
+							visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="ProductCode"
+									 showSuggestion="true"
+									 showValueHelp="false"
+									 suggestionItems="{
+										path: '/ZSALESREPORTSuggestions',
+										sorter: { path: 'ProductCode' }
+									}">
+								<core:Item key="{ProductCode}" text="{ProductCode}" />
+							</m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+				 	<fb:FilterGroupItem
+							groupName="__$INTERNAL$"
+							name="Name"
+							label="Product Name"
+							visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Product Name"
+									 showSuggestion="true"
+									 showValueHelp="false"
+									 suggestionItems="{
+										path: '/ZSALESREPORTSuggestions',
+										sorter: { path: 'ProductName' }
+									}">
+								<core:Item key="{ProductName}" text="{ProductName}" />
+							</m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

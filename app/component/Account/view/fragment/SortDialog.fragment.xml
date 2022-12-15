@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ViewSettingsDialog
+        id="SortDialog"
+        confirm="onConfirmSortDialog"
+        title="G/L마스터 정렬">
+        <sortItems>
+            <ViewSettingsItem text="G/L계정 번호" key="accNumber" selected="true"/>
+            <ViewSettingsItem text="계정과목표" key="accChart" />
+            <ViewSettingsItem text="G/L계정 유형" key="accCategory" />
+            <ViewSettingsItem text="계정 그룹" key="accGroup" />
+            <ViewSettingsItem text="생성일자" key="createDate" />
+            
+        </sortItems>
+    </ViewSettingsDialog>
+ </core:FragmentDefinition>   
