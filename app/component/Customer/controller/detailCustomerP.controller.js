@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/Fragment"
 ], function(
-    Controller, JSONModel
+    Controller, JSONModel, Fragment
 ) {
     "use strict";
 
@@ -14,22 +15,16 @@ sap.ui.define([
         },
         
         onMyRoutePatternMatched: async function(){
-            var visible = {
-                edit: false,
-            };
-    
-            let editModel = new JSONModel(visible);
-    
-            this.getView().setModel(editModel,"editModel");
-            console.log(editModel);
 
         },
 
-        onEdit: function() {
-            this.getView().getModel("editModel").setProperty("/edit", true);
+        onChange: function() {
+            this.getOwnerComponent().getRouter().navTo("changeCustomerP")
+            
         },
-
+        
         onCustomer: function() {
+            this.getOwnerComponent().getRouter().navTo("Customer")
 
         }
 

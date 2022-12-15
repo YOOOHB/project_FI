@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="project3.controller.detailCustomerP"
+	controllerName="project3.controller.changeCustomerP"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.uxap"
 	xmlns:layout="sap.ui.layout"
@@ -8,7 +8,7 @@
 	xmlns:ff="sap.f"
 	xmlns:core="sap.ui.core">
 
-	<ObjectPageLayout id="ObjectPageLayout"
+	<ObjectPageLayout id="ObjectPageLayout112"
 					useIconTabBar="true"
 					subSectionLayout="TitleOnLeft"
 					showTitleInHeaderContent="true"
@@ -29,9 +29,6 @@
 					<m:Text text="고객번호 데이터"/>
 				</expandedContent>
 
-				<actions>
-					<m:Button text="편집" type="Emphasized" press=".onChange" />
-				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
@@ -61,7 +58,7 @@
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup234"
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup2132134"
 												editable="false"
 												layout="ColumnLayout"
 												title="일반 정보"
@@ -70,7 +67,7 @@
 												>
 									<f:content>
 										<m:Label text="개인 칭호" />
-										<m:Text id="nameText" text="123" />
+										<m:Text  text="123" />
 										<m:Label text="이름" />
 										<m:Text text="{Street} {HouseNumber}" />
 										<m:Label text="성" />
@@ -90,7 +87,7 @@
 										<m:Label text="최종 변경일" />
 										<m:Text text="13213" />
 										<m:Label text="최종 변경자" />
-										<m:Text text="123213123" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
 										<m:Text text="" />
 									</f:content>
@@ -101,7 +98,7 @@
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup223234"
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup223112321234"
 												editable="false"
 												layout="ColumnLayout"
 												title="고객 정보"
@@ -116,13 +113,13 @@
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="오더 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="청구 보류" />
-										<m:Link text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="전기 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="고객 분류" />
-										<m:Text text="1231231" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -144,7 +141,7 @@
 				<subSections>
 					<ObjectPageSubSection>
 						<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup22323234"
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup2232123213311234"
 												editable="false"
 												layout="ColumnLayout"
 												title="고객 정보"
@@ -153,17 +150,17 @@
 												>
 									<f:content>
 										<m:Label text="도로 주소" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="번지" />
-										<m:Text text="13123" />
+										<m:Input value="123213123" />
 										<m:Label text="우편 번호" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="도시" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="국가/지역" />
-										<m:Link text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="지역" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -175,6 +172,13 @@
 				</subSections>
 			</ObjectPageSection>
 		</sections>
+		<footer>
+            <m:OverflowToolbar >
+                <m:ToolbarSpacer />
+                <m:Button type="Emphasized" text="확인" press="onConfirm" />
+                <m:Button type="Default" text="취소" press="onCancel" />
+            </m:OverflowToolbar>
+        </footer>
 	</ObjectPageLayout>
 </mvc:View>
 
