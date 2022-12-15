@@ -16,8 +16,8 @@
       "toolsId": "c10f1357-0656-479d-94ee-58a1a29f844c"
     },
     "dataSources": {
-      "companyService": {
-        "uri": "/company/",
+      "AccountService": {
+        "uri": "/account/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -69,8 +69,8 @@
           "bundleName": "project2.i18n.i18n"
         }
       },
-      "company": {
-        "dataSource": "companyService",
+      "Account": {
+        "dataSource": "AccountService",
         "preload": true,
         "settings": {
           "operationMode": "Server",
@@ -104,10 +104,8 @@
           "target": "homeAccount"
         },
         {
-<<<<<<< HEAD
-=======
           "name": "createAccount",
-          "pattern": "",
+          "pattern": "createAccount",
           "target": "createAccount"
         },
         {
@@ -116,7 +114,6 @@
           "target": "detailAccount"
         },
         {
->>>>>>> 3455e3a86fcead647233597d53d7f361de5de4fe
           "name": "Account",
           "pattern": "Account",
           "target": "Account"
@@ -130,9 +127,7 @@
           "viewId": "homeAccount",
           "viewName": "homeAccount"
         },
-<<<<<<< HEAD
-=======
-        "createAccount": {
+"createAccount": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
@@ -146,7 +141,6 @@
           "viewId": "detailAccount",
           "viewName": "detailAccount"
         },
->>>>>>> 3455e3a86fcead647233597d53d7f361de5de4fe
         "Account": {
           "viewType": "XML",
           "transition": "slide",
