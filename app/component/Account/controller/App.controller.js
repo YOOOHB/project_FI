@@ -7,14 +7,8 @@ sap.ui.define(
 
     return BaseController.extend("project2.controller.App", {
       onInit() {
-      },
-
-      onRequest: function() {
-        this.getOwnerComponent().getRouter().navTo("Account");
-      },
-      onCompany: function() {
-        this.getOwnerComponent().getRouter().navTo("Customer");
       }
+
     });
   }
 );
