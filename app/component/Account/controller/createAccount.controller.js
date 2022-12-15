@@ -45,7 +45,7 @@ sap.ui.define([
                         this.byId("code").setValue(path.code);
                         this.byId("name").setValue(path.name);
 
-                        this.onBackFragment();
+                        this.onBackGLAccountFragment();
                 },
                 onCellClickGLAccountFragment: function (p) {
                         var parameter = p.mParameters.rowBindingContext.sPath;
@@ -83,6 +83,15 @@ sap.ui.define([
                         this.byId("name").setValue(path.name);
 
                         this.onBack();
+                },
+                onAccountGroupFragment: function (p) {         // G/L Dialog 에서 선택하는 버튼
+                        var parameter = p.mParameters.rowBindingContext.sPath;
+                        var path = this.getView().getModel("Product").getProperty(parameter);
+                        
+                        this.byId("code").setValue(path.code);
+                        this.byId("name").setValue(path.name);
+
+                        this.onBackAccountGroupFragment();
                 },
                 onBackAccountGroupFragment: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
                         this.byId("AccountGroup").close();

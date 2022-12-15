@@ -69,16 +69,6 @@
         "settings": {
           "bundleName": "project3.i18n.i18n"
         }
-      },
-      "company": {
-        "dataSource": "companyService",
-        "preload": true,
-        "settings": {
-          "operationMode": "Server",
-          "earlyRequests": true,
-          "synchronizationMode": "None",
-          "autoExpandSelect": true
-        }
       }
     },
     "resources": {
@@ -113,6 +103,11 @@
           "name": "detailCustomerO",
           "pattern": "detailCustomerO",
           "target": "detailCustomerO"
+        },
+        {
+          "name": "Customer",
+          "pattern": "Customer",
+          "target": "Customer"
         }
       ],
       "targets": {
@@ -136,6 +131,13 @@
           "clearControlAggregation": false,
           "viewId": "detailCustomerO",
           "viewName": "detailCustomerO"
+        },
+        "Customer": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Customer",
+          "viewName": "Customer"
         }
       }
     },

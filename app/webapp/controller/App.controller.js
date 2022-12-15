@@ -8,12 +8,14 @@ sap.ui.define(
       return BaseController.extend("project1.controller.App", {
         onInit() {
         },
-
         onAccount: function() {
           this.getOwnerComponent().getRouter().navTo("Account");
         },
         onCustomer: function() {
           this.getOwnerComponent().getRouter().navTo("Customer");
+        },
+        onHome: function() {
+          this.getOwnerComponent().getRouter().navTo("home"); 
         }
       });
     }

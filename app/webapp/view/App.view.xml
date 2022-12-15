@@ -8,7 +8,7 @@
 			<tnt:ToolHeader>
 				<Image height="30px"
 					   class="sapUiSmallMarginBegin"
-                       src="Image/SAPlogo.svg" />       
+                       src="Image/SAPlogo.svg" press=".onHome"/>       
 				<MenuButton enabled="true" text="메뉴 이동">
                     <menu>
                         <Menu>
