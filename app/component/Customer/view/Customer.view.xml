@@ -1,0 +1,142 @@
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    controllerName="project3.controller.Customer"
+    height="100%">
+
+    <f:DynamicPage id="CustomerPage" headerExpanded="{/headerExpanded}">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <HBox>
+                        <Button type="Back" press=".onBack"/>
+                        <Title text="고객마스터"/>
+                    </HBox>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar id="filterbar" 
+                                  persistencyKey="myPersKey" 
+                                  useToolbar="false" 
+                                  search=".onSearch" 
+                                  filterChange=".onFilterChange" 
+                                  afterVariantLoad=".onAfterVariantLoad">
+
+                        <fb:filterItems>
+                            <fb:FilterItem name="name" label="고객명">
+                                <fb:control>
+                                    <Input value="{search>/name}"/>
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem name="customerNumber" label="고객 번호">
+                                <fb:control>
+                                    <Input value="{search>/customerNumber}"/>
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem name="cmpCode" label="회사 코드">
+                                <fb:control>
+                                    <Input value="{search>/cmpCode}" 
+                                           showValueHelp="true" 
+                                           valueHelpRequest=".onValueHelpRequest"/>
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem name="createDate" label="생성 일자">
+                                <fb:control>
+                                    <DatePicker value="{search>/createDate}"
+                                                displayFormat="yyyy-MM-dd" 
+                                            valueFormat="yyyy-MM-dd"/>
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem name="bpRange" label="비즈니스 파트너 범주">
+                                <fb:control>
+                                    <Select width="100%" id="Req_state" items="{ path: 'RequestModel>/Request_State'}">
+                                        <core:Item text="{RequestModel>request_state_kor}" key="{Request>request_state_key}"/>
+                                    </Select>
+                                </fb:control>
+                            </fb:FilterItem>
+                        </fb:filterItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <table:Table
+                    id="CustomerTable"
+                    selectionMode="MultiToggle"
+                    rows="{RequestModel>/}"
+                    visibleRowCount="7"
+                    rowActionCount="1">
+
+                <table:rowActionTemplate>
+                    <table:RowAction>
+                        <table:items>
+                            <table:RowActionItem type="Navigation" press=".onNavToDetail"/>
+                        </table:items>
+                    </table:RowAction>
+                </table:rowActionTemplate>
+				
+                <table:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="CustomerList" text="고객 목록"/>
+						<ToolbarSpacer/>
+						    <Button text="비즈니스 파트너 생성" press=".onCreateCustomer" type="Transparent"/>
+                            <Button icon="sap-icon://delete" tooltip="삭제" press=".onDeleteCustomer" type="Transparent"/>
+                            <Button icon="sap-icon://sort" tooltip="정렬" press=".onSort" type="Transparent"/>
+                            <Button icon="sap-icon://excel-attachment" tooltip="Excel Download" press=".onDataExport" type="Transparent"/>
+					</OverflowToolbar>
+				</table:extension>
+
+				<table:columns>
+					<table:Column
+						id="BP"
+						sortProperty="Name">
+						<Label text="비즈니스 파트너" />
+						<table:template>
+							<Text text="{Name}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column
+						id="cmpCode">
+						<Label text="회사 코드" />
+						<table:template>
+							<Text text="{Name}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column
+						id="createDate">
+						<Label text="생성 일자" />
+						<table:template>
+							<Text text="{Name}" wrapping="false" />
+						</table:template>
+					</table:Column>
+					<table:Column
+						id="country">
+						<Label text="국가/지역" />
+						<table:template>
+							<Text text="{Name}" wrapping="false" />
+						</table:template>
+					</table:Column>
+					<table:Column
+						id="bpRange">
+						<Label text="BP 범주" />
+						<table:template>
+							<Text text="{Name}" wrapping="false" />
+						</table:template>
+					</table:Column>
+					
+				</table:columns>
+				
+			</table:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

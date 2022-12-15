@@ -101,7 +101,7 @@
       "routes": [
         {
           "name": "homeAccount",
-          "pattern": "homeAccount",
+          "pattern": "",
           "target": "homeAccount"
         }
       ],
@@ -115,7 +115,7 @@
         }
       }
     },
-    "rootView": {z
+    "rootView": {
       "viewName": "project2.view.App",
       "type": "XML",
       "async": true,
