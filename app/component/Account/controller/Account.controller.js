@@ -73,6 +73,9 @@ sap.ui.define([
     onCreateAccount: function(){
         this.getOwnerComponent().getRouter().navTo("createAccount");      
     },
+    onhomeAccount: function(){
+        this.getOwnerComponent().getRouter().navTo("homeAccount");      
+    },
     onDeleteAccount :async function(){
         var totalNumber=this.getView().getModel("AccountModel").oData.length;
         let model= this.getView().getModel("AccountModel");

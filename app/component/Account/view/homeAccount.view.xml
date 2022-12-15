@@ -2,33 +2,27 @@
 	controllerName="project2.controller.homeAccount"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
-<ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
-	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-		<content class="panelbottomline">
-<<<<<<< HEAD
-			<HBox width="100%" height="3rem">
-                <Title text="component/Account"  />
-            </HBox>
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Account.view.xml" press=".onAccount">  
-=======
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" > <!--header="" press="" 프로퍼티,이벤트 추가-->
->>>>>>> 60359ec (test)
+	<ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+		<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+			<content class="panelbottomline">
+
+				<HBox width="100%" height="3rem">
+					<Title text="component/Account"  />
+				</HBox>
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Account.view.xml" press=".onAccount"/>  
+
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" > <!--header="" press="" 프로퍼티,이벤트 추가-->
+
 				<TileContent>
 					<ImageContent src="sap-icon://survey"/>
 				</TileContent>
-			</GenericTile>
-<<<<<<< HEAD
-			<HBox width="100%" height="3rem"/>
-			<HBox width="100%" height="3rem">
-				<Title text="Account Overview"/>
-			</HBox>
+				</GenericTile>
 
-
-
-
-=======
->>>>>>> 60359ec (test)
-		</content>
-	</Panel>
-</ScrollContainer>
+				<HBox width="100%" height="3rem"/>
+				<HBox width="100%" height="3rem">
+					<Title text="Account Overview"/>
+				</HBox>
+			</content>
+		</Panel>
+	</ScrollContainer>
 </mvc:View>

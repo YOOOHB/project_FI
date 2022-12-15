@@ -104,7 +104,6 @@
           "target": "homeAccount"
         },
         {
-
           "name": "createAccount",
           "pattern": "createAccount",
           "target": "createAccount"
@@ -115,7 +114,6 @@
           "target": "detailAccount"
         },
         {
-
           "name": "Account",
           "pattern": "Account",
           "target": "Account"
@@ -129,8 +127,6 @@
           "viewId": "homeAccount",
           "viewName": "homeAccount"
         },
-<<<<<<< HEAD
-
         "createAccount": {
           "viewType": "XML",
           "transition": "slide",
@@ -145,8 +141,6 @@
           "viewId": "detailAccount",
           "viewName": "detailAccount"
         },
-=======
->>>>>>> b563569 (hyeyeon)
         "Account": {
           "viewType": "XML",
           "transition": "slide",

@@ -12,11 +12,11 @@ height="100%">
         <f:title>
             <f:DynamicPageTitle>
                 <f:heading>
-                    <Button 
-                        icon="sap-icon://nav-back"
-                        press="onhomeAccount"
-                        type="Transparent"/>
                     <HBox>
+                    <Button 
+                        type="Back"
+                        press="onhomeAccount"
+                        class="sapUiTinyMarginTop"/>
                         <Title text="G/L계정 마스터"/>
                     </HBox>
                 </f:heading>
