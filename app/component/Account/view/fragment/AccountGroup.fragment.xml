@@ -8,7 +8,7 @@
 			<VBox>
 				<Label text="검색 및 선택 : " />
 				<Input
-				id="GL"
+				id="GL111"
 				class="sapUiSmallMarginBottom"
 				type="Text"
 				showValueHelp="true"
