@@ -16,23 +16,24 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
         },
     onMy: async function(){
-        Account = await $.ajax({
+        let Account = await $.ajax({
             type:"get",
             url:"/Account/Account"
         });
         let AccountModel= new JSONModel(Account.value);
-        this.getView.setModel(AccountModel,"AccountModel");
+        this.getView().setModel(AccountModel,"AccountModel");
     },
     onSearch:function(){
         let accNumber=this.byId("accNumber").getValue();
         let accChart=this.byId("accChart").getValue();
         let accCategory=this.byId("accCategory").getValue();
         let accGroup=this.byId("accGroup").getValue();
+        let createDate=this.byId("createDate").getValue();
         
         if(createDate){
-            let accYear= create.split(".")[0];
-            let accMonth= create.split(".")[1];padStart(2,'0');
-            let accday= create.split(".")[2];padStart(2,'0');
+            let accYear= createDate.split(". ")[0];
+            let accMonth= createDate.split(". ")[1].padStart(2, '0');
+            let accday= createDate.split(". ")[2].padStart(2, '0');
             createDate= accYear+"-"+accMonth+"-"+accday;
         }
 
@@ -51,9 +52,9 @@ sap.ui.define([
         this.byId("accChart").setValue("");
         this.byId("accCategory").setValue("");
         this.byId("accGroup").setValue("");
-        this.byId("createDate").setSelectedKey("");
+        this.byId("createDate").setValue("");
 
-        this.onSearch
+        this.onSearch();
     },
     onValueHelpChart : function () {
         if (!this.pValueHelpDialog) {
