@@ -6,9 +6,11 @@ sap.ui.define([
     "sap/ui/model/Sorter",
     "sap/ui/model/json/JSONModel",
     "sap/ui/export/library",
-    "sap/ui/export/Spreadsheet"
-],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel,exportLibrary,Spreadsheet){
+    "sap/ui/export/Spreadsheet",
+    "../model/aFormatter"
+],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel, exportLibrary, Spreadsheet, aFormatter){
     "use strict";
+    Formatter: aFormatter;
     const EdmType = exportLibrary.EdmType;
     return Controller.extend("project2.controller.Account",{
       
@@ -178,6 +180,9 @@ sap.ui.define([
         });
         return aCols;
 
+    }, 
+    onNavToDetail: function(){
+        this.getOwnerComponent().getRouter().navTo("detailAccount");
     }
 
 
