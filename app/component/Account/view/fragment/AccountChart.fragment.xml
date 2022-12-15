@@ -4,46 +4,48 @@
 		xmlns:fb="sap.ui.comp.filterbar"
 		xmlns:core="sap.ui.core">
 	<ValueHelpDialog
-			title="Product"
-			ok=".onValueHelpWithSuggestionsOkPress"
-			cancel=".onValueHelpWithSuggestionsCancelPress"
+			id="chartpop"
+			title="계정과목표"
+			ok=".onValueHelpOk"
+			cancel=".onCloseDialog1"
 			supportRanges="true"
-			key="ProductCode"
-			descriptionKey="ProductName">
+			key="accChart"
+			descriptionKey="aacContents">
+		
 		<filterBar>
-			<fb:FilterBar advancedMode="true" search=".onFilterBarWithSuggestionsSearch" isRunningInValueHelpDialog="true">
+			<fb:FilterBar advancedMode="true" search=".onFilterSearch" isRunningInValueHelpDialog="true">
 				<fb:filterGroupItems>
 					<fb:FilterGroupItem
 							groupName="__$INTERNAL$"
-							name="ProductCode"
-							label="Product Code"
+							name="accChart"
+							label="계정과목표"
 							visibleInFilterBar="true">
 						<fb:control>
-							<m:Input name="ProductCode"
+							<m:Input name="accChart"
 									 showSuggestion="true"
 									 showValueHelp="false"
 									 suggestionItems="{
 										path: '/ZSALESREPORTSuggestions',
-										sorter: { path: 'ProductCode' }
+										sorter: { path: 'accChart' }
 									}">
-								<core:Item key="{ProductCode}" text="{ProductCode}" />
+								<core:Item key="{accChart}" text="{accChart}" />
 							</m:Input>
 						</fb:control>
 					</fb:FilterGroupItem>
 				 	<fb:FilterGroupItem
 							groupName="__$INTERNAL$"
-							name="Name"
-							label="Product Name"
+							name="aacContents"
+							label="내역"
 							visibleInFilterBar="true">
 						<fb:control>
-							<m:Input name="Product Name"
+							<m:Input name="내역"
 									 showSuggestion="true"
 									 showValueHelp="false"
 									 suggestionItems="{
 										path: '/ZSALESREPORTSuggestions',
-										sorter: { path: 'ProductName' }
+										sorter: { path: 'aacContents' }
 									}">
-								<core:Item key="{ProductName}" text="{ProductName}" />
+								<core:Item key="{aacContents}" text="{aacContents}" />
 							</m:Input>
 						</fb:control>
 					</fb:FilterGroupItem>
