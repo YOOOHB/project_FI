@@ -1,16 +1,18 @@
 sap.ui.define(
   [
     "sap/ui/core/mvc/Controller",
+    "../model/Cformatter",
     "sap/ui/model/json/JSONModel",
     "sap/m/SearchField",
     "sap/ui/core/Fragment",
     "sap/ui/model/Sorter",
     "sap/m/SearchField"
   ],
-  function (Controller, JSONModel, SearchField, Fragment, Sorter) {
+  function (Controller, Cformatter, JSONModel, SearchField, Fragment, Sorter) {
     "use strict";
 
     return Controller.extend("project3.controller.Customer", {
+      Cformatter: Cformatter,
 
       // // 프로그램 처음 실행할때 딱한번만 실행되는 함수.
       // onInit: async function () {
@@ -40,6 +42,17 @@ sap.ui.define(
 
         let CustomerModel = new JSONModel(Customer.value);
         this.getView().setModel(CustomerModel, "CustomerModel");
+
+        let bpRange = await $.ajax({
+          type: "get",
+          url: "/customer/bpRange"
+        });
+
+        let bpRangeModel = new JSONModel(bpRange.value);
+        this.getView().setModel(bpRangeModel, "bpRangeModel");
+
+        console.log(bpRange)
+        console.log(bpRangeModel)
       },
 
       onSearch: function (oEvent) {
@@ -108,23 +121,25 @@ sap.ui.define(
       },
 
       onDeleteCustomer: async function () {
+        var totalNumber = this.getView().getModel("CustomerModel").oData.length;
         let model = this.getView().getModel("CustomerModel");
+        let i;
+        for (i = 0; i < totalNumber; i++) {
+            let chk = '/' + i + '/CHK';
+            let key = '/' + i + '/customerNumber'; 
+            if (model.getProperty(chk) === true) {
+                let customerNumber = model.getProperty(key);
+                let url = "/customer/Customer/" + customerNumber;
+                await $.ajax({
+                    type: "DELETE",
+                    url: url
+                });
 
-        let Test = this.getView().byId("CustomerTable").getSelectedIndices();
-
-        for (let i = 0; i < Test.length; i++) {
-          let key = model.oData[i].customerNumber;
-
-          let url = "/customer/Customer/" + key;
-            await $.ajax({
-              type: "DELETE",
-              url: url
-          });
-
+            }
         }
         this.onMyRoutePatternMatched();
 
-      },
+    },
 
       onSort: function () {
         if (!this.byId("CSortDialog")) {
@@ -157,6 +172,10 @@ sap.ui.define(
 
       onDataExport: function () {
 
+      },
+
+      oncheckselect: function () {
+        console.log(this.getView().getModel("CustomerModel"));
       }
 
 
