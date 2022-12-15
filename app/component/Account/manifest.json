@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "AccountService": {
-        "uri": "/Account/",
+        "uri": "/account/",
         "type": "OData",
         "settings": {
           "annotations": [],
