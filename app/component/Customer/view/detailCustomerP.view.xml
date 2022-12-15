@@ -60,9 +60,47 @@
 			<ObjectPageSection titleUppercase="false" title="기본 데이터" >
 				<subSections>
 					<ObjectPageSubSection>
-						<blocks>
 							<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_threeGroups234"
+																<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup234"
+			editable="false"
+			layout="ColumnLayout"
+			title="Address"
+			columnsM="2"
+			columnsL="3"
+			columnsXL="4"
+			>
+			<f:content>
+				<core:Title text="Address" />
+										<m:Label text="Name" />
+										<m:Text id="nameText" text="123" />
+										<m:Label text="Street/No." />
+										<m:Text text="{Street} {HouseNumber}" />
+										<m:Label text="ZIP Code/City" />
+										<m:Text text="{ZIPCode} {City}" />
+										<m:Label text="Country" />
+										<m:Text id="countryText" text="{Country}" />
+										<m:Label text="Web" />
+										<m:Link text="Url" href="{Url}" />
+										<core:Title text="Contact" />
+										<m:Label text="Twitter" />
+										<m:Text text="{Twitter}" />
+										<m:Label text="Email" />
+										<m:Text text="{Email}" />
+										<m:Label text="Tel." />
+										<m:Text text="{Tel}" />
+										<core:Title text="Other" />
+										<m:Label text="SMS" />
+										<m:Text text="{Sms}" />
+										<m:Label text="Mobile" />
+										<m:Text text="{Mobile}" />
+										<m:Label text="Pager" />
+										<m:Text text="{Pager}" />
+										<m:Label text="Fax" />
+										<m:Text text="{Fax}" />
+
+			</f:content>
+		</f:SimpleForm>
+								<!-- <f:SimpleForm id="SimpleFormDisplayColumn_threeGroups234"
 									editable="false"
 									layout="ColumnLayout"
 									title="Supplier"
@@ -71,34 +109,37 @@
 									columnsXL="4"
 									>
 									<f:content>
-										<core:Title text="일반 정보" />
-											<m:Label text="개인 칭호" />
-											<m:Text text="123123" />
-											<m:Label text="이름" />
-											<m:Text text="123123" />
-											<m:Label text="성" />
-											<m:Text text="121212" />
-											
+										<core:Title text="Address" />
+										<m:Label text="Name" />
+										<m:Text id="nameText" text="123" />
+										<m:Label text="Street/No." />
+										<m:Text text="{Street} {HouseNumber}" />
+										<m:Label text="ZIP Code/City" />
+										<m:Text text="{ZIPCode} {City}" />
+										<m:Label text="Country" />
+										<m:Text id="countryText" text="{Country}" />
+										<m:Label text="Web" />
+										<m:Link text="Url" href="{Url}" />
 										<core:Title text="Contact" />
-											<m:Label text="Twitter" />
-											<m:Text text="{Twitter}" />
-											<m:Label text="Email" />
-											<m:Text text="{Email}" />
-											<m:Label text="Tel." />
-											<m:Text text="{Tel}" />
+										<m:Label text="Twitter" />
+										<m:Text text="{Twitter}" />
+										<m:Label text="Email" />
+										<m:Text text="{Email}" />
+										<m:Label text="Tel." />
+										<m:Text text="{Tel}" />
 										<core:Title text="Other" />
-											<m:Label text="SMS" />
-											<m:Text text="{Sms}" />
-											<m:Label text="Mobile" />
-											<m:Text text="{Mobile}" />
-											<m:Label text="Pager" />
-											<m:Text text="{Pager}" />
-											<m:Label text="Fax" />
-											<m:Text text="{Fax}" />
+										<m:Label text="SMS" />
+										<m:Text text="{Sms}" />
+										<m:Label text="Mobile" />
+										<m:Text text="{Mobile}" />
+										<m:Label text="Pager" />
+										<m:Text text="{Pager}" />
+										<m:Label text="Fax" />
+										<m:Text text="{Fax}" />
 									</f:content>
-								</f:SimpleForm>
+								</f:SimpleForm> -->
+								
 							</m:VBox>
-						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 				<subSections>
