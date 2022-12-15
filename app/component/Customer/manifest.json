@@ -69,16 +69,6 @@
         "settings": {
           "bundleName": "project3.i18n.i18n"
         }
-      },
-      "company": {
-        "dataSource": "companyService",
-        "preload": true,
-        "settings": {
-          "operationMode": "Server",
-          "earlyRequests": true,
-          "synchronizationMode": "None",
-          "autoExpandSelect": true
-        }
       }
     },
     "resources": {
