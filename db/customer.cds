@@ -40,8 +40,8 @@ entity OrderHold {
 };
 
 entity CustomerClass {
-    key customer_key : String @title : '국가 코드';
-    key customer_kor : String @title : '국가/지역 이름';
+    key customer_key : String @title : '회사 코드';
+    key customer_kor : String @title : '회사 코드 이름';
 };
 
 entity RequestHold {

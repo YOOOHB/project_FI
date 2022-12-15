@@ -16,8 +16,8 @@
       "toolsId": "c10f1357-0656-479d-94ee-58a1a29f844c"
     },
     "dataSources": {
-      "companyService": {
-        "uri": "/company/",
+      "customerService": {
+        "uri": "/customer/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -68,6 +68,16 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "project3.i18n.i18n"
+        }
+      },
+      "Customer": {
+        "dataSource": "customerService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
         }
       }
     },
