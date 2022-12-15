@@ -24,6 +24,13 @@ sap.ui.define([
         });
         let AccountModel= new JSONModel(Account.value);
         this.getView().setModel(AccountModel,"AccountModel");
+
+        let Category = await $.ajax({
+            type:"get",
+            url:"/Account/AccCategory"
+        });
+        let CategoryModel= new JSONModel(Category.value);
+        this.getView().setModel(CategoryModel,"CategoryModel");
     },
     onSearch:function(){
         let accNumber=this.byId("accNumber").getValue();
