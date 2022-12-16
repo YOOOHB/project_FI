@@ -1,19 +1,21 @@
 <mvc:View
-	controllerName="project3.controller.detailCustomerO"
+	controllerName="project3.controller.changeCustomerP"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.uxap"
 	xmlns:layout="sap.ui.layout"
 	xmlns:m="sap.m"
 	xmlns:f="sap.ui.layout.form"
+	xmlns:ff="sap.f"
 	xmlns:core="sap.ui.core">
 
-	<ObjectPageLayout id="ObjectPageLayout"
+	<ObjectPageLayout id="ObjectPageLayout112"
 					useIconTabBar="true"
 					subSectionLayout="TitleOnLeft"
 					showTitleInHeaderContent="true"
 					upperCaseAnchorBar="false"
 					toggleHeaderOnTitleClick="false"
-					headerContentPinnable="false">
+					headerContentPinnable="false"
+					showFooter="true">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
@@ -27,15 +29,12 @@
 					<m:Text text="고객번호 데이터"/>
 				</expandedContent>
 
-				<actions>
-					<m:Button text="편집" type="Emphasized" press=".onChange"/>
-				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true">
-				<m:Image class="sapUiSmallMarginEnd" src="./Image/building1.png" width="60px" height="80px" />
+				<m:Image class="sapUiSmallMarginEnd" src="./Image/person2.jpg" width="60px" height="80px" />
 
 				<layout:VerticalLayout>
 					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="500px"/>
@@ -59,7 +58,7 @@
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup234"
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup2132134"
 												editable="false"
 												layout="ColumnLayout"
 												title="일반 정보"
@@ -67,23 +66,30 @@
 												width="80%"
 												>
 									<f:content>
-										<m:Label text="고객 명" />
-										<m:Text text="123" />
+										<m:Label text="개인 칭호" />
+										<m:Text  text="123" />
+										<m:Label text="이름" />
+										<m:Text text="{Street} {HouseNumber}" />
+										<m:Label text="성" />
+										<m:Text text="{ZIPCode} {City}" />
 										<m:Label text="" />
 										<m:Text text="" />
-										<m:Label text="법적형태" />
-										<m:Text text="" />
+										<m:Label text="" />
+										<m:Link text=""/>
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="생성일" />
-										<m:Text text="1234"/>
+										<m:Text text="1231231" />
+										<m:Label text="" />
+										<m:Text text="" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
-										<m:Text text="1231231" />
+										<m:Text text="13213" />
 										<m:Label text="최종 변경자" />
-										<m:Text text="해빈" />
-										
+										<m:Input value="123213123" />
+										<m:Label text="" />
+										<m:Text text="" />
 									</f:content>
 								</f:SimpleForm>
 							</m:VBox>
@@ -92,7 +98,7 @@
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup223234"
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup223112321234"
 												editable="false"
 												layout="ColumnLayout"
 												title="고객 정보"
@@ -107,13 +113,13 @@
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="오더 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="청구 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="전기 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="고객 분류" />
-										<m:Text text="1231231" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -135,26 +141,26 @@
 				<subSections>
 					<ObjectPageSubSection>
 						<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup22323234"
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup2232123213311234"
 												editable="false"
 												layout="ColumnLayout"
-												title="표준 주소"
+												title="고객 정보"
 												columnsXL="4"
 												width="80%"
 												>
 									<f:content>
 										<m:Label text="도로 주소" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="번지" />
-										<m:Text text="13123" />
+										<m:Input value="123213123" />
 										<m:Label text="우편 번호" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="도시" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="국가/지역" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="지역" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -166,6 +172,13 @@
 				</subSections>
 			</ObjectPageSection>
 		</sections>
+		<footer>
+            <m:OverflowToolbar >
+                <m:ToolbarSpacer />
+                <m:Button type="Emphasized" text="확인" press="onConfirm" />
+                <m:Button type="Default" text="취소" press="onCancel" />
+            </m:OverflowToolbar>
+        </footer>
 	</ObjectPageLayout>
 </mvc:View>
 
