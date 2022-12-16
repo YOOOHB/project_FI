@@ -16,8 +16,6 @@ sap.ui.define([
       
     onInit: async function(){
         this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
-
-        
     },
     onMy: async function(){
         let Account = await $.ajax({
@@ -26,13 +24,6 @@ sap.ui.define([
         });
         let AccountModel= new JSONModel(Account.value);
         this.getView().setModel(AccountModel,"AccountModel");
-
-        let Category = await $.ajax({
-            type:"get",
-            url:"/Account/AccCategory"
-        });
-        let CategoryModel= new JSONModel(Category.value);
-        this.getView().setModel(CategoryModel,"CategoryModel");
     },
     onSearch:function(){
         let accNumber=this.byId("accNumber").getValue();

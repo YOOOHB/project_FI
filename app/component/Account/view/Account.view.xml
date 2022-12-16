@@ -43,10 +43,7 @@ height="100%">
                         </VBox>
                         <VBox>
                             <Label text="G/L계정 유형"/>
-                             <ComboBox width="100%" id="ReqStatus" 
-                                items="{path: 'Account>/AccCategory'}">
-                                <core:Item text="{Account>accCategory_kor}" key="{Account>accCategory_key}" />
-                            </ComboBox>
+                            <Input id="accCategory"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>
@@ -134,11 +131,7 @@ height="100%">
                     <t:Column hAlign="Center">
                         <Label text="G/L계정 유형" />
                         <t:template>
-                            <ObjectStatus 
-                            text="{
-                                    path: 'AccountModel>accCategory',
-                                    formatter:'.aFormatter.statusText'
-                                        }"/>
+                            <Text text="{AccountModel>accCategory}" />
                         </t:template>
                     </t:Column>
                     <t:Column hAlign="Center">

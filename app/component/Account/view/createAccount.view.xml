@@ -149,7 +149,7 @@
                 <m:Button type="Default" text="취소" press=".onBack"/>
             </m:OverflowToolbar>
         </footer> 
-        <!-- I am JS -->
+        
 	</ObjectPageLayout>
 </mvc:View>
 
