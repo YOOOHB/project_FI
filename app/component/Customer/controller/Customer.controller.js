@@ -97,11 +97,11 @@ sap.ui.define(
         let sRouteName = '';
 
         if (sGubun === 'Person') {
-          sRouteName = 'detailCustomerP';
+          sRouteName = 'createCustomerP';
         }
 
         if (sGubun === 'Organization') {
-          sRouteName = 'detailCustomerO';
+          sRouteName = 'createCustomerO';
         }
 
         this.getOwnerComponent().getRouter().navTo(sRouteName);
@@ -157,6 +157,27 @@ sap.ui.define(
 
       onDataExport: function () {
 
+      },
+
+      onNavToDetail: function (oEvent) {
+        let dParams = oEvent.getParameters();
+        let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
+        let data = this.getView().getModel("CustomerModel").getProperty(sPath);
+        console.log(data);
+        let selectedRange = data.bpRange;
+        console.log(selectedRange);
+        let sRouteName = '';
+
+        if (selectedRange === '개인(1)') {
+          sRouteName = 'detailCustomerP';
+
+        }
+
+        if (selectedRange === '조직(2)') {
+          sRouteName = 'detailCustomerO';
+        }
+
+        this.getOwnerComponent().getRouter().navTo(sRouteName);
       }
 
 

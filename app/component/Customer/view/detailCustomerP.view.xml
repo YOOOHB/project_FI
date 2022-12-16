@@ -147,7 +147,7 @@
 								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup22323234"
 												editable="false"
 												layout="ColumnLayout"
-												title="고객 정보"
+												title="표준 주소"
 												columnsXL="4"
 												width="80%"
 												>
