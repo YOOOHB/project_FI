@@ -16,6 +16,8 @@ sap.ui.define([
       
     onInit: async function(){
         this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
+
+        
     },
     onMy: async function(){
         let Account = await $.ajax({
