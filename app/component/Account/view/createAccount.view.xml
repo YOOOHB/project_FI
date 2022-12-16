@@ -3,10 +3,9 @@
 	xmlns:layout="sap.ui.layout"
     xmlns:form="sap.ui.layout.form"
 	xmlns:m="sap.m"
-    xmlns:f="sap.f"
     xmlns:ui="sap.ui.table"
-    xmlns:core="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
     <ObjectPageLayout id="ObjectPageLayout"
 		showTitleInHeaderContent="true"
 		selectedSection="paymentSubSection"
@@ -25,27 +24,50 @@
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
-		<sections>
+		<sections >
 			<ObjectPageSection titleUppercase="false" title="헤더">
 				<subSections>
 					<ObjectPageSubSection title="헤더" titleUppercase="false">
 						<form:SimpleForm layout="ResponsiveGridLayout">
                             <form:content>
-                                <m:HBox>
-                                    <m:Label text="G/L 계정 번호 : " />
-                                    <m:Input id="GLNum" showValueHelp="true" valueHelpRequest=".onOpenGLAccount" class="sapUiTinyMarginBegin" width="auto"/>
-                                    <m:layoutData>
-                                        <layout:GridData span="XL2 L2 M2 S2" />
-                                    </m:layoutData>
-                                </m:HBox>
+                                <m:VBox>
+                                    <m:HBox>
+                                        <m:Label text="G/L 계정 번호 : " />
+                                        <m:Input id="GLNum" showValueHelp="true" valueHelpRequest=".onOpenGLAccount" class="sapUiTinyMarginBegin" width="auto"/>
+                                        <m:layoutData>
+                                            <layout:GridData span="XL3 L3 M6 S12" />
+                                        </m:layoutData>
+                                    </m:HBox>
+                                </m:VBox>                                    
                             </form:content>
                         </form:SimpleForm>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
 
-            <ObjectPageSection titleUppercase="false" title="일반">
+            <ObjectPageSection titleUppercase="false" title="일반" >
 				<subSections>
+<<<<<<< HEAD
+					<ObjectPageSubSection title="일반" titleUppercase="false" >
+                       <blocks>
+							<m:Table id="createAccTable" items="{path : 'AccountModel>/'}">
+                            <m:items>
+							    <m:VBox class="sapUiTinyMarginTop">
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="계정과목표 : " class="sapUiTinyMarginTop" />                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="계정 유형 : " class="sapUiTinyMarginTop"/>                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="계정 그룹 : " class="sapUiTinyMarginTop"/>                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="생성일 : " class="sapUiTinyMarginTop"/>                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="생성자 : " class="sapUiTinyMarginTop"/>                                        
+=======
 					<ObjectPageSubSection title="일반" titleUppercase="false">
 						<form:SimpleForm layout="ResponsiveGridLayout">
                             <form:content>
@@ -86,10 +108,33 @@
                                         <m:layoutData>
                                             <layout:GridData span="XL2 L2 M2 S2" />
                                         </m:layoutData>
+>>>>>>> origin/master
                                     </m:HBox>
+                                    <m:layoutData>
+                                        <layout:GridData span="XL1 L1 M1 S1" />
+                                    </m:layoutData>
                                 </m:VBox>
-                            </form:content>
-                        </form:SimpleForm>
+                                <m:VBox class="sapUiTinyMarginTop">
+                                <!-- 계정과목표 -->
+                                    <m:Input id="COA" width="20%"/>    
+                                <!-- 계정 유형  -->
+                                    <m:Select id="accType" items="" width="20%">
+                                        <core:Item text="{AccountModel>/accCategory}" key="{>}" />
+                                    </m:Select>  
+                                <!-- 계정 그룹  -->
+                                    <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"  width="20%"/>
+                                <!-- 생성일 -->
+                                    <m:Text text="2022-12-04"  width="20%"/>
+                                <!-- 생성자 -->
+                                    <m:Input id="creator"  width="20%"/>
+                                    <m:layoutData>
+                                        <layout:GridData span="XL11 L11 M11 S11" />
+                                    </m:layoutData>
+                                </m:VBox>
+
+                                </m:items>
+							</m:Table>
+						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>

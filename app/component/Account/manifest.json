@@ -44,7 +44,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.102.1",
       "libs": {
@@ -104,7 +104,6 @@
           "target": "homeAccount"
         },
         {
-
           "name": "createAccount",
           "pattern": "createAccount",
           "target": "createAccount"
@@ -115,7 +114,6 @@
           "target": "detailAccount"
         },
         {
-
           "name": "Account",
           "pattern": "Account",
           "target": "Account"
@@ -129,7 +127,6 @@
           "viewId": "homeAccount",
           "viewName": "homeAccount"
         },
-
         "createAccount": {
           "viewType": "XML",
           "transition": "slide",

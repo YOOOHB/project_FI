@@ -147,7 +147,8 @@ height="100%">
                     <t:rowActionTemplate>
                         <t:RowAction>
                             <t:items>
-                                <t:RowActionItem type="Navigation" press="onNavToDetail"/>                          </t:items>
+                                <t:RowActionItem type="Navigation" press="onNavToDetail"/>
+                            </t:items>
                         </t:RowAction>
                     </t:rowActionTemplate>
             </t:Table>
