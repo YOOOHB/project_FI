@@ -53,13 +53,13 @@
                                 <fb:control>
                                     <DatePicker value="{search>/createDate}"
                                                 displayFormat="yyyy-MM-dd" 
-                                            valueFormat="yyyy-MM-dd"/>
+                                                valueFormat="yyyy-MM-dd"/>
                                 </fb:control>
                             </fb:FilterItem>
                             <fb:FilterItem name="bpRange" label="비즈니스 파트너 범주">
                                 <fb:control>
-                                    <Select width="100%" id="Req_state" items="{ path: 'RequestModel>/Request_State'}">
-                                        <core:Item text="{RequestModel>request_state_kor}" key="{Request>request_state_key}"/>
+                                    <Select width="100%" name="bpRange" items="{path: 'bpRangeModel>/bpRange'}">
+                                        <core:Item text="{bpRangeModel>bpRange_kor}" key="{bpRangeModel>bpRange_key}"/>
                                     </Select>
                                 </fb:control>
                             </fb:FilterItem>
@@ -72,8 +72,8 @@
         <f:content>
             <table:Table
                     id="CustomerTable"
-                    selectionMode="MultiToggle"
-                    rows="{RequestModel>/}"
+                    selectionMode="None"
+                    rows="{CustomerModel>/}"
                     visibleRowCount="7"
                     rowActionCount="1">
 
@@ -89,7 +89,16 @@
 					<OverflowToolbar style="Clear">
 						<Title id="CustomerList" text="고객 목록"/>
 						<ToolbarSpacer/>
-						    <Button text="비즈니스 파트너 생성" press=".onCreateCustomer" type="Transparent"/>
+                            <MenuButton text="비즈니스 파트너 생성" buttonMode="Split" useDefaultActionOnly="true">
+                                <menu>
+                                    <Menu itemSelected="onMenuAction">
+                                        <MenuItem text="Person" press="onCreateCustomer($event, 'Person')">
+                                        </MenuItem>
+                                        <MenuItem text="Organization" press="onCreateCustomer($event, 'Organization')">
+                                        </MenuItem>
+                                    </Menu>
+                                </menu>
+                            </MenuButton>
                             <Button icon="sap-icon://delete" tooltip="삭제" press=".onDeleteCustomer" type="Transparent"/>
                             <Button icon="sap-icon://sort" tooltip="정렬" press=".onSort" type="Transparent"/>
                             <Button icon="sap-icon://excel-attachment" tooltip="Excel Download" press=".onDataExport" type="Transparent"/>
@@ -97,40 +106,46 @@
 				</table:extension>
 
 				<table:columns>
+                    <table:Column hAlign="Center" width="5rem">
+                        <Label text=""/>
+                            <table:template>
+                                <CheckBox selected="{CustomerModel>CHK}" textAlign="Center" select=".oncheckselect"/>
+                            </table:template>
+                    </table:Column>
 					<table:Column
 						id="BP"
-						sortProperty="Name">
+						sortProperty="name">
 						<Label text="비즈니스 파트너" />
 						<table:template>
-							<Text text="{Name}" wrapping="false" />
+							<ObjectIdentifier title="{CustomerModel>name}" text="{CustomerModel>customerNumber}" />
 						</table:template>
 					</table:Column>
                     <table:Column
 						id="cmpCode">
 						<Label text="회사 코드" />
 						<table:template>
-							<Text text="{Name}" wrapping="false" />
+							<Text text="{CustomerModel>cmpCode}" wrapping="false" />
 						</table:template>
 					</table:Column>
                     <table:Column
 						id="createDate">
 						<Label text="생성 일자" />
 						<table:template>
-							<Text text="{Name}" wrapping="false" />
+							<Text text="{CustomerModel>createDate}" wrapping="false" />
 						</table:template>
 					</table:Column>
 					<table:Column
 						id="country">
 						<Label text="국가/지역" />
 						<table:template>
-							<Text text="{Name}" wrapping="false" />
+							<Text text="{CustomerModel>country}" wrapping="false" />
 						</table:template>
 					</table:Column>
 					<table:Column
 						id="bpRange">
 						<Label text="BP 범주" />
 						<table:template>
-							<Text text="{Name}" wrapping="false" />
+							<Text text="{CustomerModel>bpRange}" wrapping="false" />
 						</table:template>
 					</table:Column>
 					

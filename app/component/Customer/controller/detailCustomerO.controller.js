@@ -7,12 +7,23 @@ sap.ui.define([
 
     return Controller.extend("project3.controller.detailCustomerO", {
 
-        onCustomer: function() {
+        onInit: function(){
+
+            this.getOwnerComponent().getRouter().getRoute("detailCustomerO").attachPatternMatched(this.onMyRoutePatternMatched, this);
+        },
+        
+        onMyRoutePatternMatched: async function(){
 
         },
 
-        onEdit: function() {
+        onChange: function() {
+            this.getOwnerComponent().getRouter().navTo("changeCustomerO")
             
+        },
+        
+        onCustomer: function() {
+            this.getOwnerComponent().getRouter().navTo("Customer")
+
         }
 
     });

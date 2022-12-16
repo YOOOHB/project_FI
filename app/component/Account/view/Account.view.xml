@@ -43,7 +43,10 @@ height="100%">
                         </VBox>
                         <VBox>
                             <Label text="G/L계정 유형"/>
-                            <Input id="accCategory"/>
+                            <Select width="100%" id="accCategory" 
+                                items="{path: 'Account>/accCategory'}">
+                                <core:Item text="{Account>accCategory}" key="{Account>accCategory}" />
+                            </Select>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>

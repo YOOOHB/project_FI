@@ -30,7 +30,7 @@
 				</expandedContent>
 
 				<actions>
-					<m:Button text="편집" type="Emphasized" press=".onEdit" visible="{=!${editModel>/edit}}"/>
+					<m:Button text="편집" type="Emphasized" press=".onChange" />
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
@@ -60,135 +60,82 @@
 			<ObjectPageSection titleUppercase="false" title="기본 데이터" >
 				<subSections>
 					<ObjectPageSubSection>
-						<blocks>
 							<m:VBox class="sapUiSmallMargin">
-								<f:SimpleForm id="SimpleFormDisplayColumn_threeGroups234"
-									editable="false"
-									layout="ColumnLayout"
-									title="Supplier"
-									columnsM="2"
-									columnsL="3"
-									columnsXL="4"
-									>
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup234"
+												editable="false"
+												layout="ColumnLayout"
+												title="일반 정보"
+												columnsXL="4"
+												width="80%"
+												>
 									<f:content>
-										<core:Title text="일반 정보" />
-											<m:Label text="개인 칭호" />
-											<m:Text text="123123" />
-											<m:Label text="이름" />
-											<m:Text text="123123" />
-											<m:Label text="성" />
-											<m:Text text="121212" />
-											
-										<core:Title text="Contact" />
-											<m:Label text="Twitter" />
-											<m:Text text="{Twitter}" />
-											<m:Label text="Email" />
-											<m:Text text="{Email}" />
-											<m:Label text="Tel." />
-											<m:Text text="{Tel}" />
-										<core:Title text="Other" />
-											<m:Label text="SMS" />
-											<m:Text text="{Sms}" />
-											<m:Label text="Mobile" />
-											<m:Text text="{Mobile}" />
-											<m:Label text="Pager" />
-											<m:Text text="{Pager}" />
-											<m:Label text="Fax" />
-											<m:Text text="{Fax}" />
+										<m:Label text="개인 칭호" />
+										<m:Text id="nameText" text="123" />
+										<m:Label text="이름" />
+										<m:Text text="{Street} {HouseNumber}" />
+										<m:Label text="성" />
+										<m:Text text="{ZIPCode} {City}" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Link text=""/>
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="생성일" />
+										<m:Text text="1231231" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="최종 변경일" />
+										<m:Text text="13213" />
+										<m:Label text="최종 변경자" />
+										<m:Text text="123213123" />
+										<m:Label text="" />
+										<m:Text text="" />
 									</f:content>
 								</f:SimpleForm>
 							</m:VBox>
-						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 				<subSections>
 					<ObjectPageSubSection>
-						<blocks>
 							<m:VBox class="sapUiSmallMargin">
-								<f:Form id="FormDisplayColumn_oneGroup2341"
-									editable="false">
-									<f:title>
-										<core:Title text="고객 정보" />
-									</f:title>
-									<f:layout>
-										<f:ColumnLayout 
-											columnsM="2"
-											columnsL="3"
-											columnsXL="4"
-										/>
-									</f:layout>
-									<f:formContainers>
-										<f:FormContainer>
-											<f:formElements>
-												<f:FormElement label="고객 번호">
-													<f:fields>
-														<m:Text text="{SupplierName}" id="nameTex1t"  />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="고객 계정 그룹">
-													<f:fields>
-														<m:Text text="{Street} {HouseNumber}" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="오더 보류">
-													<f:fields>
-														<m:Text text="" visible="{=!${editModel>/edit}}"/>
-														<m:Select visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="청구 보류">
-													<f:fields>
-														<m:Text text="" visible="{=!${editModel>/edit}}"/>
-														<m:Select visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="전기 보류">
-													<f:fields>
-														<m:CheckBox editable="false"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="고객 분류">
-													<f:fields>
-														<m:Text text="" visible="{=!${editModel>/edit}}"/>
-														<m:Select visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-											</f:formElements>
-										</f:FormContainer>
-									</f:formContainers>
-								</f:Form>
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup223234"
+												editable="false"
+												layout="ColumnLayout"
+												title="고객 정보"
+												columnsXL="4"
+												width="80%"
+												>
+									<f:content>
+										<m:Label text="고객 번호" />
+										<m:Text text="123" />
+										<m:Label text="고객 계정 그룹" />
+										<m:Text text="CUST" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="오더 보류" />
+										<m:Text text="123" />
+										<m:Label text="청구 보류" />
+										<m:Link text="123" />
+										<m:Label text="전기 보류" />
+										<m:Text text="123" />
+										<m:Label text="고객 분류" />
+										<m:Text text="1231231" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+									</f:content>
+								</f:SimpleForm>
 							</m:VBox>
-						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
@@ -196,106 +143,38 @@
 			<ObjectPageSection titleUppercase="false" title="주소">
 				<subSections>
 					<ObjectPageSubSection>
-						<blocks>
-							<m:VBox class="sapUiSmallMargin">
-								<f:Form id="FormDisplayColumn_oneGroup2343221"
-									editable="false">
-									<f:title>
-										<core:Title text="표준 주소" />
-									</f:title>
-									<f:layout>
-										<f:ColumnLayout 
-											columnsM="2"
-											columnsL="3"
-											columnsXL="4"
-										/>
-									</f:layout>
-									<f:formContainers>
-										<f:FormContainer>
-											<f:formElements>
-												<f:FormElement label="도로 주소" visible="{=!${editModel>/edit}}" >
-													<f:fields>
-														<m:Text text="{SupplierName}"/>
-														<m:Input visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="번지" visible="{=!${editModel>/edit}}">
-													<f:fields>
-														<m:Text text="{Street} {HouseNumber}" />
-														<m:Input visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="우편 번호" visible="{=!${editModel>/edit}}">
-													<f:fields>
-														<m:Text text="" />
-														<m:Input visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="도시" visible="{=!${editModel>/edit}}">
-													<f:fields>
-														<m:Text text="" />
-														<m:Input visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="국가/지역" visible="{=!${editModel>/edit}}">
-													<f:fields>
-														<m:Text text="" />
-														<m:Input visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="지역" visible="{=!${editModel>/edit}}">
-													<f:fields>
-														<m:Text text="" />
-														<m:Input visible="{=${editModel>/edit}}"/>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="">
-													<f:fields>
-														<m:Text text="" />
-													</f:fields>
-												</f:FormElement>
-											</f:formElements>
-										</f:FormContainer>
-									</f:formContainers>
-								</f:Form>
+						<m:VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup22323234"
+												editable="false"
+												layout="ColumnLayout"
+												title="표준 주소"
+												columnsXL="4"
+												width="80%"
+												>
+									<f:content>
+										<m:Label text="도로 주소" />
+										<m:Text text="123" />
+										<m:Label text="번지" />
+										<m:Text text="13123" />
+										<m:Label text="우편 번호" />
+										<m:Text text="123" />
+										<m:Label text="도시" />
+										<m:Text text="123" />
+										<m:Label text="국가/지역" />
+										<m:Link text="123" />
+										<m:Label text="지역" />
+										<m:Text text="123" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+									</f:content>
+								</f:SimpleForm>
 							</m:VBox>
-						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
 		</sections>
-		<footer>
-            <m:OverflowToolbar visible="{editModel>/edit}">
-                <m:ToolbarSpacer />
-                <m:Button type="Emphasized" text="확인" press="onConfirm" />
-                <m:Button type="Default" text="취소" press="onCancel" />
-            </m:OverflowToolbar>
-        </footer>
 	</ObjectPageLayout>
 </mvc:View>
 

@@ -30,7 +30,7 @@ entity CompanyCode {
 
 };
 
-entity AccCategory{
-    key accCategory_key: String  @title : 'G/L계정 유형 키워드';
-    key accCategory_kor: String  @title : 'G/L계정 유형 한국어';
+entity AccCategory {
+    key accCategory_key : String @title : 'G/L계정 유형 키워드';
+    key accCategory_kor : String @title : 'G/L계정 유형 한국어';
 };

@@ -7,16 +7,24 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/export/library",
     "sap/ui/export/Spreadsheet",
+<<<<<<< HEAD
     "../model/aFormatter"
 ],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel, exportLibrary, Spreadsheet, aFormatter){
+=======
+    "../model/formatter"
+    
+],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel,exportLibrary,Spreadsheet,formatter){
+>>>>>>> origin/master
     "use strict";
     Formatter: aFormatter;
     const EdmType = exportLibrary.EdmType;
     return Controller.extend("project2.controller.Account",{
-      
-    onInit: async function(){
-        this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
-    },
+        formatter:formatter,
+        onInit: async function(){
+            this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);           
+            
+        
+        },
     onMy: async function(){
         let Account = await $.ajax({
             type:"get",
@@ -24,18 +32,39 @@ sap.ui.define([
         });
         let AccountModel= new JSONModel(Account.value);
         this.getView().setModel(AccountModel,"AccountModel");
+<<<<<<< HEAD
+=======
+
+        // let category = await $.ajax({
+        //     type:"get",
+        //     url:"/Account/AccCategory"
+        // });
+        // let categoryModel = new JSONModel(category,value);
+        // this.getView().setModel(categoryModel,"categoryModel")
+        
+>>>>>>> origin/master
     },
     onSearch:function(){
         let accNumber=this.byId("accNumber").getValue();
         let accChart=this.byId("accChart").getValue();
+<<<<<<< HEAD
         let accCategory=this.byId("accCategory").getValue();
         let createDate=this.byId("createDate").getValue();
+=======
+        let accCategory=this.byId("accCategory").getSelectedKey();
+>>>>>>> origin/master
         let accGroup=this.byId("accGroup").getValue();
+        let createDate=this.byId("createDate").getValue();
         
         if(createDate){
             let accYear= createDate.split(". ")[0];
+<<<<<<< HEAD
             let accMonth= createDate.split(". ")[1].padStart(2,'0');
             let accday= createDate.split(". ")[2].padStart(2,'0');
+=======
+            let accMonth= createDate.split(". ")[1].padStart(2, '0');
+            let accday= createDate.split(". ")[2].padStart(2, '0');
+>>>>>>> origin/master
             createDate= accYear+"-"+accMonth+"-"+accday;
         }
 
@@ -52,9 +81,15 @@ sap.ui.define([
     onReset: function(){
         this.byId("accNumber").setValue("");
         this.byId("accChart").setValue("");
+<<<<<<< HEAD
         this.byId("accCategory").setValue("");
         this.byId("createDate").setValue("");
         this.byId("accGroup").setValue("");
+=======
+        this.byId("accCategory").setSelectedKey("");
+        this.byId("accGroup").setValue("");
+        this.byId("createDate").setValue("");
+>>>>>>> origin/master
 
         this.onSearch();
     },
@@ -180,12 +215,16 @@ sap.ui.define([
         });
         return aCols;
 
+<<<<<<< HEAD
     }, 
     onNavToDetail: function(){
         this.getOwnerComponent().getRouter().navTo("detailAccount");
+=======
+    },
+    onNavToDetail: function(){
+        this.getOwnerComponent().getRouter().navTo("detailAccount"); 
+>>>>>>> origin/master
     }
-
-
 
     })
     
