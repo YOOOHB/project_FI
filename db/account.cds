@@ -1,7 +1,7 @@
 namespace project_FI.account;
 
 entity Account {
-    key accNumber   : Integer @title : 'G/L계정 번호';
+    key accNumber   : String @title : 'G/L계정 번호';
         accCategory : String  @title : 'G/L계정 유형';
         accChart    : String  @title : '계정과목표';
         accGroup    : String  @title : '계정 그룹';
@@ -17,8 +17,14 @@ entity Account {
 
 entity COA {
     key accChart  : String  @title : '계정과목표';
-        accNumber : Integer @title : 'G/L계정 번호';
+        accNumber : String @title : 'G/L계정 번호';
         accGroup  : String  @title : '계정 그룹';
+
+};
+
+entity AccCategory{
+    key accCategory_s: String  @title : 'G/L계정 유형';
+        accCategory_k: String  @title : 'G/L계정 유형 설명'
 
 };
 
