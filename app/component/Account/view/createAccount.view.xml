@@ -47,27 +47,6 @@
 
             <ObjectPageSection titleUppercase="false" title="일반" >
 				<subSections>
-<<<<<<< HEAD
-					<ObjectPageSubSection title="일반" titleUppercase="false" >
-                       <blocks>
-							<m:Table id="createAccTable" items="{path : 'AccountModel>/'}">
-                            <m:items>
-							    <m:VBox class="sapUiTinyMarginTop">
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="계정과목표 : " class="sapUiTinyMarginTop" />                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="계정 유형 : " class="sapUiTinyMarginTop"/>                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="계정 그룹 : " class="sapUiTinyMarginTop"/>                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="생성일 : " class="sapUiTinyMarginTop"/>                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="생성자 : " class="sapUiTinyMarginTop"/>                                        
-=======
 					<ObjectPageSubSection title="일반" titleUppercase="false">
 						<form:SimpleForm layout="ResponsiveGridLayout">
                             <form:content>
@@ -108,7 +87,6 @@
                                         <m:layoutData>
                                             <layout:GridData span="XL2 L2 M2 S2" />
                                         </m:layoutData>
->>>>>>> origin/master
                                     </m:HBox>
                                     <m:layoutData>
                                         <layout:GridData span="XL1 L1 M1 S1" />
