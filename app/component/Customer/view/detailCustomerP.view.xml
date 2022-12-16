@@ -41,16 +41,16 @@
 
 				<layout:VerticalLayout>
 					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="500px"/>
+					<m:Text id="bpRange" text="내용" width="500px"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label id="address" text="표준 주소" design="Bold" width="500px"/>
 					<m:Text text="내용" width="500px"/>
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label text="표준 주소" design="Bold" width="500px"/>
-					<m:Text text="내용" width="500px"/>
-				</layout:VerticalLayout>
-
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label text="회사 코드" design="Bold"/>
+					<m:Label id="cmpCode" text="회사 코드" design="Bold"/>
 					<m:Text text="내용" width="500px"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
@@ -70,11 +70,11 @@
 												>
 									<f:content>
 										<m:Label text="개인 칭호" />
-										<m:Text id="nameText" text="123" />
+										<m:Text id="personalTitle" text="123" />
 										<m:Label text="이름" />
-										<m:Text text="{Street} {HouseNumber}" />
+										<m:Text id="lastName" text="1321" />
 										<m:Label text="성" />
-										<m:Text text="{ZIPCode} {City}" />
+										<m:Text id="firstName" text="13123" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -82,15 +82,15 @@
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="생성일" />
-										<m:Text text="1231231" />
+										<m:Text id="createDate" text="1231231" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
-										<m:Text text="13213" />
+										<m:Text id="changeDate" text="13213" />
 										<m:Label text="최종 변경자" />
-										<m:Text text="123213123" />
+										<m:Text id="modifier" text="123213123" />
 										<m:Label text="" />
 										<m:Text text="" />
 									</f:content>
@@ -110,19 +110,19 @@
 												>
 									<f:content>
 										<m:Label text="고객 번호" />
-										<m:Text text="123" />
+										<m:Text id="customerNumber" text="123" />
 										<m:Label text="고객 계정 그룹" />
-										<m:Text text="CUST" />
+										<m:Text id="accGroup" text="CUST" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="오더 보류" />
-										<m:Text text="123" />
+										<m:Text id="orderHold" text="123" />
 										<m:Label text="청구 보류" />
-										<m:Link text="123" />
+										<m:Text id="requestHold" text="123" />
 										<m:Label text="전기 보류" />
-										<m:Text text="123" />
+										<m:Text id="postHold" text="123" />
 										<m:Label text="고객 분류" />
-										<m:Text text="1231231" />
+										<m:Text id="customer" text="1231231" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -153,17 +153,17 @@
 												>
 									<f:content>
 										<m:Label text="도로 주소" />
-										<m:Text text="123" />
+										<m:Text id="street" text="123" />
 										<m:Label text="번지" />
-										<m:Text text="13123" />
+										<m:Text id="houseNumber" text="13123" />
 										<m:Label text="우편 번호" />
-										<m:Text text="123" />
+										<m:Text id="postalCode" text="123" />
 										<m:Label text="도시" />
-										<m:Text text="123" />
+										<m:Text id="city" text="123" />
 										<m:Label text="국가/지역" />
-										<m:Link text="123" />
+										<m:Link id="country" text="123" />
 										<m:Label text="지역" />
-										<m:Text text="123" />
+										<m:Text id="region" text="123" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />

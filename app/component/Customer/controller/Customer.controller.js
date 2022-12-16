@@ -174,7 +174,6 @@ sap.ui.define(
 
       },
 
-<<<<<<< HEAD
       onNavToDetail: function (oEvent) {
         let dParams = oEvent.getParameters();
         let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
@@ -194,10 +193,6 @@ sap.ui.define(
         }
 
         this.getOwnerComponent().getRouter().navTo(sRouteName);
-=======
-      oncheckselect: function () {
-        console.log(this.getView().getModel("CustomerModel"));
->>>>>>> 43b5821166c4111b9bac00549bc2a3b258555a31
       }
 
 
