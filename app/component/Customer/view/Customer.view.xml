@@ -58,8 +58,8 @@
                             </fb:FilterItem>
                             <fb:FilterItem name="bpRange" label="비즈니스 파트너 범주">
                                 <fb:control>
-                                    <Select width="100%" name="bpRange" items="{ path: 'CustomerModel>/bpRange'}">
-                                        <core:Item text="{CustomerModel>request_state_kor}" key="{CustomerModel>request_state_key}"/>
+                                    <Select width="100%" name="bpRange" items="{path: 'bpRangeModel>/bpRange'}">
+                                        <core:Item text="{bpRangeModel>bpRange_kor}" key="{bpRangeModel>bpRange_key}"/>
                                     </Select>
                                 </fb:control>
                             </fb:FilterItem>
@@ -72,7 +72,7 @@
         <f:content>
             <table:Table
                     id="CustomerTable"
-                    selectionMode="MultiToggle"
+                    selectionMode="None"
                     rows="{CustomerModel>/}"
                     visibleRowCount="7"
                     rowActionCount="1">
@@ -106,6 +106,12 @@
 				</table:extension>
 
 				<table:columns>
+                    <table:Column hAlign="Center" width="5rem">
+                        <Label text=""/>
+                            <table:template>
+                                <CheckBox selected="{CustomerModel>CHK}" textAlign="Center" select=".oncheckselect"/>
+                            </table:template>
+                    </table:Column>
 					<table:Column
 						id="BP"
 						sortProperty="name">

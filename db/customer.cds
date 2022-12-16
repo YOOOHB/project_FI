@@ -35,21 +35,26 @@ entity CountryRegion {
 };
 
 entity OrderHold {
-    key orderHold_key : String @title : '국가 코드';
-    key orderHold_kor : String @title : '국가/지역 이름';
+    key orderHold_key : String @title : '오더 보류 키워드';
+    key orderHold_kor : String @title : '오더 보류 한국어';
 };
 
 entity CustomerClass {
-    key customer_key : String @title : '회사 코드';
-    key customer_kor : String @title : '회사 코드 이름';
+    key customer_key : String @title : '고객 분류 키워드';
+    key customer_kor : String @title : '고객 분류 한국어';
 };
 
 entity RequestHold {
-    key requestHold_key : String @title : '국가 코드';
-    key requestHold_kor : String @title : '국가/지역 이름';
+    key requestHold_key : String @title : '청구 보류 키워드';
+    key requestHold_kor : String @title : '청구 보류 한국어';
 };
 
 entity lgForm {
-    key lgForm_key : String @title : '국가 코드';
-    key lgForm_kor : String @title : '국가/지역 이름';
+    key lgForm_key : String @title : '법적 형태 키워드';
+    key lgForm_kor : String @title : '법적 형태 한국어';
+};
+
+entity bpRange {
+    key bpRange_key : String @title : 'BP 범주 키워드';
+    key bpRange_kor : String @title : 'BP 범주 한국어';
 };
