@@ -16,6 +16,7 @@ sap.ui.define(
       onCompany: function() {
         this.getOwnerComponent().getRouter().navTo("Customer");
       }
+
     });
   }
 );
