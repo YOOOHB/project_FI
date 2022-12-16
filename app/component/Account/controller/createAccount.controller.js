@@ -1,11 +1,24 @@
 sap.ui.define([
         "sap/ui/core/mvc/Controller",
-        "sap/ui/core/Fragment"
-], function (Controller, Fragment) {
+        "sap/ui/core/Fragment",
+        "sap/ui/model/json/JSONModel",
+        "sap/ui/model/Filter",
+        "sap/ui/model/FilterOperator"
+], function (Controller, Fragment, JSONModel, Filter, FilterOperator) {
         "use strict";
 
         return Controller.extend("project2.controller.createAccount", {
-
+                onInit: async function(){
+                        this.getOwnerComponent().getRouter().getRoute("createAccount").attachPatternMatched(this.onMyRoutePatternMatched, this);
+                },
+                onMyRoutePatternMatched: async function(){
+                let Account = await $.ajax({
+                        type: "get",
+                        url: "/account/Account"
+                });
+                let AccountModel= new JSONModel(Account.value);
+                this.getView().setModel(AccountModel, "AccountModel");
+                },
 
 
         //createAccount
@@ -14,10 +27,6 @@ sap.ui.define([
                 },
                 onBack: function () {                   // createAccount 취소 버튼, 상단 백버튼
                         this.getOwnerComponent().getRouter().navTo("Account");
-                },
-                
-                onSearchAccountGroupFragment: function() {
-
                 },
 
         // GLAccount Dialog
@@ -76,25 +85,35 @@ sap.ui.define([
                         }
                 },
                 onCellClickAccountGroup: function (p) {
+                        console.log(p);
                         var parameter = p.mParameters.rowBindingContext.sPath;
-                        var path = this.getView().getModel("Product").getProperty(parameter);
+                        console.log(parameter);
+                        var path = this.getView().getModel("AccountModel").getProperty(parameter);
+                        console.log(path);
 
-                        this.byId("code").setValue(path.code);
-                        this.byId("name").setValue(path.name);
-
-                        this.onBack();
-                },
-                onAccountGroupFragment: function (p) {         // G/L Dialog 에서 선택하는 버튼
-                        var parameter = p.mParameters.rowBindingContext.sPath;
-                        var path = this.getView().getModel("Product").getProperty(parameter);
-                        
-                        this.byId("code").setValue(path.code);
-                        this.byId("name").setValue(path.name);
+                        this.byId("accGroup").setValue(path.accGroup);
 
                         this.onBackAccountGroupFragment();
                 },
                 onBackAccountGroupFragment: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
                         this.byId("AccountGroup").close();
+                },
+                onSearchAccountGroupFragment: function() {
+                        var search = this.byId("searchAccGrp").getValue();
+                        if(search) { 
+                        var aFilter = new Filter({                              //Filter는 and가 기본 옵션이다. 3개를 검색하려면 or이기에 and: False로 바꿈
+                                filters: [
+                                        new Filter("accGroup", FilterOperator.Contains, search),
+                                        new Filter("accChart", FilterOperator.Contains, search),
+                                        new Filter("accMean", FilterOperator.Contains, search)
+                                ],
+                                and: false
+                        });
+                        }
+                       
+                        var oTable= this.byId("AccGrpTable").getBinding("rows");
+                        oTable.filter(aFilter);
+
                 },
 
         //createCmpCode Dialog

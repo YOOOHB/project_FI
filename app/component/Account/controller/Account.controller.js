@@ -20,7 +20,7 @@ sap.ui.define([
     onMy: async function(){
         let Account = await $.ajax({
             type:"get",
-            url:"/Account/Account"
+            url:"/account/Account"
         });
         let AccountModel= new JSONModel(Account.value);
         this.getView().setModel(AccountModel,"AccountModel");
