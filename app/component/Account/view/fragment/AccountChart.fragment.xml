@@ -1,56 +1,39 @@
 <core:FragmentDefinition
-	xmlns="sap.ui.comp.valuehelpdialog"
-	xmlns:m="sap.m"
-	xmlns:fb="sap.ui.comp.filterbar"
-	xmlns:core="sap.ui.core">
-	<ValueHelpDialog
-			id="chartpop"
-			title="계정과목표"
-			ok=".onValueHelpOk"
-			cancel=".onCloseDialog1"
-			supportRanges="true"
-			key="accChart"
-			descriptionKey="aacContents">
+    xmlns="sap.ui.comp.valuehelpdialog"
+    xmlns:m="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+    <ValueHelpDialog
 		
-		<filterBar>
-			<fb:FilterBar advancedMode="true" search=".onFilterSearch" isRunningInValueHelpDialog="true">
-				<fb:filterGroupItems>
-					<fb:FilterGroupItem
-							groupName="__$INTERNAL$"
-							name="accChart"
-							label="계정과목표"
-							visibleInFilterBar="true">
-						<fb:control>
-							<m:Input name="accChart"
-									 showSuggestion="true"
-									 showValueHelp="false"
-									 suggestionItems="{
-										path: '/ZSALESREPORTSuggestions',
-										sorter: { path: 'accChart' }
-									}">
-								<core:Item key="{accChart}" text="{accChart}" />
-							</m:Input>
-						</fb:control>
-					</fb:FilterGroupItem>
-				 	<fb:FilterGroupItem
-							groupName="__$INTERNAL$"
-							name="aacContents"
-							label="내역"
-							visibleInFilterBar="true">
-						<fb:control>
-							<m:Input name="내역"
-									 showSuggestion="true"
-									 showValueHelp="false"
-									 suggestionItems="{
-										path: '/ZSALESREPORTSuggestions',
-										sorter: { path: 'aacContents' }
-									}">
-								<core:Item key="{aacContents}" text="{aacContents}" />
-							</m:Input>
-						</fb:control>
-					</fb:FilterGroupItem>
-				</fb:filterGroupItems>
-			</fb:FilterBar>
-		</filterBar>
-	</ValueHelpDialog>
+        title="계정과목표"
+        ok=".onValueHelpOkPress"
+        cancel=".onValueHelpCancelPress"
+        supportRanges="true"
+        key="accChart"
+        >
+        <filterBar>
+            <fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem
+                        groupName="$INTERNAL$"
+                        name="accChart"
+                        label="계정과목표"
+                        visibleInFilterBar="true">
+                        <fb:control>
+                            <m:Input name="accChart" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        groupName="$INTERNAL$"
+                        name="accContents"
+                        label="내역"
+                        visibleInFilterBar="true">
+                        <fb:control>
+                            <m:Input name="accContents" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </filterBar>
+    </ValueHelpDialog>
 </core:FragmentDefinition>

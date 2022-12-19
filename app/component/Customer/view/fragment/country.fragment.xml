@@ -1,0 +1,51 @@
+<core:FragmentDefinition 
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:t="sap.ui.table"    >
+    <Dialog id="compop" title="국가 검색">
+        <content>
+            <VBox>
+                <Label text="국가/지역: " />
+                    <Input id="fragcountry"/>
+                    <layoutData>
+                        <layout:GridData span="XL2 L2 M6 S12"/>
+                    </layoutData>
+            </VBox>
+            <HBox justifyContent="End" >
+                <Button text="검색" type="Emphasized" press="onSearch1"/> 
+                <Button text="초기화" type="Transparent" press="onReset1" class="sapUiTinyMarginBegin"/>
+                    <layoutData>
+                        <layout:GridData span="XL12 L12 M12 S12"/>
+                    </layoutData>
+            </HBox>
+
+        <t:Table id="countryTable1"
+             rows="{CountryRegionModel>/}"
+             selectionMode="Single"
+             width="auto"
+             cellClick ="onCellClick">
+
+        <t:columns>
+
+            <t:Column hAlign="Center">
+                <Label text="국가 코드" />
+                <t:template>
+                    <Text text="{CountryRegionModel>countryCode}" />
+                </t:template>
+            </t:Column>
+            <t:Column hAlign="Center">
+                <Label text="국가/지역 이름" />
+                <t:template>
+                    <Text text="{CountryRegionModel>country}" />
+                </t:template>
+            </t:Column>
+        </t:columns>
+    </t:Table>
+        </content>
+        <beginButton>
+            <Button text="취소" press="onCloseDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition >

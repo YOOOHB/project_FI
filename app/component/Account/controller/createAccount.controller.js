@@ -11,15 +11,66 @@ sap.ui.define([
                 onInit: async function(){
                         this.getOwnerComponent().getRouter().getRoute("createAccount").attachPatternMatched(this.onMyRoutePatternMatched, this);
                 },
-                onMyRoutePatternMatched: async function(){
-                let Account = await $.ajax({
-                        type: "get",
-                        url: "/account/Account"
-                });
-                let AccountModel= new JSONModel(Account.value);
-                this.getView().setModel(AccountModel, "AccountModel");
+                onTest: function() {
+                        this.getOwnerComponent().getRouter().navTo("Test");
                 },
+                onMyRoutePatternMatched: async function(){
+                        this.onDataCOA();
+                        this.onDataGrp();
+                        this.onDataGLAcc();
+                        this.onDataCmpCode();
+                        this.onValueReset();
 
+                },
+                onDataCOA: async function() {
+                        let COA = await $.ajax({
+                                type: "get",
+                                url: "/account/COA"
+                        });
+                        let COAModel= new JSONModel(COA.value);
+                        this.getView().setModel(COAModel, "COAModel");
+
+                },
+                onDataGrp: async function() {
+                        let Grp = await $.ajax({
+                                type: "get",
+                                url: "/account/Grp"
+                        });
+                        let GrpModel= new JSONModel(Grp.value);
+                        this.getView().setModel(GrpModel, "GrpModel");
+
+                },
+                onDataGLAcc: async function() {
+                        let GLAcc = await $.ajax({
+                                type: "get",
+                                url: "/account/GLAcc"
+                        });
+                        let GLAccModel= new JSONModel(GLAcc.value);
+                        this.getView().setModel(GLAccModel, "GLAccModel");
+
+                },
+                onDataCmpCode: async function() {
+                        let CmpCode = await $.ajax({
+                                type: "get",
+                                url: "/account/CmpCode"
+                        });
+                        let CmpCodeModel= new JSONModel(CmpCode.value);
+                        this.getView().setModel(CmpCodeModel, "CmpCodeModel");
+
+                },
+                onValueReset: function() {
+                        this.byId("accNumber").setValue("");
+                        this.byId("accChart").setValue("");
+                        this.byId("accType").setSelectedItem("");
+                        this.byId("accGroup").setValue("");
+                        this.byId("creator").setValue("");
+                        var y = new Date().getFullYear();
+                        var m = new Date().getMonth() + 1;
+                        var d = new Date().getDate();
+                        var currentDate = y + "-" + m + "-" + d;
+                        this.byId("createDate").setText(currentDate);
+                        //createCmpCode                        
+                },
 
         //createAccount
                 onCreate: function () {                 // createAccount 생성 버튼
@@ -44,28 +95,26 @@ sap.ui.define([
                                 this.byId("GLAccount").open();
                         }
                 },
-                onSearchGLAccountFragment: function () {         // G/L Dialog 에서 검색하는 버튼
+                onSearchGLAccount: function() {
 
                 },
-                onAcceptGLAccountFragment: function (p) {         // G/L Dialog 에서 선택하는 버튼
+                onAcceptGLAccount: function (p) {         // G/L Dialog 에서 선택하는 버튼
                         var parameter = p.mParameters.rowBindingContext.sPath;
                         var path = this.getView().getModel("Product").getProperty(parameter);
                         
                         this.byId("code").setValue(path.code);
                         this.byId("name").setValue(path.name);
 
-                        this.onBackGLAccountFragment();
+                        this.onBackGLAccount();
                 },
-                onCellClickGLAccountFragment: function (p) {
+                onCellClickGLAccount: function (p) {
                         var parameter = p.mParameters.rowBindingContext.sPath;
-                        var path = this.getView().getModel("Product").getProperty(parameter);
-
-                        this.byId("code").setValue(path.code);
-                        this.byId("name").setValue(path.name);
-
-                        this.onBack();
+                        var path = this.getView().getModel("AccountModel").getProperty(parameter);
+                        this.byId("accNumber").setValue(path.accNumber);
+                        this.byId("accChart").setValue(path.accChart);
+                        this.onBackGLAccount();
                 },
-                onBackGLAccountFragment: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
+                onBackGLAccount: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
                         this.byId("GLAccount").close();
                 },
                 
@@ -85,17 +134,12 @@ sap.ui.define([
                         }
                 },
                 onCellClickAccountGroup: function (p) {
-                        console.log(p);
-                        var parameter = p.mParameters.rowBindingContext.sPath;
-                        console.log(parameter);
-                        var path = this.getView().getModel("AccountModel").getProperty(parameter);
-                        console.log(path);
-
+                        var parameter = p.mParameters.rowBindingContext.sPath;                        
+                        var path = this.getView().getModel("AccountModel").getProperty(parameter);                      
                         this.byId("accGroup").setValue(path.accGroup);
-
-                        this.onBackAccountGroupFragment();
+                        this.onBackAccountGroup();
                 },
-                onBackAccountGroupFragment: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
+                onBackAccountGroup: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
                         this.byId("AccountGroup").close();
                 },
                 onSearchAccountGroupFragment: function() {
@@ -131,9 +175,35 @@ sap.ui.define([
                                 this.byId("createCmpCode").open();
                         }
                 },
-                onBackcreateCmpCodeFragment: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
+                onAcceptcreateCmpCode: async function () {           // create CompanyCode                                
+                        var i=0
+                        var temp={
+                                accNumber : "i",
+                                cmpCode : this.byId("createCmpCodeCmpCode").getValue(),
+                                cmpName : this.byId("createCmpCodeCmpName").getValue(),
+                                accCurrency : this.byId("createCmpCodeAccCurrency").getValue(),
+                                accChart : this.byId("createCmpCodeAccChart").getValue()
+                        }
+                        i++;
+                        console.log(temp)
+                      
+                        await $.ajax({
+                                type: "POST",
+                                url: "/account/Account",
+                                contentType: "application/json;IEEE754Compatible=true", //IEE~ 를 작성하지 않으면 정밀도가 떨어짐
+                                data:JSON.stringify(temp)
+                        });
+
+                        this.byId("createCmpCodeCmpCode").setValue("");
+                        this.byId("createCmpCodeCmpName").setValue("");
+                        this.byId("createCmpCodeAccCurrency").setValue("");
+                        this.byId("createCmpCodeAccChart").setValue("");
+
                         this.byId("createCmpCode").close();
                 },
+                onBackcreateCmpCode: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
+                        this.byId("createCmpCode").close();
+                }
                 
 
 

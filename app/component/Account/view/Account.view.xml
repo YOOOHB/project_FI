@@ -35,18 +35,18 @@ height="100%">
                         </VBox>
                         <VBox>
                             <Label text="계정과목표"/>
-                            <Input id="accChart" showValueHelp="true"
-			                       valueHelpRequest=".onValueHelpChart"/>
+                            <MultiInput id="accChart" showValueHelp="true"
+			                       valueHelpRequest=".onValueHelpChart1"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>
                         </VBox>
                         <VBox>
                             <Label text="G/L계정 유형"/>
-                            <Select width="100%" id="accCategory" 
-                                items="{path: 'Account>/accCategory'}">
-                                <core:Item text="{Account>accCategory}" key="{Account>accCategory}" />
-                            </Select>
+                             <ComboBox width="100%" id="accCategory" 
+                                items="{path: 'Account>/AccCategory'}">
+                                <core:Item text="{Account>accCategory_kor}" key="{Account>accCategory_key}" />
+                            </ComboBox>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>
@@ -55,15 +55,16 @@ height="100%">
                             <Label text="생성일자"/>
                             <DatePicker
                                 id="createDate"
-                                displayFormat="yyyy-MM-dd"/>
+                                displayFormat="yyyy-MM-dd"
+                                valueFormat="yyyy-MM-dd"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>
                         </VBox>
                         <VBox>
                             <Label text="계정 그룹"/>
-                            <Input id="accGroup" showValueHelp="true"
-			                       valueHelpRequest=".onValueHelpGroup"/>
+                            <MultiInput id="accGroup" showValueHelp="true"
+			                       valueHelpRequest=".onValueHelpGroup2"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>
@@ -82,7 +83,7 @@ height="100%">
         <f:content class="sapUiSmallMargin">
             <t:Table id="AccountTable"
                 rows="{AccountModel>/}"
-                selectionMode="MultiToggle"
+                selectionMode="None"
                 rowActionCount="1"
                 width="auto">
             
@@ -113,6 +114,13 @@ height="100%">
                     </OverflowToolbar>
                 </t:extension>
                 <t:columns>
+                    <t:Column hAlign="Center" width="5rem" >
+                        <Label  text="" />
+                            <t:template>
+                                <CheckBox  visible="true"
+                                selected ="{AccountModel>CHK}" textAlign="Center" select="oncheckselect"/>
+                            </t:template>
+                    </t:Column>
                     <t:Column hAlign="Center">
                         <Label text="G/L계정 번호" />
                         <t:template>
@@ -134,7 +142,11 @@ height="100%">
                     <t:Column hAlign="Center">
                         <Label text="G/L계정 유형" />
                         <t:template>
-                            <Text text="{AccountModel>accCategory}" />
+                            <ObjectStatus 
+                            text="{
+                                    path: 'AccountModel>accCategory',
+                                    formatter:'.formatter.statusText'
+                                        }"/>
                         </t:template>
                     </t:Column>
                     <t:Column hAlign="Center">

@@ -129,6 +129,16 @@
           "name": "Customer",
           "pattern": "Customer",
           "target": "Customer"
+        },
+        {
+          "name": "createCustomerP",
+          "pattern": "createCustomerP",
+          "target": "createCustomerP"
+        },
+        {
+          "name": "createCustomerO",
+          "pattern": "createCustomerO",
+          "target": "createCustomerO"
         }
       ],
       "targets": {
@@ -173,6 +183,21 @@
           "clearControlAggregation": false,
           "viewId": "Customer",
           "viewName": "Customer"
+        },
+
+        "createCustomerP": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "createCustomerP",
+          "viewName": "createCustomerP"
+        },
+        "createCustomerO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "createCustomerO",
+          "viewName": "createCustomerO"
         }
       }
     },

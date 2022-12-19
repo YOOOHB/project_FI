@@ -3,33 +3,40 @@
 	xmlns:m="sap.m"
 	xmlns:fb="sap.ui.comp.filterbar"
 	xmlns:core="sap.ui.core">
+	<!-- 
+		ValueHelpDialog
+		key - 선택했을때 나오는 값
+		descriptionKey - 선택했을때 나오는 값의 설명
+	 -->
 	<ValueHelpDialog
-		title="Product"
+		title="회사 코드"
 		ok=".onValueHelpOkPress"
 		cancel=".onValueHelpCancelPress"
 
 		supportRanges="true"
-		key="ProductCode"
-		descriptionKey="ProductName">
+		key="cmpCode_key"
+		descriptionKey="cmpCode_kor"
+		id="CompanyCodePop">
 		<filterBar>
+			<!-- search 라는 이벤트가 실행버튼 클릭시 발생하는 이벤트. -->
 			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
 				<fb:filterGroupItems>
 					<fb:FilterGroupItem
 						groupName="__$INTERNAL$"
-						name="ProductCode"
-						label="Product Code"
+						name="cmpCode_key"
+						label="회사 코드"
 						visibleInFilterBar="true">
 						<fb:control>
-							<m:Input name="ProductCode" />
+							<m:Input name="cmpCode_key" />
 						</fb:control>
 					</fb:FilterGroupItem>
 					<fb:FilterGroupItem
 						groupName="__$INTERNAL$"
-						name="ProductName"
-						label="Product Name"
+						name="cmpCode_kor"
+						label="회사명"
 						visibleInFilterBar="true">
 						<fb:control>
-							<m:Input name="ProductName" />
+							<m:Input name="cmpCode_kor" />
 						</fb:control>
 					</fb:FilterGroupItem>
 				</fb:filterGroupItems>

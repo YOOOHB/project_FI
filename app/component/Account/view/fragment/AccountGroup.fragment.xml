@@ -1,47 +1,48 @@
-<core:FragmentDefinition   
-	xmlns="sap.m"
-	xmlns:core="sap.ui.core"
-	xmlns:t="sap.ui.table">
-	<Dialog id="AccountGroup" title="계정 그룹">
-		<content>
-			<VBox>
-				<Label text="검색 및 선택 : " />
-				<Input id="searchAccGrp" class="sapUiSmallMarginBottom" showValueHelp="true" valueHelpIconSrc="sap-icon://search" valueHelpRequest="onSearchAccountGroupFragment"/>
-			</VBox>
-		</content>
-
-		<t:Table id="AccGrpTable" rows="{AccountModel>/}" selectionMode="None"
-				width="auto" cellClick=".onCellClickAccountGroup"> 
-			<t:extension>
-				<OverflowToolbar>
-					<Title text="항목"/>
-				</OverflowToolbar>
-			</t:extension>
-			<t:columns>
-				<t:Column hAlign="Center" sortProperty="accGroup" filterProperty="accGroup">
-					<Label text="계정그룹"/>
-					<t:template>
-						<Text text="{AccountModel>accGroup}"/>
-					</t:template>
-				</t:Column>
-				<t:Column hAlign="Center" sortProperty="accChart" filterProperty="accChart">
-					<Label text="계정과목표"/>
-					<t:template>
-						<Text text="{AccountModel>accChart}" />
-					</t:template>
-				</t:Column>
-				<t:Column hAlign="Center" sortProperty="accMean" filterProperty="accMean">
-					<Label text="의미"/>
-					<t:template>
-						<Text text="{AccountModel>accMean}" />
-					</t:template>
-				</t:Column>
-			</t:columns>
-		</t:Table>
-
-		<buttons>
-			<Button text="취소" press=".onBackAccountGroupFragment"/>
-		</buttons>
-	</Dialog>
-	
+<core:FragmentDefinition
+    xmlns="sap.ui.comp.valuehelpdialog"
+    xmlns:m="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+    <ValueHelpDialog
+		
+        title="계정그룹"
+        ok=".onValueHelpOkPress2"
+        cancel=".onValueHelpCancelPress2"
+        supportRanges="true"
+        key="accGroup"
+        >
+        <filterBar>
+            <fb:FilterBar advancedMode="true" search=".onFilterBarSearch2" isRunningInValueHelpDialog="true">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem
+                        groupName="$INTERNAL$"
+                        name="accChart"
+                        label="계정과목표"
+                        visibleInFilterBar="true">
+                        <fb:control>
+                            <m:Input name="accChart" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+					<fb:FilterGroupItem
+                        groupName="$INTERNAL$"
+                        name="accGroup"
+                        label="계정그룹"
+                        visibleInFilterBar="true">
+                        <fb:control>
+                            <m:Input name="accGroup" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        groupName="$INTERNAL$"
+                        name="accMean"
+                        label="의미"
+                        visibleInFilterBar="true">
+                        <fb:control>
+                            <m:Input name="accMean" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </filterBar>
+    </ValueHelpDialog>
 </core:FragmentDefinition>

@@ -8,8 +8,6 @@
 	xmlns:core="sap.ui.core">
     <ObjectPageLayout id="ObjectPageLayout"
 		showTitleInHeaderContent="true"
-		selectedSection="paymentSubSection"
-		useIconTabBar="true"
 		upperCaseAnchorBar="false"
         showFooter="true">
 		<headerTitle>
@@ -30,14 +28,19 @@
 					<ObjectPageSubSection title="헤더" titleUppercase="false">
 						<form:SimpleForm layout="ResponsiveGridLayout">
                             <form:content>
-                                <m:VBox>
-                                    <m:HBox>
+                                <m:VBox class="sapUiTinyMarginTop">
+                                    <m:HBox alignItems="Center">
                                         <m:Label text="G/L 계정 번호 : " />
-                                        <m:Input id="GLNum" showValueHelp="true" valueHelpRequest=".onOpenGLAccount" class="sapUiTinyMarginBegin" width="auto"/>
                                         <m:layoutData>
-                                            <layout:GridData span="XL3 L3 M6 S12" />
+                                            <layout:GridData span="XL1 L1 M1 S1" />
                                         </m:layoutData>
                                     </m:HBox>
+                                </m:VBox>                                    
+                                <m:VBox class="sapUiTinyMarginTop">                                    
+                                    <m:Input id="accNumber" class="sapUiTinyMarginBegin" width="auto"/>
+                                    <m:layoutData>
+                                        <layout:GridData span="XL11 L11 M11 S11" />
+                                    </m:layoutData>                        
                                 </m:VBox>                                    
                             </form:content>
                         </form:SimpleForm>
@@ -48,71 +51,48 @@
             <ObjectPageSection titleUppercase="false" title="일반" >
 				<subSections>
 					<ObjectPageSubSection title="일반" titleUppercase="false">
-						<form:SimpleForm layout="ResponsiveGridLayout">
+                         <form:SimpleForm layout="ResponsiveGridLayout">
                             <form:content>
-                                <m:VBox>
-                                    <m:HBox>
-                                        <m:Label text="계정과목표 : " class="sapUiTinyMarginTop"/>
-                                        <m:Input id="COA" class="sapUiTinyMarginBegin" width="auto"/>
-                                        <m:layoutData>
-                                            <layout:GridData span="XL2 L2 M2 S2" />
-                                        </m:layoutData>
-                                    </m:HBox>
-                                    <m:HBox>
-                                        <m:Label text="계정 유형 : " class="sapUiTinyMarginTop"/>
-                                        <m:Select autoAdjustWidth="true" id="accType" items="{path: 'select>/selectList'}" class="sapUiTinyMarginBegin" >
-                                            <core:Item text="{>}" key="{>}" />
-                                        </m:Select>
-                                        <m:layoutData>
-                                            <layout:GridData span="XL2 L2 M2 S2" />
-                                        </m:layoutData>
-                                    </m:HBox>
-                                    <m:HBox>
-                                        <m:Label text="계정 그룹 : " class="sapUiTinyMarginTop"/>
-                                        <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup" class="sapUiTinyMarginBegin" width="auto"/>
-                                        <m:layoutData>
-                                            <layout:GridData span="XL2 L2 M2 S2" />
-                                        </m:layoutData>
-                                    </m:HBox>
-                                    <m:HBox>
-                                        <m:Label id="createDay" text="생성일 : " class="sapUiTinyMarginTop" width="auto"/>
-                                        <m:Text text=""/>
-                                        <m:layoutData>
-                                            <layout:GridData span="XL2 L2 M2 S2" />
-                                        </m:layoutData>
-                                    </m:HBox>
-                                    <m:HBox>
-                                        <m:Label text="생성자 : " class="sapUiTinyMarginTop"/>
-                                        <m:Input id="creator" class="sapUiTinyMarginBegin" width="auto"/>
-                                        <m:layoutData>
-                                            <layout:GridData span="XL2 L2 M2 S2" />
-                                        </m:layoutData>
+                                <m:VBox class="sapUiTinyMarginTop">
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="계정과목표 : " class="sapUiTinyMarginTop" />                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="계정 유형 : " class="sapUiTinyMarginTop"/>                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="계정 그룹 : " class="sapUiTinyMarginTop"/>                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="생성일 : " class="sapUiTinyMarginTop"/>                                        
+                                    </m:HBox>                                
+                                    <m:HBox alignItems="Center">
+                                        <m:Label text="생성자 : " class="sapUiTinyMarginTop"/>                                        
                                     </m:HBox>
                                     <m:layoutData>
                                         <layout:GridData span="XL1 L1 M1 S1" />
                                     </m:layoutData>
                                 </m:VBox>
                                 <m:VBox class="sapUiTinyMarginTop">
+                                    <m:Button text="test" press=".onTest"/>
                                 <!-- 계정과목표 -->
-                                    <m:Input id="COA" width="20%"/>    
+                                    <m:Input id="accChart" width="20%"/>    
                                 <!-- 계정 유형  -->
-                                    <m:Select id="accType" items="" width="20%">
-                                        <core:Item text="{AccountModel>/accCategory}" key="{>}" />
+                                    <m:Select id="accType" items="{Account>/AccCategory}" width="20%">
+                                        <core:Item text="{Account>accCategory_kor}" key="{Account>accCategory_key}" />
                                     </m:Select>  
                                 <!-- 계정 그룹  -->
                                     <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"  width="20%"/>
                                 <!-- 생성일 -->
-                                    <m:Text text="2022-12-04"  width="20%"/>
+                                    <m:Text id="createDate" width="20%"/>
                                 <!-- 생성자 -->
                                     <m:Input id="creator"  width="20%"/>
                                     <m:layoutData>
                                         <layout:GridData span="XL11 L11 M11 S11" />
                                     </m:layoutData>
                                 </m:VBox>
-
-                                </m:items>
-							</m:Table>
-						</blocks>
+                            </form:content>
+                        </form:SimpleForm>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
@@ -120,11 +100,11 @@
             <ObjectPageSection titleUppercase="false">
 				<subSections>
 					<ObjectPageSubSection title="회사 코드 데이터" titleUppercase="false">
-                        <ui:Table id="idProductsTable"
+                        <ui:Table id="CompanyCodeTable"
                             visibleRowCountMode="Auto"
-                            minAutoRowCount="2"
-                            rows="{path: '>/', sorter: {path: 'Name'}}"
-                            selectionMode="None" width="auto">
+                            minAutoRowCount="5"
+                            rows="{CmpCodeModel>/}"
+                            selectionMode="MultiToggle" width="auto">
                             <ui:extension>
                                 <m:OverflowToolbar>
                                     <m:Title id="TableName" text="회사코드지정()"/>
@@ -136,24 +116,24 @@
                                 <ui:Column
                                     label="회사 코드">
                                     <ui:template>
-                                        <m:Text text="{>}" />
+                                        <m:Text text="{CmpCodeModel>cmpCode}" />
                                     </ui:template>
                                 </ui:Column>
                                 <ui:Column
                                     label="회사 이름">
                                     <ui:template>
-                                        <m:Text text="{>}" />
+                                        <m:Text text="{CmpCodeModel>cmpName}" />
                                     </ui:template>
                                 </ui:Column>
                                 <ui:Column
                                     label="계정 통화">
                                     <ui:template>
-                                        <m:Text text="{>}" />
+                                        <m:Text text="{CmpCodeModel>accCurrency}" />
                                     </ui:template>
                                 </ui:Column>
                                 <ui:Column label="계정과목표">
                                     <ui:template>
-                                        <m:Text text="{>}" />
+                                        <m:Text text="{CmpCodeModel>accChart}" />
                                     </ui:template>
                                 </ui:Column>
                             </ui:columns>

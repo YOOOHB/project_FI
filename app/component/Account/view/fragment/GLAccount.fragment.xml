@@ -1,8 +1,7 @@
-<core:FragmentDefinition controllerName="project2.controller.createAccount"
+<core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
-	xmlns:t="sap.ui.table"
-	xmlns:layout="sap.ui.layout">
+	xmlns:t="sap.ui.table">
 	<Dialog id="GLAccount" title="G/L 계정 마스터 데이터 생성">
 		<content>
 			<HBox>
@@ -13,42 +12,42 @@
 				type="Text"
 				showValueHelp="true"
 				valueHelpIconSrc="sap-icon://search"
-				valueHelpRequest="onSearchGLAccountFragment"/>
+				valueHelpRequest=".onSearchGLAccount"/>
 			</HBox>
 		</content>
 
-		<t:Table id="SPrdTable" rows="{Product>/ProductList}" selectionMode="None"
-				width="auto" cellClick=".onCellClickGLAccountFragment"> 
+		<t:Table id="GLAccTable" rows="{AccountModel>/}" selectionMode="None"
+				width="auto" cellClick=".onCellClickGLAccount"> 
 			<t:extension>
 				<OverflowToolbar>
-					<Title id="SPrdTableName" text="항목"/>
+					<Title text="항목"/>
 				</OverflowToolbar>
 			</t:extension>
 			<t:columns>
-				<t:Column hAlign="Center" sortProperty="code" filterProperty="code">
+				<t:Column hAlign="Center" sortProperty="accNumber" filterProperty="accNumber">
 					<Label text="G/L 계정"/>
 					<t:template>
-						<Text text="{>}"/>
+						<Text text="{AccountModel>accNumber}"/>
 					</t:template>
 				</t:Column>
-				<t:Column hAlign="Center" sortProperty="name" filterProperty="name">
+				<t:Column hAlign="Center" sortProperty="accChart" filterProperty="accChart">
 					<Label text="계정과목표"/>
 					<t:template>
-						<Text text="{>}" />
+						<Text text="{AccountModel>accChart}" />
 					</t:template>
 				</t:Column>
-				<t:Column hAlign="Center" sortProperty="name" filterProperty="name">
-					<Label text="설명"/>
+				<t:Column hAlign="Center" sortProperty="accMean" filterProperty="accMean">
+					<Label text="의미"/>
 					<t:template>
-						<Text text="{>}" />
+						<Text text="{AccountModel>accMean}" />
 					</t:template>
 				</t:Column>
 			</t:columns>
 		</t:Table>
 
 		<buttons>
-			<Button text="선택" press=".onAcceptGLAccountFragment"/>
-			<Button text="취소" press=".onBackGLAccountFragment"/>
+			<Button text="선택" press=".onAcceptGLAccount"/>
+			<Button text="취소" press=".onBackGLAccount"/>
 		</buttons>
 	</Dialog>
 	

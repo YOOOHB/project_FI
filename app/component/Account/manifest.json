@@ -99,6 +99,11 @@
       },
       "routes": [
         {
+          "name": "Test",
+          "pattern": "Test",
+          "target": "Test"
+        },
+        {
           "name": "homeAccount",
           "pattern": "",
           "target": "homeAccount"
@@ -120,6 +125,13 @@
         }
       ],
       "targets": {
+        "Test": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Test",
+          "viewName": "Test"
+        },
         "homeAccount": {
           "viewType": "XML",
           "transition": "slide",

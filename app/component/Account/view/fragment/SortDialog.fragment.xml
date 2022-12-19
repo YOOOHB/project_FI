@@ -3,7 +3,7 @@
     xmlns:core="sap.ui.core">
     <ViewSettingsDialog
         id="SortDialog"
-        confirm="onConfirmSortDialog"
+        confirm=".onConfirmSortDialog"
         title="G/L마스터 정렬">
         <sortItems>
             <ViewSettingsItem text="G/L계정 번호" key="accNumber" selected="true"/>

@@ -2,8 +2,9 @@ using project_FI.account from '../db/account';
 
 service AccountService {
 
-    entity Account as projection on account.Account;
     entity COA as projection on account.COA;
-    entity CompanyCode as projection on account.CompanyCode;
+    entity Grp as projection on account.Grp;
+    entity GLAcc as projection on account.GLAcc;
+    entity CmpCode as projection on account.CmpCode;
     entity AccCategory as projection on account.AccCategory;
 }

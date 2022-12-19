@@ -1,8 +1,7 @@
-<core:FragmentDefinition controllerName="project2.controller.createAccount"
+<core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
     xmlns:form="sap.ui.layout.form"
-	xmlns:t="sap.ui.table"
 	xmlns:layout="sap.ui.layout">
 	<Dialog id="createCmpCode" title="회사 코드 생성">
 		
@@ -10,41 +9,36 @@
 			<form:content>
 				<VBox>
 					<HBox>
-						<Label text="회사 코드 : " class="sapUiTinyMarginBegin"/>
-						<Input id="COA2" class="sapUiTinyMarginBegin" width="auto"
-						valueStateText="값을 입력하세요."/>
-						<layoutData>
-							<layout:GridData span="XL2 L2 M2 S2" />
-						</layoutData>
+						<Label text="회사 코드 : " class="sapUiTinyMarginTopBottom"/>
 					</HBox>
 					<HBox>
-						<Label text="회사 이름 : " class="sapUiTinyMarginBegin"/>
-						<Input id="COA3" class="sapUiTinyMarginBegin" width="auto"/>
-						<layoutData>
-							<layout:GridData span="XL2 L2 M2 S2" />
-						</layoutData>
+						<Label text="회사 이름 : " class="sapUiTinyMarginTopBottom"/>
 					</HBox>
 					<HBox>
-						<Label text="계정 통화 : " class="sapUiTinyMarginBegin"/>
-						<Input id="COA4" class="sapUiTinyMarginBegin" width="auto"/>
-						<layoutData>
-							<layout:GridData span="XL2 L2 M2 S2" />
-						</layoutData>
+						<Label text="계정 통화 : " class="sapUiTinyMarginTopBottom"/>
 					</HBox>
 					<HBox>
-						<Label text="계정과목표 : " class="sapUiTinyMarginBegin"/>
-						<Input id="COA5" class="sapUiTinyMarginBegin" width="auto"/>
-						<layoutData>
-							<layout:GridData span="XL2 L2 M2 S2" />
-						</layoutData>
+						<Label text="계정과목표 : " class="sapUiTinyMarginTopBottom"/>
 					</HBox>
+					<layoutData>
+						<layout:GridData span="XL5 L5 M5 S5" />
+					</layoutData>
+				</VBox>
+				<VBox>
+					<Input id="createCmpCodeCmpCode" width="auto" class="sapUiTinyMarginTop"/>				
+					<Input id="createCmpCodeCmpName" width="auto" class="sapUiTinyMarginTop"/>				
+					<Input id="createCmpCodeAccCurrency" width="auto" class="sapUiTinyMarginTop"/>				
+					<Input id="createCmpCodeAccChart" width="auto" class="sapUiTinyMarginTop"/>					
+					<layoutData>
+						<layout:GridData span="XL5 L5 M5 S5" />
+					</layoutData>
 				</VBox>
 			</form:content>
 		</form:SimpleForm>
 		
 		<buttons>
-			<Button text="생성" press=".onAcceptcreateCmpCodeFragment"/>
-			<Button text="취소" press=".onBackcreateCmpCodeFragment"/>
+			<Button text="생성" press=".onAcceptcreateCmpCode"/>
+			<Button text="취소" press=".onBackcreateCmpCode"/>
 		</buttons>
 	</Dialog>
 	
