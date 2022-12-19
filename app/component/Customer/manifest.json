@@ -16,8 +16,8 @@
       "toolsId": "c10f1357-0656-479d-94ee-58a1a29f844c"
     },
     "dataSources": {
-      "companyService": {
-        "uri": "/company/",
+      "customerService": {
+        "uri": "/customer/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -69,6 +69,16 @@
         "settings": {
           "bundleName": "project3.i18n.i18n"
         }
+      },
+      "Customer": {
+        "dataSource": "customerService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
       }
     },
     "resources": {
@@ -103,6 +113,17 @@
           "name": "detailCustomerO",
           "pattern": "detailCustomerO",
           "target": "detailCustomerO"
+        },
+        {
+          "name": "changeCustomerP",
+          "pattern": "changeCustomerP",
+          "target": "changeCustomerP"
+        },
+        
+        {
+          "name": "Customer",
+          "pattern": "Customer",
+          "target": "Customer"
         }
       ],
       "targets": {
@@ -126,6 +147,20 @@
           "clearControlAggregation": false,
           "viewId": "detailCustomerO",
           "viewName": "detailCustomerO"
+        },
+        "changeCustomerP": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "changeCustomerP",
+          "viewName": "changeCustomerP"
+        },
+        "Customer": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Customer",
+          "viewName": "Customer"
         }
       }
     },

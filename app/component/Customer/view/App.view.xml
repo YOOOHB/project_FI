@@ -1,8 +1,30 @@
-<mvc:View 
-    controllerName="project3.controller.App"
+<mvc:View controllerName="project3.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc" 
-    xmlns:f="sap.f">
-	<App class="myAppDemoWT" id="app">
-    </App>
+    xmlns:tnt="sap.tnt">
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Image height="30px"
+					   class="sapUiSmallMarginBegin"
+                       src="Image/SAPlogo.svg" press=".onHome"/>       
+				<MenuButton enabled="true" text="{menuModel>/menu}">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="Home" press=".onHome" />
+                            <MenuItem text="G/L 계정과목 조회" press=".onAccount" />
+                            <MenuItem text="BP(고객마스터) 관리" press=".onCustomer" />
+                        </Menu>
+                    </menu>
+                </MenuButton>
+			</tnt:ToolHeader>
+		</tnt:header>
+        
+		<tnt:mainContents>
+			<App id="app">
+            </App>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+    
 </mvc:View>

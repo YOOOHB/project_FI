@@ -6,36 +6,33 @@ sap.ui.define([
     "sap/ui/model/Sorter",
     "sap/ui/model/json/JSONModel",
     "sap/ui/export/library",
-    "sap/ui/export/Spreadsheet",
-    "../model/aFormatter"
-],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel, exportLibrary, Spreadsheet, aFormatter){
+    "sap/ui/export/Spreadsheet"
+],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel,exportLibrary,Spreadsheet){
     "use strict";
-    Formatter: aFormatter;
     const EdmType = exportLibrary.EdmType;
     return Controller.extend("project2.controller.Account",{
       
-    onInit: async function(){
-        this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
-    },
+        onInit: async function(){
+            this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
+        },
     onMy: async function(){
-        let Account = await $.ajax({
+        Account = await $.ajax({
             type:"get",
             url:"/Account/Account"
         });
         let AccountModel= new JSONModel(Account.value);
-        this.getView().setModel(AccountModel,"AccountModel");
+        this.getView.setModel(AccountModel,"AccountModel");
     },
     onSearch:function(){
         let accNumber=this.byId("accNumber").getValue();
         let accChart=this.byId("accChart").getValue();
         let accCategory=this.byId("accCategory").getValue();
-        let createDate=this.byId("createDate").getValue();
         let accGroup=this.byId("accGroup").getValue();
         
         if(createDate){
-            let accYear= createDate.split(". ")[0];
-            let accMonth= createDate.split(". ")[1].padStart(2,'0');
-            let accday= createDate.split(". ")[2].padStart(2,'0');
+            let accYear= create.split(".")[0];
+            let accMonth= create.split(".")[1];padStart(2,'0');
+            let accday= create.split(".")[2];padStart(2,'0');
             createDate= accYear+"-"+accMonth+"-"+accday;
         }
 
@@ -53,10 +50,10 @@ sap.ui.define([
         this.byId("accNumber").setValue("");
         this.byId("accChart").setValue("");
         this.byId("accCategory").setValue("");
-        this.byId("createDate").setValue("");
         this.byId("accGroup").setValue("");
+        this.byId("createDate").setSelectedKey("");
 
-        this.onSearch();
+        this.onSearch
     },
     onValueHelpChart : function () {
         if (!this.pValueHelpDialog) {
@@ -180,9 +177,6 @@ sap.ui.define([
         });
         return aCols;
 
-    }, 
-    onNavToDetail: function(){
-        this.getOwnerComponent().getRouter().navTo("detailAccount");
     }
 
 

@@ -16,7 +16,7 @@
 			<ObjectPageDynamicHeaderTitle>
 				<heading>
                     <m:HBox>
-                        <m:Button type="Back" press=".onBack" class="sapUiTinyMarginTop"/>
+                        <m:Button icon="sap-icon://nav-back" press=".onBack"/>
                         <m:Title text="G/L 계정 번호" wrapping="true" />
                     </m:HBox>
 				</heading>
