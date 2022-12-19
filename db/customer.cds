@@ -21,7 +21,7 @@ entity Customer {
         customer       : String  @title : '고객 분류';
         accGroup       : String  @title : '고객 계정 그룹';
         requestHold    : String  @title : '청구 보류';
-        postHold       : String  @title : '전기 보류';
+        postHold       : Boolean default false  @title : '전기 보류';
         currency       : String  @title : '통화';
         orgName        : String  @title : '조직명칭';
         lgForm         : String  @title : '법적 형태';
@@ -57,4 +57,10 @@ entity lgForm {
 entity bpRange {
     key bpRange_key : String @title : 'BP 범주 키워드';
     key bpRange_kor : String @title : 'BP 범주 한국어';
+};
+
+entity cmpCode {
+    
+    key cmpCode_key : String @title : '회사 코드';
+    key cmpCode_kor : String @title : '회사명';
 };

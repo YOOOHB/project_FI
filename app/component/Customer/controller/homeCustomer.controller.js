@@ -6,5 +6,9 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("project3.controller.homeCustomer", {
+
+        onCustomer:function() {
+            this.getOwnerComponent().getRouter().navTo("Customer")
+        }
     });
 });

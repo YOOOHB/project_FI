@@ -22,12 +22,6 @@ entity COA {
 
 };
 
-entity AccCategory{
-    key accCategory_s: String  @title : 'G/L계정 유형';
-        accCategory_k: String  @title : 'G/L계정 유형 설명'
-
-};
-
 entity CompanyCode {
     key cmpCode     : String @title : '회사코드';
         cmpName     : String @title : '회사이름';
@@ -36,7 +30,7 @@ entity CompanyCode {
 
 };
 
-entity AccCategory {
-    key accCategory_key : String @title : 'G/L계정 유형 키워드';
-    key accCategory_kor : String @title : 'G/L계정 유형 한국어';
+entity AccCategory{
+    key accCategory_key: String  @title : 'G/L계정 유형 키워드';
+    key accCategory_kor: String  @title : 'G/L계정 유형 한국어';
 };

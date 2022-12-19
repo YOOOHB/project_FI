@@ -174,7 +174,6 @@ sap.ui.define(
 
       },
 
-<<<<<<< HEAD
       onNavToDetail: function (oEvent) {
         let dParams = oEvent.getParameters();
         let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
@@ -184,20 +183,18 @@ sap.ui.define(
         console.log(selectedRange);
         let sRouteName = '';
 
-        if (selectedRange === '개인(1)') {
+        var SelectedNum = data.customerNumber;
+        
+        if (selectedRange === 'A') {
           sRouteName = 'detailCustomerP';
 
         }
 
-        if (selectedRange === '조직(2)') {
+        if (selectedRange === 'B') {
           sRouteName = 'detailCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName);
-=======
-      oncheckselect: function () {
-        console.log(this.getView().getModel("CustomerModel"));
->>>>>>> 43b5821166c4111b9bac00549bc2a3b258555a31
+        this.getOwnerComponent().getRouter().navTo(sRouteName, {num: SelectedNum});
       }
 
 

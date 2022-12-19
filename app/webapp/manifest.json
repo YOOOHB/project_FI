@@ -131,7 +131,7 @@
           "pattern": "Customer",
           "target": {
             "name": "Customer",
-            "prefix": "prefix_Customer"
+            "prefix": "Customer"
           }
         }
       ],

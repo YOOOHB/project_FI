@@ -106,22 +106,22 @@
         },
         {
           "name": "detailCustomerP",
-          "pattern": "detailCustomerP",
+          "pattern": "detailCustomerP/{num}",
           "target": "detailCustomerP"
         },
         {
           "name": "detailCustomerO",
-          "pattern": "detailCustomerO",
+          "pattern": "detailCustomerO/{num}",
           "target": "detailCustomerO"
         },
         {
           "name": "changeCustomerP",
-          "pattern": "changeCustomerP",
+          "pattern": "changeCustomerP/{num}",
           "target": "changeCustomerP"
         },
         {
           "name": "changeCustomerO",
-          "pattern": "changeCustomerO",
+          "pattern": "changeCustomerO/{num}",
           "target": "changeCustomerO"
         },
         

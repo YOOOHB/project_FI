@@ -7,10 +7,10 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/export/library",
     "sap/ui/export/Spreadsheet",
-    "../model/formatter"
-    
-],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel,exportLibrary,Spreadsheet,formatter){
+    "../model/aFormatter"
+],function (Controller, Filter, FilterOperator, Fragment, Sorter, JSONModel, exportLibrary, Spreadsheet, aFormatter){
     "use strict";
+    Formatter: aFormatter;
     const EdmType = exportLibrary.EdmType;
     return Controller.extend("project2.controller.Account",{
         formatter:formatter,
@@ -22,7 +22,7 @@ sap.ui.define([
     onMy: async function(){
         let Account = await $.ajax({
             type:"get",
-            url:"/Account/Account"
+            url:"/account/Account"
         });
         let AccountModel= new JSONModel(Account.value);
         this.getView().setModel(AccountModel,"AccountModel");
@@ -38,14 +38,14 @@ sap.ui.define([
     onSearch:function(){
         let accNumber=this.byId("accNumber").getValue();
         let accChart=this.byId("accChart").getValue();
-        let accCategory=this.byId("accCategory").getSelectedKey();
-        let accGroup=this.byId("accGroup").getValue();
+        let accCategory=this.byId("accCategory").getValue();
         let createDate=this.byId("createDate").getValue();
+        let accGroup=this.byId("accGroup").getValue();
         
         if(createDate){
             let accYear= createDate.split(". ")[0];
-            let accMonth= createDate.split(". ")[1].padStart(2, '0');
-            let accday= createDate.split(". ")[2].padStart(2, '0');
+            let accMonth= createDate.split(". ")[1].padStart(2,'0');
+            let accday= createDate.split(". ")[2].padStart(2,'0');
             createDate= accYear+"-"+accMonth+"-"+accday;
         }
 
@@ -190,9 +190,9 @@ sap.ui.define([
         });
         return aCols;
 
-    },
+    }, 
     onNavToDetail: function(){
-        this.getOwnerComponent().getRouter().navTo("detailAccount"); 
+        this.getOwnerComponent().getRouter().navTo("detailAccount");
     }
 
     })

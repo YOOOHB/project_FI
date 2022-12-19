@@ -19,12 +19,12 @@
 				<expandedHeading>
 				<m:HBox>
 					<m:Button type="Back" class="sapUiTinyMarginTop" press=".onCustomer"/>
-					<m:Title text="고객명 데이터" wrapping="true" />
+					<m:Title text="{CustomerModel>/name}" wrapping="true" />
 				</m:HBox>	
 				</expandedHeading>
 
 				<expandedContent>
-					<m:Text text="고객번호 데이터"/>
+					<m:Text text="{CustomerModel>/customerNumber}" class="sapUiMediumMarginBegin"/>
 				</expandedContent>
 
 				<actions>
@@ -39,17 +39,17 @@
 
 				<layout:VerticalLayout>
 					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="500px"/>
-					<m:Text text="내용" width="500px"/>
+					<m:Text id="bpRange" text="{CustomerModel>/bpRange}" width="500px"/>
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label text="표준 주소" design="Bold" width="500px"/>
-					<m:Text text="내용" width="500px"/>
+					<m:Label id="address" text="표준 주소" design="Bold" width="500px"/>
+					<m:Text text="{CustomerModel>/country} {CustomerModel>/city} {CustomerModel>/region} {CustomerModel>/postalCode} {CustomerModel>/street} {CustomerModel>/houseNumber}" width="500px"/>
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label text="회사 코드" design="Bold"/>
-					<m:Text text="내용" width="500px"/>
+					<m:Label id="cmpCode" text="회사 코드" design="Bold"/>
+					<m:Text text="{CustomerModel>/cmpCode}" width="500px"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
@@ -68,21 +68,21 @@
 												>
 									<f:content>
 										<m:Label text="고객 명" />
-										<m:Text text="123" />
+										<m:Text id="name" text="{CustomerModel>/name}" />
 										<m:Label text="" />
 										<m:Text text="" />
-										<m:Label text="법적형태" />
+										<m:Label id="lgForm" text="{CustomerModel>/lgForm}" />
 										<m:Text text="" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="생성일" />
-										<m:Text text="1234"/>
+										<m:Text id="createDate" text="{CustomerModel>/createDate}"/>
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
-										<m:Text text="1231231" />
+										<m:Text id="changeDate" text="{CustomerModel>/changeDate}" />
 										<m:Label text="최종 변경자" />
-										<m:Text text="해빈" />
+										<m:Text id="modifier" text="{CustomerModel>/modifier}" />
 										
 									</f:content>
 								</f:SimpleForm>
@@ -101,19 +101,19 @@
 												>
 									<f:content>
 										<m:Label text="고객 번호" />
-										<m:Text text="123" />
+										<m:Text id="customerNumber" text="{CustomerModel>/customerNumber}" />
 										<m:Label text="고객 계정 그룹" />
-										<m:Text text="CUST" />
+										<m:Text id="accGroup" text="{CustomerModel>/accGroup}" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="오더 보류" />
-										<m:Text text="123" />
+										<m:Text id="orderHold" text="{CustomerModel>/orderHold}" />
 										<m:Label text="청구 보류" />
-										<m:Text text="123" />
+										<m:Text id="requestHold" text="{CustomerModel>/requestHold}" />
 										<m:Label text="전기 보류" />
-										<m:Text text="123" />
+										<m:Text id="postHold" text="{CustomerModel>/postHold}" />
 										<m:Label text="고객 분류" />
-										<m:Text text="1231231" />
+										<m:Text id="customer" text="{CustomerModel>/customer}" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -144,17 +144,17 @@
 												>
 									<f:content>
 										<m:Label text="도로 주소" />
-										<m:Text text="123" />
+										<m:Text id="street" text="{CustomerModel>/street}" />
 										<m:Label text="번지" />
-										<m:Text text="13123" />
+										<m:Text id="houseNumber" text="{CustomerModel>/houseNumber}" />
 										<m:Label text="우편 번호" />
-										<m:Text text="123" />
+										<m:Text id="postalCode" text="{CustomerModel>/postalCode}" />
 										<m:Label text="도시" />
-										<m:Text text="123" />
+										<m:Text id="city" text="{CustomerModel>/city}" />
 										<m:Label text="국가/지역" />
-										<m:Text text="123" />
+										<m:Link id="country" text="{CustomerModel>/country}" />
 										<m:Label text="지역" />
-										<m:Text text="123" />
+										<m:Text id="region" text="{CustomerModel>/region}" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />

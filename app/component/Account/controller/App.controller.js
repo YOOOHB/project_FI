@@ -7,6 +7,7 @@ sap.ui.define(
 
     return BaseController.extend("project2.controller.App", {
       onInit() {
+        
       },
 
       onRequest: function() {
@@ -15,6 +16,7 @@ sap.ui.define(
       onCompany: function() {
         this.getOwnerComponent().getRouter().navTo("Customer");
       }
+
     });
   }
 );
