@@ -12,6 +12,7 @@
 		title="회사 코드"
 		ok=".onValueHelpOkPress"
 		cancel=".onValueHelpCancelPress"
+
 		supportRanges="true"
 		key="cmpCode_key"
 		descriptionKey="cmpCode_kor"

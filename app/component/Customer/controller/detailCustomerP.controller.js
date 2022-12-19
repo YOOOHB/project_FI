@@ -14,8 +14,11 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().getRoute("detailCustomerP").attachPatternMatched(this.onMyRoutePatternMatched, this);
         },
         
-        onMyRoutePatternMatched: async function(){
-
+        onMyRoutePatternMatched: async function(oEvent){
+            var SelectedNum = oEvent.getParameter("arguments").num;
+            console.log(oEvent.getParameter("arguments"));
+            let url = "/customer/Customer" + SelectedNum;
+            console.log(url);
         },
 
         onChange: function() {

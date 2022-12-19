@@ -3,10 +3,9 @@
 	xmlns:layout="sap.ui.layout"
     xmlns:form="sap.ui.layout.form"
 	xmlns:m="sap.m"
-    xmlns:f="sap.f"
     xmlns:ui="sap.ui.table"
-    xmlns:core="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
     <ObjectPageLayout id="ObjectPageLayout"
 		showTitleInHeaderContent="true"
 		selectedSection="paymentSubSection"
@@ -25,7 +24,7 @@
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
-		<sections>
+		<sections >
 			<ObjectPageSection titleUppercase="false" title="헤더">
 				<subSections>
 					<ObjectPageSubSection title="헤더" titleUppercase="false">
@@ -44,7 +43,7 @@
 				</subSections>
 			</ObjectPageSection>
 
-            <ObjectPageSection titleUppercase="false" title="일반">
+            <ObjectPageSection titleUppercase="false" title="일반" >
 				<subSections>
 					<ObjectPageSubSection title="일반" titleUppercase="false">
 						<form:SimpleForm layout="ResponsiveGridLayout">
@@ -87,9 +86,31 @@
                                             <layout:GridData span="XL2 L2 M2 S2" />
                                         </m:layoutData>
                                     </m:HBox>
+                                    <m:layoutData>
+                                        <layout:GridData span="XL1 L1 M1 S1" />
+                                    </m:layoutData>
                                 </m:VBox>
-                            </form:content>
-                        </form:SimpleForm>
+                                <m:VBox class="sapUiTinyMarginTop">
+                                <!-- 계정과목표 -->
+                                    <m:Input id="COA" width="20%"/>    
+                                <!-- 계정 유형  -->
+                                    <m:Select id="accType" items="" width="20%">
+                                        <core:Item text="{AccountModel>/accCategory}" key="{>}" />
+                                    </m:Select>  
+                                <!-- 계정 그룹  -->
+                                    <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"  width="20%"/>
+                                <!-- 생성일 -->
+                                    <m:Text text="2022-12-04"  width="20%"/>
+                                <!-- 생성자 -->
+                                    <m:Input id="creator"  width="20%"/>
+                                    <m:layoutData>
+                                        <layout:GridData span="XL11 L11 M11 S11" />
+                                    </m:layoutData>
+                                </m:VBox>
+
+                                </m:items>
+							</m:Table>
+						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>

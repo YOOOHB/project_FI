@@ -1,53 +1,45 @@
 <core:FragmentDefinition controllerName="project2.controller.createAccount"
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
-	xmlns:t="sap.ui.table"
-	xmlns:layout="sap.ui.layout">
+	xmlns:t="sap.ui.table">
 	<Dialog id="AccountGroup" title="계정 그룹">
 		<content>
 			<VBox>
 				<Label text="검색 및 선택 : " />
-				<Input
-				id="GL111"
-				class="sapUiSmallMarginBottom"
-				type="Text"
-				showValueHelp="true"
-				valueHelpIconSrc="sap-icon://search"
-				valueHelpRequest="onSearchAccountGroupFragment"/>
+				<Input id="searchAccGrp" class="sapUiSmallMarginBottom" showValueHelp="true" valueHelpIconSrc="sap-icon://search" valueHelpRequest="onSearchAccountGroupFragment"/>
 			</VBox>
 		</content>
 
-		<t:Table id="SPrdTable" rows="{Product>/ProductList}" selectionMode="None"
+		<t:Table id="AccGrpTable" rows="{AccountModel>/}" selectionMode="None"
 				width="auto" cellClick=".onCellClickAccountGroup"> 
 			<t:extension>
 				<OverflowToolbar>
-					<Title id="SPrdTableName" text="항목"/>
+					<Title text="항목"/>
 				</OverflowToolbar>
 			</t:extension>
 			<t:columns>
-				<t:Column hAlign="Center" sortProperty="code" filterProperty="code">
+				<t:Column hAlign="Center" sortProperty="accGroup" filterProperty="accGroup">
 					<Label text="계정그룹"/>
 					<t:template>
-						<Text text="{>}"/>
+						<Text text="{AccountModel>accGroup}"/>
 					</t:template>
 				</t:Column>
-				<t:Column hAlign="Center" sortProperty="name" filterProperty="name">
+				<t:Column hAlign="Center" sortProperty="accChart" filterProperty="accChart">
 					<Label text="계정과목표"/>
 					<t:template>
-						<Text text="{>}" />
+						<Text text="{AccountModel>accChart}" />
 					</t:template>
 				</t:Column>
-				<t:Column hAlign="Center" sortProperty="name" filterProperty="name">
+				<t:Column hAlign="Center" sortProperty="accMean" filterProperty="accMean">
 					<Label text="의미"/>
 					<t:template>
-						<Text text="{>}" />
+						<Text text="{AccountModel>accMean}" />
 					</t:template>
 				</t:Column>
 			</t:columns>
 		</t:Table>
 
 		<buttons>
-			<Button text="선택" press=".onAccountGroupFragment"/>
 			<Button text="취소" press=".onBackAccountGroupFragment"/>
 		</buttons>
 	</Dialog>

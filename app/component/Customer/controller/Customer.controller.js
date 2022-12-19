@@ -48,7 +48,6 @@ sap.ui.define(
       },
 
       onMyRoutePatternMatched: async function () {
-
         let Customer = await $.ajax({
           type: "get",
           url: "/customer/Customer"
@@ -490,6 +489,28 @@ sap.ui.define(
 
       oncheckselect: function () {
         console.log(this.getView().getModel("CustomerModel"));
+
+      },
+
+      onNavToDetail: function (oEvent) {
+        let dParams = oEvent.getParameters();
+        let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
+        let data = this.getView().getModel("CustomerModel").getProperty(sPath);
+        console.log(data);
+        let selectedRange = data.bpRange;
+        console.log(selectedRange);
+        let sRouteName = '';
+
+        if (selectedRange === '개인(1)') {
+          sRouteName = 'detailCustomerP';
+
+        }
+
+        if (selectedRange === '조직(2)') {
+          sRouteName = 'detailCustomerO';
+        }
+
+        this.getOwnerComponent().getRouter().navTo(sRouteName);
       }
 
 

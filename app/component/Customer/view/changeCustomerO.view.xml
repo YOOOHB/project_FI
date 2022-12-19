@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="project3.controller.detailCustomerO"
+	controllerName="project3.controller.changeCustomerO"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.uxap"
 	xmlns:layout="sap.ui.layout"
@@ -28,7 +28,7 @@
 				</expandedContent>
 
 				<actions>
-					<m:Button text="편집" type="Emphasized" press=".onChange"/>
+					<m:Button text="편집" type="Emphasized" press=".onEdit"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
@@ -82,7 +82,7 @@
 										<m:Label text="최종 변경일" />
 										<m:Text text="1231231" />
 										<m:Label text="최종 변경자" />
-										<m:Text text="해빈" />
+										<m:Input value="123213123" />
 										
 									</f:content>
 								</f:SimpleForm>
@@ -107,13 +107,13 @@
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="오더 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="청구 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="전기 보류" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="고객 분류" />
-										<m:Text text="1231231" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -144,21 +144,21 @@
 												>
 									<f:content>
 										<m:Label text="도로 주소" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="번지" />
-										<m:Text text="13123" />
+										<m:Input value="123213123" />
 										<m:Label text="우편 번호" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="도시" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="국가/지역" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="지역" />
-										<m:Text text="123" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
-										<m:Text text="" />
+										<m:Input value="123213123" />
 										<m:Label text="" />
-										<m:Text text="" />
+										<m:Input value="123213123" />
 									</f:content>
 								</f:SimpleForm>
 							</m:VBox>
@@ -166,6 +166,13 @@
 				</subSections>
 			</ObjectPageSection>
 		</sections>
+        <footer>
+            <m:OverflowToolbar >
+                <m:ToolbarSpacer />
+                <m:Button type="Emphasized" text="확인" press="onConfirm" />
+                <m:Button type="Default" text="취소" press="onCancel" />
+            </m:OverflowToolbar>
+        </footer>
 	</ObjectPageLayout>
 </mvc:View>
 

@@ -119,6 +119,11 @@
           "pattern": "changeCustomerP",
           "target": "changeCustomerP"
         },
+        {
+          "name": "changeCustomerO",
+          "pattern": "changeCustomerO",
+          "target": "changeCustomerO"
+        },
         
         {
           "name": "Customer",
@@ -154,6 +159,13 @@
           "clearControlAggregation": false,
           "viewId": "changeCustomerP",
           "viewName": "changeCustomerP"
+        },
+        "changeCustomerO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "changeCustomerO",
+          "viewName": "changeCustomerO"
         },
         "Customer": {
           "viewType": "XML",
