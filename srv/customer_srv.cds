@@ -9,5 +9,6 @@ service CustomerService {
     entity RequestHold as projection on customer.RequestHold;
     entity lgForm as projection on customer.lgForm;
     entity bpRange as projection on customer.bpRange;
+    entity cmpCode as projection on customer.cmpCode;
 
 }

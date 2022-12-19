@@ -183,16 +183,18 @@ sap.ui.define(
         console.log(selectedRange);
         let sRouteName = '';
 
-        if (selectedRange === '개인(1)') {
+        var SelectedNum = data.customerNumber;
+        
+        if (selectedRange === 'A') {
           sRouteName = 'detailCustomerP';
 
         }
 
-        if (selectedRange === '조직(2)') {
+        if (selectedRange === 'B') {
           sRouteName = 'detailCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName);
+        this.getOwnerComponent().getRouter().navTo(sRouteName, {num: SelectedNum});
       }
 
 
