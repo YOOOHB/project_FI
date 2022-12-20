@@ -27,9 +27,11 @@
                         <Label id="_IDGenLabel4" text="조직 명칭" />
                         <Input id="orgName" text="{orgName}" />
                         <Label id="_IDGenLabel5" text="고객 명" />
-                        <Input id="name" text="{name}" />
+                        <Input id="name" text="{name}"  required="true" valueStateText="이름을 입력해 주세요." />
                         <Label id="_IDGenLabel6" text="생성일" />
                         <Text id="createDate" text="{createDate}"/>
+                        <Label id="_IDGenLabel15" text="담당자" />
+                        <Input id="manager" text="{manager}" />
                         <core:Title id="_IDGenTitle2" text="표준 주소" />
                         <Label id="_IDGenLabel7" text="도로 주소" />
                         <Input id="street" text="{street}" />
@@ -52,9 +54,15 @@
                         <Input id="cmpCode" text="{cmpCode}"   
                             showValueHelp="true"
                             valueHelpOnly="true"
-			                valueHelpRequest="onValueHelpRequest2" />
+			                valueHelpRequest="onValueHelpRequest2"
+                            required="true" valueStateText="회사 코드를 입력해 주세요." />
                         <Label id="_IDGenLabel14" text="통화" />
                         <Input id="currency" text="{currency}" />
+                        <core:Title id="_IDGenTitle4" text="은행 정보" />
+                        <Label id="_IDGenLabel17" text="은행명" />
+                        <Input id="bankKey" text="{bankKey}" />
+                        <Label id="_IDGenLabe18" text="계좌 번호" />
+                        <Input id="bankNumber" text="{bankNumber}" />
                     </form:content>
                 </form:SimpleForm>
             </VBox>

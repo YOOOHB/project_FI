@@ -28,7 +28,9 @@ entity Customer {
         orderHold_key   : String                @title : '오더 보류 키워드';
         requestHold_key : String                @title : '청구 보류 키워드';
         customer_key    : String                @title : '고객 분류 키워드';
-
+        manager         : String                @title : '담당자';
+        bankKey         : String                @title : '은행 키';
+        bankNumber      : String                @title : '계좌 번호';
 
 };
 

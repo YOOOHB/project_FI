@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/Fragment",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function(Controller,JSONModel,Fragment,Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageBox"
+], function(Controller,JSONModel,Fragment,Filter, FilterOperator,MessageBox) {
   "use strict";
 
 
@@ -83,12 +84,15 @@ sap.ui.define([
 
     onCreate: async function () {
 
+      this.errorclear();
+
       var temp ={
         customerNumber : parseInt(this.byId("customerNumber").getText()),
         bpRange : this.byId("bpRange").getSelectedKey(),
         orgName : this.byId("orgName").getValue(),
         name : this.byId("name").getValue(),
         createDate : this.byId("createDate").getText(),
+        manager : this.byId("manager").getValue(),
         street : this.byId("street").getValue(),
         houseNumber : this.byId("houseNumber").getValue(),
         postalCode : this.byId("postalCode").getValue(),
@@ -110,8 +114,23 @@ sap.ui.define([
         firstName:null,
         orderHold_key:null,
         requestHold_key:null,
-        customer_key:null  
+        customer_key:null,
+        bankKey: this.byId("bankKey").getValue(),
+        bankNumber: this.byId("bankNumber").getValue()
         
+      }
+
+  
+      // 유효성 체크
+      if(!temp.name || !temp.cmpCode){
+        if(!temp.name){
+          this.getView().byId("name").setValueState("Error");
+        }
+        if(!temp.cmpCode){
+          this.getView().byId("cmpCode").setValueState("Error");
+        }
+        MessageBox.error("필수 입력 값을 확인해주세요.");
+        return;
       }
 
       await $.ajax({
@@ -132,6 +151,7 @@ sap.ui.define([
       this.getView().byId("orgName").setValue("");
       this.getView().byId("name").setValue("");
       // this.getView().byId("createDate").setValue("");
+      this.getView().byId("manager").setValue("");
       this.getView().byId("street").setValue("");
       this.getView().byId("houseNumber").setValue("");
       this.getView().byId("postalCode").setValue("");
@@ -140,10 +160,16 @@ sap.ui.define([
       this.getView().byId("region").setValue("");
       this.getView().byId("cmpCode").setValue("");
       this.getView().byId("currency").setValue("");
+      this.getView().byId("bankKey").setValue("");
+      this.getView().byId("bankNumber").setValue("");
 
       this.getView().byId("orgName").focus();
 
 
+    },
+    errorclear: function() {
+      this.getView().byId("name").setValueState("None");
+      this.getView().byId("cmpCode").setValueState("None");
     },
 
     onValueHelpRequest : function () {
