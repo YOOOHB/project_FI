@@ -85,7 +85,7 @@ sap.ui.define([
 
       var temp ={
         customerNumber : parseInt(this.byId("customerNumber").getText()),
-        bpRange : this.byId("bpRange").getText(),
+        bpRange : this.byId("bpRange").getSelectedKey(),
         orgName : this.byId("orgName").getValue(),
         name : this.byId("name").getValue(),
         createDate : this.byId("createDate").getText(),
@@ -128,7 +128,7 @@ sap.ui.define([
 
     onClearField: function() {
       // this.getView().byId("customerNumber").setValue("");
-      // this.getView().byId("bpRange").setValue("");
+      this.getView().byId("bpRange").setSelectedKey("B");
       this.getView().byId("orgName").setValue("");
       this.getView().byId("name").setValue("");
       // this.getView().byId("createDate").setValue("");
@@ -140,6 +140,8 @@ sap.ui.define([
       this.getView().byId("region").setValue("");
       this.getView().byId("cmpCode").setValue("");
       this.getView().byId("currency").setValue("");
+
+      this.getView().byId("orgName").focus();
 
 
     },

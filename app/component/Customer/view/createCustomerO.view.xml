@@ -20,7 +20,10 @@
                         <Label  text="고객 번호" />
                         <Text id="customerNumber" text="{customerNumber}" />
                         <Label id="_IDGenLabel2" text="BP 범주" />
-                        <Text id="bpRange" text="bpRange" />
+                         <Select width="100%" id="bpRange" editable="false">
+                                <core:Item text="개인(1)" key="A" />
+                                <core:Item text="조직(2)" key="B" />
+                         </Select>
                         <Label id="_IDGenLabel4" text="조직 명칭" />
                         <Input id="orgName" text="{orgName}" />
                         <Label id="_IDGenLabel5" text="고객 명" />

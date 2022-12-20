@@ -20,16 +20,19 @@
                         <Label  text="고객 번호" />
                         <Text id="customerNumber" text="{customerNumber}" />
                         <Label id="_IDGenLabel2" text="BP 범주" />
-                        <Text id="bpRange" text= "A" />
+                            <Select width="100%" id="bpRange" editable="false">
+                                <core:Item text="개인(1)" key="A" />
+                                <core:Item text="조직(2)" key="B" />
+                            </Select>
                         <Label id="_IDGenLabel3" text="개인 칭호" />
                          <Select width="100%" id="personalTitle">
                             <core:Item id="_IDGenItem1" text="Mr." key="Mr." />
                             <core:Item id="_IDGenItem2" text="Mrs." key="Mrs." />
                         </Select>
                         <Label id="_IDGenLabel4" text="이름" />
-                        <Input id="lastName" text="{lastName}" />
+                        <Input id="lastName" text="{lastName}" required="true" />
                         <Label id="_IDGenLabel5" text="성" />
-                        <Input id="firstName" text="{firstName}" />
+                        <Input id="firstName" text="{firstName}" required="true" />
                         <Label id="_IDGenLabel6" text="생성일" />
                         <Text id="createDate" text="{createDate}"/>
                         <core:Title id="_IDGenTitle2" text="표준 주소" />
