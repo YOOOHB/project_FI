@@ -28,8 +28,8 @@ sap.ui.define([
         onInit: async function () {
             this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
 
-            this._oWhiteSpacesInput = this.byId("accChart");
-            this._oWhiteSpacesInput1 = this.byId("accGroup");
+            this._oWhiteSpacesInput1 = this.byId("accChart");
+            this._oWhiteSpacesInput2 = this.byId("accGroup");
         },
         onMy: async function () {
             let Account = await $.ajax({
@@ -122,7 +122,7 @@ sap.ui.define([
                 if (this._bWhitespaceDialogInitialized) {
                     // Re-set the tokens from the input and update the table
                     oAccChartDialog.setTokens([]);
-                    oAccChartDialog.setTokens(this._oWhiteSpacesInput.getTokens());
+                    oAccChartDialog.setTokens(this._oWhiteSpacesInput1.getTokens());
                     oAccChartDialog.update();
                     oAccChartDialog.open();
                     return;
@@ -174,7 +174,7 @@ sap.ui.define([
             for (let i = 0; i < tokenNum; i++) {
                 aTokens[i].mProperties.text = aTokens[i].mProperties.key;
             }
-            this._oWhiteSpacesInput.setTokens(aTokens)
+            this._oWhiteSpacesInput1.setTokens(aTokens)
             this.oAccChartDialog.close();
         },
         onValueHelpCancelPress1: function () {
@@ -274,7 +274,7 @@ sap.ui.define([
 
                     // Re-set the tokens from the input and update the table
                     oAccGroupDialog.setTokens([]);
-                    oAccGroupDialog.setTokens(this._oWhiteSpacesInput1.getTokens());
+                    oAccGroupDialog.setTokens(this._oWhiteSpacesInput2.getTokens());
                     oAccGroupDialog.update();
                     this.onFilterBarSearch2();
                     oAccGroupDialog.open();
@@ -329,7 +329,7 @@ sap.ui.define([
             for (let i = 0; i < tokenNum1; i++) {
                 aTokens[i].mProperties.text = aTokens[i].mProperties.key;
             }
-            this._oWhiteSpacesInput1.setTokens(aTokens);
+            this._oWhiteSpacesInput2.setTokens(aTokens);
             this.oAccGroupDialog.close();
         },
 
@@ -384,10 +384,10 @@ sap.ui.define([
             let i;
             for (i = 0; i < totalNumber; i++) {
                 let chk = '/' + i + '/CHK';
-                let key = '/' + i + '/accNumber';
+                let key = '/' + i + '/ID';
                 if (model.getProperty(chk) === true) {
-                    let accNumber = model.getProperty(key);
-                    let url = "/account/GLAcc/" + accNumber
+                    let ID = model.getProperty(key);
+                    let url = "/account/GLAcc/" + ID
                     await $.ajax({
                         type: "DELETE",
                         url: url

@@ -70,7 +70,7 @@ sap.ui.define(
           },
           
           onConfirm: async function() {
-            
+            // select창에서 selected 된 값이 없을 시, 수정될 데이터 값이 null이 되어버려 오류가 나기 때문에 아래와 같이 null일 경우 string 공란으로 받아줌
             if(this.byId("orderHold").getSelectedItem() === null ){
               var orderHoldText = ""
               var orderHoldkeyText = ""
@@ -96,7 +96,7 @@ sap.ui.define(
             }
 
             var edit = {
-              
+              manager : this.byId("manager").getValue(),
               modifier : this.byId("modifier").getValue(),
               changeDate : year+ '-' + month + '-' + date,
               orderHold : orderHoldText,
@@ -111,7 +111,9 @@ sap.ui.define(
               postalCode : this.byId("postalCode").getValue(),
               city : this.byId("city").getValue(),
               country : this.byId("country").getValue(),
-              region : this.byId("region").getValue()
+              region : this.byId("region").getValue(),
+              bankKey : this.byId("bankKey").getValue(),
+              bankNumber : this.byId("bankNumber").getValue(),
             };
 
           let url = "/customer/Customer/" + SelectedNum;

@@ -14,10 +14,16 @@
 					<ImageContent src="sap-icon://person-placeholder" />
 				</TileContent>
 			</GenericTile>
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 생성"
-				subheader="" press="oncreateCustomer">
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 생성(개인)"
+				subheader="" press="oncreateCustomerP">
 				<TileContent unit="" footer="">
 					<ImageContent src="sap-icon://add-employee" />
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 생성(조직)"
+				subheader="" press="oncreateCustomerO">
+				<TileContent unit="" footer="">
+					<ImageContent src="sap-icon://building" />
 				</TileContent>
 			</GenericTile>
 		</content>
