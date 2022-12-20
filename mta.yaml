@@ -3,76 +3,76 @@ ID: project_FI
 description: A simple CAP project.
 version: 1.0.0
 modules:
-- name: project_FI-srv
-  type: nodejs
-  path: gen/srv
-  requires:
-  - name: FI_project-db
-  - name: project_FI-auth
-  provides:
-  - name: srv-api
-    properties:
-      srv-url: ${default-url}
-  parameters:
-    buildpack: nodejs_buildpack
-  build-parameters:
-    builder: npm-ci
-- name: FI_project-db-deployer
-  type: hdb
-  path: db
-  requires:
-  - name: FI_project-db
-    properties:
-      TARGET_CONTAINER: ~{hdi-container-name}
-  - name: cross-container-service-1
-    group: SERVICE_REPLACEMENTS
-    properties:
-      key: ServiceName_1
-      service: ~{the-service-name}
-  parameters:
-    buildpack: nodejs_buildpack
-- name: project_FI
-  type: approuter.nodejs
-  path: app/
-  requires:
-  - name: srv-api
-    group: destinations
-    properties:
-      forwardAuthToken: true
-      name: srv-api
-      url: ~{srv-url}
-  - name: project_FI-auth
-  parameters:
-    disk-quota: 256M
-    keep-existing-routes: true
-    memory: 256M
+  - name: project_FI-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: FI_project-db
+      - name: project_FI-auth
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+  - name: FI_project-db-deployer
+    type: hdb
+    path: db
+    requires:
+      - name: FI_project-db
+        properties:
+          TARGET_CONTAINER: ~{hdi-container-name}
+      - name: cross-container-service-1
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: ~{the-service-name}
+    parameters:
+      buildpack: nodejs_buildpack
+  - name: project_FI
+    type: approuter.nodejs
+    path: app/
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          forwardAuthToken: true
+          name: srv-api
+          url: ~{srv-url}
+      - name: project_FI-auth
+    parameters:
+      disk-quota: 256M
+      keep-existing-routes: true
+      memory: 256M
 resources:
-- name: FI_project-db
-  type: com.sap.xs.hdi-container
-  parameters:
-    service: hana
-    service-plan: hdi-shared
-  properties:
-    hdi-container-name: ${service-name}
-- name: project_FI-auth
-  type: org.cloudfoundry.managed-service
-  parameters:
-    config:
-      tenant-mode: dedicated
-      xsappname: project_FI-${org}-${space}
-    path: ./xs-security.json
-    service: xsuaa
-    service-plan: application
-- name: cross-container-service-1
-  type: org.cloudfoundry.existing-service
-  parameters:
-    service-name: FI_project-db
-  properties:
-    the-service-name: ${service-name}
+  - name: FI_project-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+    properties:
+      hdi-container-name: ${service-name}
+  - name: project_FI-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        tenant-mode: dedicated
+        xsappname: project_FI-${org}-${space}
+      path: ./xs-security.json
+      service: xsuaa
+      service-plan: application
+  - name: cross-container-service-1
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: FI_project-db
+    properties:
+      the-service-name: ${service-name}
 parameters:
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-  - builder: custom
-    commands:
-    - npx -p @sap/cds-dk cds build --production
+    - builder: custom
+      commands:
+        - npx -p @sap/cds-dk cds build --production

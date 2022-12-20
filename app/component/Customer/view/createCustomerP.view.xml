@@ -20,7 +20,7 @@
                         <Label  text="고객 번호" />
                         <Text id="customerNumber" text="{customerNumber}" />
                         <Label id="_IDGenLabel2" text="BP 범주" />
-                        <Text id="bpRange" text="1" />
+                        <Text id="bpRange" text= "A" />
                         <Label id="_IDGenLabel3" text="개인 칭호" />
                          <Select width="100%" id="personalTitle">
                             <core:Item id="_IDGenItem1" text="Mr." key="Mr." />
@@ -31,9 +31,7 @@
                         <Label id="_IDGenLabel5" text="성" />
                         <Input id="firstName" text="{firstName}" />
                         <Label id="_IDGenLabel6" text="생성일" />
-                        <DatePicker
-                                id="createDate"
-                                displayFormat="yyyy-MM-dd" />
+                        <Text id="createDate" text="{createDate}"/>
                         <core:Title id="_IDGenTitle2" text="표준 주소" />
                         <Label id="_IDGenLabel7" text="도로 주소" />
                         <Input id="street" text="{street}" />
