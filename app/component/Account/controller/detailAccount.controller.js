@@ -11,14 +11,11 @@ sap.ui.define([
 		},
 		onMyRoutePatternMatched: async function(e) {
 			SelectedNum = e.getParameter("arguments").num;
-			console.log(SelectedNum)
 			let Account = await $.ajax({
 				type: "get",
-				url: "/account/Account/" + SelectedNum
+				url: "/account/GLAcc/" + SelectedNum
 			});
-			console.log(Account)
 			let AccountModel = new JSONModel(Account);
-			console.log(AccountModel)
 			this.getView().setModel(AccountModel, "AccountModel");
 
 		},

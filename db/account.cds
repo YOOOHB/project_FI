@@ -6,7 +6,7 @@ entity COA {
 };
 
 entity Grp {
-    key ID          : String @title : '번호';
+    key ID          : Integer @title : '번호';
         accChart    : String @title : '계정과목표';
         accGroup    : String @title : '계정 그룹';
         accMean     : String @title : '의미';
@@ -21,6 +21,7 @@ entity GLAcc {
         accGroup    : String @title : '계정그룹'; 
         creator     : String @title : '생성자';
         accContents : String @title : '내역';
+        cmpCodeKey  : String @title : '사용하는 회사코드';
 };
 
 entity CmpCode {
@@ -28,7 +29,6 @@ entity CmpCode {
         cmpName         : String @title : '회사이름';
         accCurrency     : String @title : '계정 통화';
         accChart        : String @title : '계정과목표';
-        GLAccKey        : String @title : '3번 키 값, 해당 G/L Num에 대응하는 cmpCode를 가져오기 위함';
 };
 
 entity AccCategory{

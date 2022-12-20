@@ -37,11 +37,17 @@
                                     </m:HBox>
                                 </m:VBox>                                    
                                 <m:VBox class="sapUiTinyMarginTop">                                    
-                                    <m:Input id="accNumber" class="sapUiTinyMarginBegin" width="auto"/>
+                                    <m:Input id="accNumber" class="sapUiTinyMarginBegin" width="auto" type="Number"/>
                                     <m:layoutData>
                                         <layout:GridData span="XL11 L11 M11 S11" />
                                     </m:layoutData>                        
-                                </m:VBox>                                    
+                                </m:VBox>
+                                <m:HBox justifyContent="End">
+                                    <m:Button text="초기화" type="Transparent" press=".onReset" class="sapUiTinyMarginBegin"/>
+                                    <m:layoutData>
+                                        <layout:GridData span="XL12 L12 M12 S12"/>
+                                    </m:layoutData>                          
+                                </m:HBox>                                   
                             </form:content>
                         </form:SimpleForm>
 					</ObjectPageSubSection>
@@ -50,47 +56,48 @@
 
             <ObjectPageSection titleUppercase="false" title="일반" >
 				<subSections>
-					<ObjectPageSubSection title="일반" titleUppercase="false">
+					<ObjectPageSubSection title="일반">
                          <form:SimpleForm layout="ResponsiveGridLayout">
                             <form:content>
-                                <m:VBox class="sapUiTinyMarginTop">
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="계정과목표 : " class="sapUiTinyMarginTop" />                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="계정 유형 : " class="sapUiTinyMarginTop"/>                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="계정 그룹 : " class="sapUiTinyMarginTop"/>                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="생성일 : " class="sapUiTinyMarginTop"/>                                        
-                                    </m:HBox>                                
-                                    <m:HBox alignItems="Center">
-                                        <m:Label text="생성자 : " class="sapUiTinyMarginTop"/>                                        
-                                    </m:HBox>
+                                <m:VBox>
+                                    <m:Label text="계정과목표"/>
+                                    <m:ComboBox id="accChart" items="{Account>/COA}">
+                                        <core:Item key='{Account>accChart}' text="{Account>accChart}"/>
+                                    </m:ComboBox> 
                                     <m:layoutData>
-                                        <layout:GridData span="XL1 L1 M1 S1" />
+                                        <layout:GridData span= "XL1 L2 M6 S12"/>
                                     </m:layoutData>
-                                </m:VBox>
-                                <m:VBox class="sapUiTinyMarginTop">
-                                    <m:Button text="test" press=".onTest"/>
-                                <!-- 계정과목표 -->
-                                    <m:Input id="accChart" width="20%"/>    
-                                <!-- 계정 유형  -->
-                                    <m:Select id="accType" items="{Account>/AccCategory}" width="20%">
+                                </m:VBox>                               
+                                <m:VBox>
+                                    <m:Label text="계정 유형"/> 
+                                    <m:ComboBox id="accCategory" items="{Account>/AccCategory}">
                                         <core:Item text="{Account>accCategory_kor}" key="{Account>accCategory_key}" />
-                                    </m:Select>  
-                                <!-- 계정 그룹  -->
-                                    <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"  width="20%"/>
-                                <!-- 생성일 -->
-                                    <m:Text id="createDate" width="20%"/>
-                                <!-- 생성자 -->
-                                    <m:Input id="creator"  width="20%"/>
+                                    </m:ComboBox> 
                                     <m:layoutData>
-                                        <layout:GridData span="XL11 L11 M11 S11" />
+                                        <layout:GridData span= "XL1 L2 M6 S12"/>
                                     </m:layoutData>
-                                </m:VBox>
+                                </m:VBox>                               
+                                <m:VBox>
+                                    <m:Label text="계정 그룹"/>
+                                    <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"/>
+                                    <m:layoutData>
+                                        <layout:GridData span= "XL1 L2 M6 S12"/>
+                                    </m:layoutData>
+                                </m:VBox>                               
+                                <m:VBox>
+                                    <m:Label text="생성일 : " class="sapUiTinyMarginTop"/>
+                                    <m:Text id="createDate"/> 
+                                    <m:layoutData>
+                                        <layout:GridData span= "XL1 L2 M6 S12"/>
+                                    </m:layoutData>
+                                </m:VBox>                               
+                                <m:VBox>
+                                    <m:Label text="생성자 : " class="sapUiTinyMarginTop"/>  
+                                    <m:Input id="creator"/>
+                                    <m:layoutData>
+                                        <layout:GridData span= "XL1 L2 M6 S12"/>
+                                    </m:layoutData>
+                                </m:VBox> 
                             </form:content>
                         </form:SimpleForm>
 					</ObjectPageSubSection>
@@ -104,11 +111,13 @@
                             visibleRowCountMode="Auto"
                             minAutoRowCount="5"
                             rows="{CmpCodeModel>/}"
-                            selectionMode="MultiToggle" width="auto">
+                            selectionBehavior="Row"
+                            selectionMode="Single">
                             <ui:extension>
                                 <m:OverflowToolbar>
-                                    <m:Title id="TableName" text="회사코드지정()"/>
+                                    <m:Title id="TitleName"/>
                                     <m:ToolbarSpacer/>
+                                    <m:Button text="조회" press=".onCheckCmpCode"/> 
                                     <m:Button text="생성" press=".onCreateCmpCode" type="Transparent" ariaHasPopup="Dialog"/> 
                                 </m:OverflowToolbar>
                             </ui:extension>

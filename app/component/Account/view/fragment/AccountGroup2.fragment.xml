@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table">
+    <Dialog id="AccountGroup" title="계정 그룹">
+        <content>
+            <VBox>
+                <Label text="검색 및 선택 : " />
+                <Input id="searchAccGrp" class="sapUiSmallMarginBottom" showValueHelp="true"
+                valueHelpIconSrc="sap-icon://search" valueHelpRequest="onSearchAccountGroupFragment" />
+            </VBox>
+        </content>
+        <t:Table id="AccountGroupTable" rows="{GrpModel>/}" selectionMode="None" cellClick=".onCellClickAccountGroup">
+            <t:extension>
+                <OverflowToolbar>
+                    <Title id="SPrdTableName" text="항목" />
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column hAlign="Center" sortProperty="accChart" filterProperty="name">
+                    <Label text="계정과목표" />
+                    <t:template>
+                        <Text text="{GrpModel>accChart}" />
+                    </t:template>
+                </t:Column>
+                <t:Column hAlign="Center">
+                    <Label text="계정그룹" />
+                    <t:template>
+                        <Text text="{GrpModel>accGroup}" />
+                    </t:template>
+                </t:Column>
+                <t:Column hAlign="Center">
+                    <Label text="의미" />
+                    <t:template>
+                        <Text text="{GrpModel>accMean}" />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+        <buttons>
+            <Button text="취소" press=".onBackAccountGroup" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
