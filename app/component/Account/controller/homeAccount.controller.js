@@ -11,7 +11,8 @@ sap.ui.define([
         onAccount: function() {
             this.getOwnerComponent().getRouter().navTo("Account");
         },
-        onCreateAccount: function() {
+
+        oncreateAccount: function() {
             this.getOwnerComponent().getRouter().navTo("createAccount");
         }
 
