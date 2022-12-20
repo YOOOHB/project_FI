@@ -35,7 +35,7 @@ height="100%">
                         </VBox>
                         <VBox>
                             <Label text="계정과목표"/>
-                            <MultiInput id="accChart" showValueHelp="true"
+                            <MultiInput id="accChart" showValueHelp="true" valueHelpOnly="true"
 			                       valueHelpRequest=".onValueHelpChart1"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
@@ -52,7 +52,7 @@ height="100%">
                             </layoutData>
                         </VBox>
                         <VBox>
-                            <Label text="생성일자"/>
+                            <Label text="생성일"/>
                             <DatePicker
                                 id="createDate"
                                 displayFormat="yyyy-MM-dd"
@@ -63,7 +63,7 @@ height="100%">
                         </VBox>
                         <VBox>
                             <Label text="계정 그룹"/>
-                            <MultiInput id="accGroup" showValueHelp="true"
+                            <MultiInput id="accGroup" showValueHelp="true" valueHelpOnly="true"
 			                       valueHelpRequest=".onValueHelpGroup2"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
@@ -128,7 +128,7 @@ height="100%">
                         </t:template>
                     </t:Column>
                     <t:Column hAlign="Center">
-                        <Label text="생성일자" />
+                        <Label text="생성일" />
                         <t:template>
                             <Text text="{AccountModel>createDate}" />
                         </t:template>
