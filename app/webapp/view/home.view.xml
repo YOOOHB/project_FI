@@ -18,7 +18,7 @@
 				<HBox width="100%" height="3rem">
 					<Title text="BP(고객마스터) 페이지"/>
 				</HBox>
-        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="BP(고객마스터)" press=".onAccount">
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="BP(고객마스터)" press=".onCustomer">
 					<TileContent>
 						<ImageContent src="sap-icon://person-placeholder"/>
 					</TileContent>

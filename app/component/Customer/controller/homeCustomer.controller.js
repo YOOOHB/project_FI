@@ -9,6 +9,14 @@ sap.ui.define([
 
         onCustomer:function() {
             this.getOwnerComponent().getRouter().navTo("Customer")
+        },
+
+        oncreateCustomerP:function() {
+            this.getOwnerComponent().getRouter().navTo("createCustomerP")
+        },
+
+        oncreateCustomerO:function() {
+            this.getOwnerComponent().getRouter().navTo("createCustomerO")
         }
     });
 });

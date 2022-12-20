@@ -3,21 +3,24 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
 	<ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
-		<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-			<content class="panelbottomline">
-				<HBox width="100%" height="3rem">
-					<Title text="component/Account"  />
-				</HBox>
-				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Account.view.xml" press=".onAccount">
-					<TileContent>
-						<ImageContent src="sap-icon://survey"/>
-					</TileContent>
-				</GenericTile>
-				<HBox width="100%" height="3rem"/>
-				<HBox width="100%" height="3rem">
-					<Title text="Account Overview"/>
-				</HBox>
-			</content>
-		</Panel>
-	</ScrollContainer>
+	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+		<HBox width="100%" height="3rem">
+			<Title text="G/L 계정과목"  />
+		</HBox>
+		<content class="panelbottomline">
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="G/L 계정과목 조회"
+				subheader="" press="onAccount">
+				<TileContent unit="" footer="">
+					<ImageContent src="sap-icon://person-placeholder" />
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="G/L 계정과목 생성"
+				subheader="" press="oncreateAccount">
+				<TileContent unit="" footer="">
+					<ImageContent src="sap-icon://add-employee" />
+				</TileContent>
+			</GenericTile>
+		</content>
+	</Panel>
+</ScrollContainer>
 </mvc:View>
