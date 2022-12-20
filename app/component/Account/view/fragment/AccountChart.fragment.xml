@@ -6,13 +6,13 @@
     <ValueHelpDialog
 		
         title="계정과목표"
-        ok=".onValueHelpOkPress"
-        cancel=".onValueHelpCancelPress"
+        ok=".onValueHelpOkPress1"
+        cancel=".onValueHelpCancelPress1"
         supportRanges="true"
         key="accChart"
         >
         <filterBar>
-            <fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+            <fb:FilterBar advancedMode="true" search=".onFilterBarSearch1" isRunningInValueHelpDialog="true">
                 <fb:filterGroupItems>
                     <fb:FilterGroupItem
                         groupName="$INTERNAL$"
