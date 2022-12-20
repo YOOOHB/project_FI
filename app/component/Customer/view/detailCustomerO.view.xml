@@ -39,7 +39,11 @@
 
 				<layout:VerticalLayout>
 					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="500px"/>
-					<m:Text id="bpRange" text="{CustomerModel>/bpRange}" width="500px"/>
+					<m:ObjectStatus
+                             text="{
+                                path:'CustomerModel>/bpRange',
+                                formatter:'.Cformatter.statusText'
+                                }" />
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">

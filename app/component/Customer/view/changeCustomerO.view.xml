@@ -20,13 +20,12 @@
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
 				<m:HBox>
-					<m:Button type="Back" class="sapUiTinyMarginTop" press=".onCustomer"/>
 					<m:Title text="{CustomerModel>/name}" wrapping="true" />
 				</m:HBox>	
 				</expandedHeading>
 
 				<expandedContent>
-					<m:Text text="{CustomerModel>/customerNumber}" class="sapUiMediumMarginBegin"/>
+					<m:Text text="{CustomerModel>/customerNumber}"/>
 				</expandedContent>
 
 				<actions>
@@ -41,7 +40,11 @@
 
 				<layout:VerticalLayout>
 					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="500px"/>
-					<m:Text text="내용" width="500px"/>
+					<m:ObjectStatus
+                             text="{
+                                path:'CustomerModel>/bpRange',
+                                formatter:'.Cformatter.statusText'
+                                }" />
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -51,7 +54,7 @@
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:Label text="회사 코드" design="Bold"/>
-					<m:Text text="내용" width="500px"/>
+					<m:Text text="{CustomerModel>/cmpCode}" width="500px"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
@@ -83,8 +86,8 @@
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
 										<m:Text id="changeDate" />
-										<m:Label text="최종 변경자" />
-										<m:Input id="modifier" value="{CustomerModel>/modifier}" />
+										<m:Label text="최종 변경자" required="true"/>
+										<m:Input id="modifier" value="{CustomerModel>/modifier}"/>
 										
 									</f:content>
 								</f:SimpleForm>
@@ -112,22 +115,25 @@
 										<m:Select 	width="100%"
 													id="orderHold"
 													forceSelection="false"
+													selectedKey="{CustomerModel>/orderHold_key}"
 													items="{path: 'orderHoldModel>/'}">
 											<core:Item text="{orderHoldModel>orderHold_kor}" key="{orderHoldModel>orderHold_key}" />
 										</m:Select>
 										<m:Label text="청구 보류" />
 										<m:Select 	width="100%"
 													id="requestHold"
-													forceSelection="false" 
+													forceSelection="false"
+													selectedKey="{CustomerModel>/requestHold_key}" 
 													items="{path: 'requestHoldModel>/'}">
 											<core:Item text="{requestHoldModel>requestHold_kor}" key="{requestHoldModel>requestHold_key}" />
 										</m:Select>
 										<m:Label text="전기 보류" />
-										<m:CheckBox id="postHold" editable="true" selected="false"/>
+										<m:CheckBox id="postHold" editable="true" selected="{CustomerModel>/postHold}"/>
 										<m:Label text="고객 분류" />
 										<m:Select 	width="100%"
 													id="customerClass"
-													forceSelection="false" 
+													forceSelection="false"
+													selectedKey="{CustomerModel>/customer_key}"
 													items="{path: 'customerClassModel>/'}">
 											<core:Item text="{customerClassModel>customer_kor}" key="{customerClassModel>customer_key}" />
 										</m:Select>
