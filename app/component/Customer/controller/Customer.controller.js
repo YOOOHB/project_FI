@@ -501,11 +501,6 @@ sap.ui.define(
         let sRouteName = '';
 
         var SelectedNum = data.customerNumber;
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 9d2cacd147be0ef953aed06877a23dd3b1365fb0
         if (selectedRange === 'A') {
           sRouteName = 'detailCustomerP';
 
