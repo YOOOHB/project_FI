@@ -9,12 +9,8 @@
 	xmlns:core="sap.ui.core">
 
 	<ObjectPageLayout id="ObjectPageLayout"
-					useIconTabBar="true"
-					subSectionLayout="TitleOnLeft"
 					showTitleInHeaderContent="true"
 					upperCaseAnchorBar="false"
-					toggleHeaderOnTitleClick="false"
-					headerContentPinnable="false"
 					showFooter="true">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
@@ -40,18 +36,34 @@
 				<m:Image class="sapUiSmallMarginEnd" src="./Image/person2.PNG" width="60px" height="80px" />
 
 				<layout:VerticalLayout>
-					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="500px"/>
-					<m:Text id="bpRange" text="{CustomerModel>/bpRange}" width="500px"/>
+					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="300px"/>
+					<m:ObjectStatus
+                             text="{
+                                path:'CustomerModel>/bpRange',
+                                formatter:'.Cformatter.statusText'
+                                }" />
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label id="address" text="표준 주소" design="Bold" width="500px"/>
-					<m:Text text="{CustomerModel>/country} {CustomerModel>/city} {CustomerModel>/region} {CustomerModel>/postalCode} {CustomerModel>/street} {CustomerModel>/houseNumber}" width="500px"/>
+					<m:Label id="address" text="표준 주소" design="Bold" width="300px"/>
+					<m:Text text="{CustomerModel>/country} {CustomerModel>/city} {CustomerModel>/region} {CustomerModel>/postalCode} {CustomerModel>/street} {CustomerModel>/houseNumber}" width="300px"/>
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label id="cmpCode" text="회사 코드" design="Bold"/>
-					<m:Text text="{CustomerModel>/cmpCode}" width="500px"/>
+					<m:Label id="status" text="상태" design="Bold" width="300px"/>
+					<m:Text text="오더 보류: {CustomerModel>/orderHold}" width="300px"/>
+					<m:Text text="청구 보류: {CustomerModel>/requestHold}" width="300px"/>
+					<m:Text text="전기 보류: {path:'CustomerModel>/postHold', formatter:'.Pformatter.statusText'}" width="300px"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label id="cmpCode" text="회사 코드" design="Bold" width="300px"/>
+					<m:Text text="{CustomerModel>/cmpCode}" width="300px"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label id="manager" text="담당자" design="Bold" width="300px"/>
+					<m:Text text="{CustomerModel>/manager}" width="300px"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
@@ -59,7 +71,7 @@
 		<sections>
 			<ObjectPageSection titleUppercase="false" title="기본 데이터" >
 				<subSections>
-					<ObjectPageSubSection>
+					<ObjectPageSubSection >
 							<m:VBox class="sapUiSmallMargin">
 								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup234"
 												editable="false"
@@ -113,8 +125,8 @@
 										<m:Text id="customerNumber" text="{CustomerModel>/customerNumber}" />
 										<m:Label text="고객 계정 그룹" />
 										<m:Text id="accGroup" text="{CustomerModel>/accGroup}" />
-										<m:Label text="" />
-										<m:Text text="" />
+										<m:Label text="조정 계정" />
+										<m:Text text="21100000" />
 										<m:Label text="오더 보류" />
 										<m:Text id="orderHold" text="{CustomerModel>/orderHold}" />
 										<m:Label text="청구 보류" />
@@ -123,6 +135,50 @@
 										<m:CheckBox id="postHold" editable="false" selected="{CustomerModel>/postHold}"/>
 										<m:Label text="고객 분류" />
 										<m:Text id="customer" text="{CustomerModel>/customer}" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+									</f:content>
+								</f:SimpleForm>
+							</m:VBox>
+					</ObjectPageSubSection>
+				</subSections>
+				<subSections>
+					<ObjectPageSubSection>
+							<m:VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup223213234"
+												editable="false"
+												layout="ColumnLayout"
+												title="은행 정보"
+												columnsXL="4"
+												width="80%"
+												>
+									<f:content>
+										<m:Label text="은행명" />
+										<m:Text id="bankKey" text="{CustomerModel>/bankKey}" />
+										<m:Label text="계좌 번호" />
+										<m:Text id="bankNumber" text="{CustomerModel>/bankNumber}" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -160,7 +216,7 @@
 										<m:Text id="postalCode" text="{CustomerModel>/postalCode}" />
 										<m:Label text="도시" />
 										<m:Text id="city" text="{CustomerModel>/city}" />
-										<m:Label text="국가/지역" />
+										<m:Label text="국가" />
 										<m:Text id="country" text="{CustomerModel>/country}" />
 										<m:Label text="지역" />
 										<m:Text id="region" text="{CustomerModel>/region}" />

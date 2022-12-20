@@ -3,8 +3,10 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/Fragment",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function(Controller,JSONModel,Fragment,Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageBox"
+
+], function(Controller,JSONModel,Fragment,Filter, FilterOperator,MessageBox) {
   "use strict";
 
   let Today, CreateNum;
@@ -15,6 +17,8 @@ sap.ui.define([
 
       const myRoute = this.getOwnerComponent().getRouter().getRoute("createCustomerP");
       myRoute.attachPatternMatched(this.onMyRoutePatternMatched, this);
+
+
 
     },
 
@@ -27,8 +31,12 @@ sap.ui.define([
         type: "get",
         url: "/customer/Customer"
      });
-     
 
+     let Today;
+
+     let now = new Date();
+     Today = now.getFullYear() + "-" + (now.getMonth()+1).toString().padStart(2,'0') + "-" + now.getDate().toString().padStart(2,"0");
+  
       let CustomerModel = new JSONModel(Customer.value);
       this.getView().setModel(CustomerModel, "CustomerModel");
       console.log(this.getView().getModel("CustomerModel"));
@@ -39,6 +47,7 @@ sap.ui.define([
       var newNumber = CustomerModelData[Customerlength-1].customerNumber + 1;
       
       this.byId("customerNumber").setText(newNumber);
+      this.byId("createDate").setText(Today);
 
 
       const CountryRegion = await $.ajax({
@@ -76,15 +85,25 @@ sap.ui.define([
 
     },
 
-    onCreate: async function () {
+    errorclear: function() {
+      this.getView().byId("lastName").setValueState("None");
+      this.getView().byId("firstName").setValueState("None");
+      this.getView().byId("cmpCode").setValueState("None");
+    },
 
+    onCreate: async function () {
+      this.errorclear();
+      var lastName = this.byId("lastName").getValue();
+      var firstName = this.byId("firstName").getValue();
+      var name = lastName + firstName;
       var temp ={
         customerNumber : parseInt(this.byId("customerNumber").getText()),
-        bpRange : this.byId("bpRange").getText(),
+        bpRange : this.byId("bpRange").getSelectedKey(),
         personalTitle : this.byId("personalTitle").getSelectedKey(),
         lastName : this.byId("lastName").getValue(),
         firstName : this.byId("firstName").getValue(),
-        createDate : this.byId("createDate").getValue(),
+        createDate : this.byId("createDate").getText(),
+        manager : this.byId("manager").getValue(),
         street : this.byId("street").getValue(),
         houseNumber : this.byId("houseNumber").getValue(),
         postalCode : this.byId("postalCode").getValue(),
@@ -102,11 +121,32 @@ sap.ui.define([
         lgForm:null,
         postHold:null,
         requestHold:null,
-        name:null
-        
+        name: name,
+        orderHold_key:null,
+        requestHold_key:null,
+        customer_key:null,
+        bankKey: this.byId("bankKey").getValue(),
+        bankNumber: this.byId("bankNumber").getValue()
+
+      }
+      
+      console.log(temp.lastName);
+      // 유효성 체크
+      if(!temp.lastName || !temp.firstName || !temp.cmpCode){
+        if(!temp.lastName){
+          this.getView().byId("lastName").setValueState("Error");
+        }
+        if(!temp.firstName){
+          this.getView().byId("firstName").setValueState("Error");
+        }
+        if(!temp.cmpCode){
+          this.getView().byId("cmpCode").setValueState("Error");
+        }
+        MessageBox.error("필수 입력 값을 확인해주세요.");
+        return;
       }
 
-      await $.ajax({
+      await $.ajax({S
         type: "POST",
         url: "/customer/Customer",
         contentType: "application/json;IEEE754Compatible=true",
@@ -119,11 +159,12 @@ sap.ui.define([
 
     onClearField: function() {
       // this.getView().byId("customerNumber").setValue("");
-      // this.getView().byId("bpRange").setValue("");
+      this.getView().byId("bpRange").setSelectedKey("A");
       this.getView().byId("personalTitle").setSelectedKey("Mr.");
       this.getView().byId("lastName").setValue("");
       this.getView().byId("firstName").setValue("");
-      this.getView().byId("createDate").setValue("");
+      // this.getView().byId("createDate").setValue("");
+      this.getView().byId("manager").setValue("");
       this.getView().byId("street").setValue("");
       this.getView().byId("houseNumber").setValue("");
       this.getView().byId("postalCode").setValue("");
@@ -132,6 +173,12 @@ sap.ui.define([
       this.getView().byId("region").setValue("");
       this.getView().byId("cmpCode").setValue("");
       this.getView().byId("currency").setValue("");
+      this.getView().byId("bankKey").setValue("");
+      this.getView().byId("bankNumber").setValue("");
+
+
+
+      this.getView().byId("lastName").focus();
 
 
     },
@@ -249,7 +296,6 @@ onCellClick2 : function (oControlEvent) {
         this.byId("compop2").close();
 
 }
-
 
     
   });

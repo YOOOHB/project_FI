@@ -8,25 +8,20 @@
 	xmlns:ff="sap.f"
 	xmlns:core="sap.ui.core">
 
-	<ObjectPageLayout id="ObjectPageLayout112"
-					useIconTabBar="true"
-					subSectionLayout="TitleOnLeft"
+	<ObjectPageLayout id="ObjectPageLayout"
 					showTitleInHeaderContent="true"
 					upperCaseAnchorBar="false"
-					toggleHeaderOnTitleClick="false"
-					headerContentPinnable="false"
 					showFooter="true">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
 				<m:HBox>
-					<m:Button type="Back" class="sapUiTinyMarginTop" press=".onCustomer"/>
 					<m:Title text="{CustomerModel>/name}" wrapping="true" />
 				</m:HBox>	
 				</expandedHeading>
 
 				<expandedContent>
-					<m:Text text="{CustomerModel>/customerNumber}" class="sapUiMediumMarginBegin"/>
+					<m:Text text="{CustomerModel>/customerNumber}"/>
 				</expandedContent>
 
 			</ObjectPageDynamicHeaderTitle>
@@ -38,7 +33,11 @@
 
 				<layout:VerticalLayout>
 					<m:Label text="비즈니스 파트너 범주 : " design="Bold" width="500px"/>
-					<m:Text id="bpRange" text="{CustomerModel>/bpRange}" width="500px"/>
+					<m:ObjectStatus
+                             text="{
+                                path:'CustomerModel>/bpRange',
+                                formatter:'.Cformatter.statusText'
+                                }" />
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -50,6 +49,13 @@
 					<m:Label id="cmpCode" text="회사 코드" design="Bold"/>
 					<m:Text text="{CustomerModel>/cmpCode}" width="500px"/>
 				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label id="manager" text="담당자" design="Bold" width="300px"/>
+					<m:Input value="{CustomerModel>/manager}" width="300px"/>
+				</layout:VerticalLayout>
+
+				
 			</m:FlexBox>
 		</headerContent>
 
@@ -86,7 +92,7 @@
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
 										<m:Text id="changeDate" />
-										<m:Label text="최종 변경자" />
+										<m:Label text="최종 변경자" required="true"/>
 										<m:Input id="modifier" value="{CustomerModel>/modifier}" />
 										<m:Label text="" />
 										<m:Text text="" />
@@ -110,31 +116,78 @@
 										<m:Text id="customerNumber" text="{CustomerModel>/customerNumber}" />
 										<m:Label text="고객 계정 그룹" />
 										<m:Text id="accGroup" text="{CustomerModel>/accGroup}" />
-										<m:Label text="" />
-										<m:Text text="" />
+										<m:Label text="조정 계정" />
+										<m:Text text="21100000" />
 										<m:Label text="오더 보류" />
 										<m:Select 	width="100%"
 													id="orderHold"
 													forceSelection="false"
+													selectedKey="{CustomerModel>/orderHold_key}"
 													items="{path: 'orderHoldModel>/'}">
 											<core:Item text="{orderHoldModel>orderHold_kor}" key="{orderHoldModel>orderHold_key}" />
 										</m:Select>
 										<m:Label text="청구 보류" />
 										<m:Select 	width="100%"
 													id="requestHold"
-													forceSelection="false" 
+													forceSelection="false"
+													selectedKey="{CustomerModel>/requestHold_key}" 
 													items="{path: 'requestHoldModel>/'}">
 											<core:Item text="{requestHoldModel>requestHold_kor}" key="{requestHoldModel>requestHold_key}" />
 										</m:Select>
 										<m:Label text="전기 보류" />
-										<m:CheckBox id="postHold" editable="true" selected="false"/>
+										<m:CheckBox id="postHold" editable="true" selected="{CustomerModel>/postHold}"/>
 										<m:Label text="고객 분류" />
 										<m:Select 	width="100%"
 													id="customerClass"
-													forceSelection="false" 
+													forceSelection="false"
+													selectedKey="{CustomerModel>/customer_key}"
 													items="{path: 'customerClassModel>/'}">
 											<core:Item text="{customerClassModel>customer_kor}" key="{customerClassModel>customer_key}" />
 										</m:Select>
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+									</f:content>
+								</f:SimpleForm>
+							</m:VBox>
+					</ObjectPageSubSection>
+				</subSections>
+				<subSections>
+					<ObjectPageSubSection>
+							<m:VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup223213234"
+												editable="false"
+												layout="ColumnLayout"
+												title="은행 정보"
+												columnsXL="4"
+												width="80%"
+												>
+									<f:content>
+										<m:Label text="은행명" />
+										<m:Input id="bankKey" value="{CustomerModel>/bankKey}" />
+										<m:Label text="계좌 번호" />
+										<m:Input id="bankNumber" value="{CustomerModel>/bankNumber}" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
+										<m:Label text="" />
+										<m:Text text="" />
 										<m:Label text="" />
 										<m:Text text="" />
 										<m:Label text="" />
@@ -172,7 +225,7 @@
 										<m:Input id="postalCode" value="{CustomerModel>/postalCode}" />
 										<m:Label text="도시" />
 										<m:Input id="city" value="{CustomerModel>/city}" />
-										<m:Label text="국가/지역" />
+										<m:Label text="국가" />
 										<m:Input id="country" value="{CustomerModel>/country}" />
 										<m:Label text="지역" />
 										<m:Input id="region" value="{CustomerModel>/region}" />

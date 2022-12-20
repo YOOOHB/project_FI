@@ -29,10 +29,15 @@ entity Customer {
         requestHold_key : String                @title : '청구 보류 키워드';
         customer_key    : String                @title : '고객 분류 키워드';
         manager         : String                @title : '담당자';
+<<<<<<< HEAD
         bankCountry     : String                @title : '은행 국가';
         bankKey         : String                @title : '은행 키';
         bankNumber      : String                @title : '계좌 번호';
 
+=======
+        bankKey         : String                @title : '은행 키';
+        bankNumber      : String                @title : '계좌 번호';
+>>>>>>> 9d2cacd147be0ef953aed06877a23dd3b1365fb0
 
 };
 

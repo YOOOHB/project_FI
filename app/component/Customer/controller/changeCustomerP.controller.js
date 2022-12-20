@@ -1,9 +1,10 @@
 sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
-        "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        "../model/Cformatter"
     ],
-    function(BaseController, JSONModel) {
+    function(BaseController, JSONModel, Cformatter) {
       "use strict";
 
       let SelectedNum;
@@ -14,6 +15,7 @@ sap.ui.define(
       let date = today.getDate();
   
       return BaseController.extend("project3.controller.changeCustomerP", {
+        Cformatter: Cformatter,
         
         onInit() {
             this.getOwnerComponent().getRouter().getRoute("changeCustomerP").attachPatternMatched(this.onMyRoutePatternMatched, this);
@@ -68,40 +70,50 @@ sap.ui.define(
           },
           
           onConfirm: async function() {
-
-
+            // select창에서 selected 된 값이 없을 시, 수정될 데이터 값이 null이 되어버려 오류가 나기 때문에 아래와 같이 null일 경우 string 공란으로 받아줌
             if(this.byId("orderHold").getSelectedItem() === null ){
               var orderHoldText = ""
+              var orderHoldkeyText = ""
             } else {
               var orderHoldText = this.byId("orderHold").getSelectedItem().mProperties.text
+              var orderHoldkeyText = this.byId("orderHold").getSelectedItem().mProperties.key
             }
 
             if(this.byId("requestHold").getSelectedItem() === null ){
               var requestHoldText = ""
+              var requestHoldkeyText = ""
             } else {
               var requestHoldText = this.byId("requestHold").getSelectedItem().mProperties.text
+              var requestHoldkeyText = this.byId("requestHold").getSelectedItem().mProperties.key
             }
             
             if(this.byId("customerClass").getSelectedItem() === null ){
               var customerClassText = ""
+              var customerClasskeyText = ""
             } else {
               var customerClassText = this.byId("customerClass").getSelectedItem().mProperties.text
+              var customerClasskeyText = this.byId("customerClass").getSelectedItem().mProperties.key
             }
 
             var edit = {
-              
+              manager : this.byId("manager").getValue(),
               modifier : this.byId("modifier").getValue(),
               changeDate : year+ '-' + month + '-' + date,
               orderHold : orderHoldText,
+              orderHold_key : orderHoldkeyText,
               requestHold : requestHoldText,
-              // postHold : Boolean(this.byId("postHold").getSelected()),
+              requestHold_key : requestHoldkeyText,
+              postHold : Boolean(this.byId("postHold").getSelected()),
               customer : customerClassText,
+              customer_key : customerClasskeyText,
               street : this.byId("street").getValue(),
               houseNumber : this.byId("houseNumber").getValue(),
               postalCode : this.byId("postalCode").getValue(),
               city : this.byId("city").getValue(),
               country : this.byId("country").getValue(),
-              region : this.byId("region").getValue()
+              region : this.byId("region").getValue(),
+              bankKey : this.byId("bankKey").getValue(),
+              bankNumber : this.byId("bankNumber").getValue(),
             };
 
           let url = "/customer/Customer/" + SelectedNum;

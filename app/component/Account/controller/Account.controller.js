@@ -28,8 +28,8 @@ sap.ui.define([
         onInit: async function () {
             this.getOwnerComponent().getRouter().getRoute("Account").attachPatternMatched(this.onMy, this);
 
-            this._oWhiteSpacesInput = this.byId("accChart");
-            this._oWhiteSpacesInput1 = this.byId("accGroup");
+            this._oWhiteSpacesInput1 = this.byId("accChart");
+            this._oWhiteSpacesInput2 = this.byId("accGroup");
         },
         onMy: async function () {
             let Account = await $.ajax({
@@ -106,23 +106,23 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
-            this._oBasicSearchField = new SearchField({
+            this._oBasicSearchField1 = new SearchField({
                 search: function () {
                     this.oAccChartDialog.getFilterBar().search();
                 }.bind(this)
             });
-            if (!this.pWhitespaceDialog) {
-                this.pWhitespaceDialog = this.loadFragment({
+            if (!this.pWhitespaceDialog1) {
+                this.pWhitespaceDialog1 = this.loadFragment({
                     name: "project2.view.fragment.AccountChart"
                 });
             }
-            this.pWhitespaceDialog.then(function (oAccChartDialog) {
+            this.pWhitespaceDialog1.then(function (oAccChartDialog) {
                 var oFilterBar = oAccChartDialog.getFilterBar();
                 this.oAccChartDialog = oAccChartDialog;
                 if (this._bWhitespaceDialogInitialized) {
                     // Re-set the tokens from the input and update the table
                     oAccChartDialog.setTokens([]);
-                    oAccChartDialog.setTokens(this._oWhiteSpacesInput.getTokens());
+                    oAccChartDialog.setTokens(this._oWhiteSpacesInput1.getTokens());
                     oAccChartDialog.update();
                     oAccChartDialog.open();
                     return;
@@ -137,11 +137,9 @@ sap.ui.define([
 
                 // Set Basic Search for FilterBar
                 oFilterBar.setFilterBarExpanded(false);
-                oFilterBar.setBasicSearch(this._oBasicSearchField);
+                oFilterBar.setBasicSearch(this._oBasicSearchField1);
 
-                // Re-map whitespaces
-                // oFilterBar.determineFilterItemByName("ProductCode").getControl().setTextFormatter(this._inputTextFormatter);
-
+                // Re-map whitespaces               
                 oAccChartDialog.getTableAsync().then(function (oTable) {
                     oTable.setModel(this.oModel);
 
@@ -158,19 +156,15 @@ sap.ui.define([
                             }
                         });
                     }
-
-
-
                     oAccChartDialog.update();
                 }.bind(this));
 
-                // oAccChartDialog.setTok/ens(t/his._oWhiteSpacesInput.getTokens());
                 this._bWhitespaceDialogInitialized = true;
                 oAccChartDialog.open();
             }.bind(this));
         },
 
-        onValueHelpOkPress: function (oEvent) {
+        onValueHelpOkPress1: function (oEvent) {
             var aTokens = oEvent.getParameter("tokens");
             console.log(aTokens)
 
@@ -180,19 +174,14 @@ sap.ui.define([
             for (let i = 0; i < tokenNum; i++) {
                 aTokens[i].mProperties.text = aTokens[i].mProperties.key;
             }
-
-
-            this._oWhiteSpacesInput.setTokens(aTokens)
-            this.oAccChartDialog.close();
-
-        },
-
-        onValueHelpCancelPress: function () {
+            this._oWhiteSpacesInput1.setTokens(aTokens)
             this.oAccChartDialog.close();
         },
-
+        onValueHelpCancelPress1: function () {
+            this.oAccChartDialog.close();
+        },
         onFilterBarSearch: function (oEvent) {
-            var sSearchQuery = this._oBasicSearchField.getValue(),
+            var sSearchQuery = this._oBasicSearchField1.getValue(),
                 aSelectionSet = oEvent.getParameter("selectionSet");
 
             var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
@@ -203,9 +192,8 @@ sap.ui.define([
                         value1: oControl.getValue()
                     }));
                 }
-
                 return aResult;
-            }, []);
+            });
 
             aFilters.push(new Filter({
                 filters: [
@@ -221,22 +209,18 @@ sap.ui.define([
             }));
         },
 
-
         _filterTableAccount: function (oFilter) {
             var oValueHelpDialog = this.oAccChartDialog;
             oValueHelpDialog.getTableAsync().then(function (oTable) {
                 if (oTable.bindRows) {
                     oTable.getBinding("rows").filter(oFilter);
                 }
-                if (oTable.bindItems) {
-                    oTable.getBinding("items").filter(oFilter);
-                }
                 oValueHelpDialog.update();
             });
         },
 
-        //계정그룹 다이얼로그
 
+        //계정그룹 다이얼로그
         onValueHelpGroup2: function () {
             var oCodeTemplate1 = new Text({ text: { path: 'groupModel>accChart' }, renderWhitespace: true });
             var oTextTemplate1 = new Text({ text: { path: 'groupModel>accGroup' }, renderWhitespace: true });
@@ -250,56 +234,49 @@ sap.ui.define([
                 }
             }
             */
+           console.log(this.byId("accChart").getTokens());
             groupfilter = [];
-            let chartInput= this.byId("accChart").getTokens()
-            var tokenNums;
-            console.log(chartInput[0].mProperties.text);
-            tokenNums=chartInput.length;
+            let chartInput = this.byId("accChart").getTokens();
+            var tokenNums = chartInput.length;
             console.log(tokenNums);
-            var chartText;
-            if(chartInput != null){
-                for (var i=0; i<tokenNums;i++){
-                    chartText = chartInput[i].mProperties.text;
-                    groupfilter.push(new Filter("accChart", FilterOperator.Contains, chartText))
+            if (tokenNums != 0) {
+                var grouptempfilter = [];
+                for (var i = 0; i < tokenNums; i++) {
+                    var chartText = chartInput[i].mProperties.text;
+                    grouptempfilter.push(new Filter("accChart", FilterOperator.Contains, chartText))
                 }
+                groupfilter.push(new Filter({
+                    filters: grouptempfilter,
+                    and: false
+                }));
             }
-            
-      
-            console.log(groupfilter);
-            console.log(groupfilter[0].oValue1);
-            // groupfilter
 
-
-
-
-            if (!this._oBasicSearchField1) {
-                this._oBasicSearchField1 = new SearchField({
+            if (!this._oBasicSearchField2) {
+                this._oBasicSearchField2 = new SearchField({
                     search: function () {
                         this.oAccGroupDialog.getFilterBar().search();
                     }.bind(this)
                 });
             }
-            else {
-                //console.log(this._oBasicSearchField1);
-            }
-            if (!this.pWhitespaceDialog1) {
-                this.pWhitespaceDialog1 = this.loadFragment({
+        
+            if (!this.pWhitespaceDialog2) {
+                this.pWhitespaceDialog2 = this.loadFragment({
                     name: "project2.view.fragment.AccountGroup"
                 });
             }
 
-            this.pWhitespaceDialog1.then(function (oAccGroupDialog) {
-                var oFilterBar1 = oAccGroupDialog.getFilterBar();
+            this.pWhitespaceDialog2.then(function (oAccGroupDialog) {
+                var oFilterBar2 = oAccGroupDialog.getFilterBar();
                 this.oAccGroupDialog = oAccGroupDialog;
                 if (this._bWhitespaceDialogInitialized2) {
                     //한번이라도 열렸다면 프래그먼트의 검색 값을 비워주고 필터(계정과 목표의 필터는 적용됨)
-                    this._oBasicSearchField1.setValue(null);
-                    this.onFilterBarSearch2();
-                    // Re-set the tokens from the input and update the table
+                    this._oBasicSearchField2.setValue(null);
 
+                    // Re-set the tokens from the input and update the table
                     oAccGroupDialog.setTokens([]);
-                    oAccGroupDialog.setTokens(this._oWhiteSpacesInput1.getTokens());
+                    oAccGroupDialog.setTokens(this._oWhiteSpacesInput2.getTokens());
                     oAccGroupDialog.update();
+                    this.onFilterBarSearch2();
                     oAccGroupDialog.open();
                     return;
                 }
@@ -312,12 +289,8 @@ sap.ui.define([
                 }]);
 
                 // Set Basic Search for FilterBar
-                oFilterBar1.setFilterBarExpanded(false);
-                oFilterBar1.setBasicSearch(this._oBasicSearchField1);
-
-
-                // Re-map whitespaces
-                // oFilterBar.determineFilterItemByName("ProductCode").getControl().setTextFormatter(this._inputTextFormatter);
+                oFilterBar2.setFilterBarExpanded(false);
+                oFilterBar2.setBasicSearch(this._oBasicSearchField2);
 
                 oAccGroupDialog.getTableAsync().then(function (oTable) {
                     oTable.setModel(this.oModel);
@@ -339,52 +312,39 @@ sap.ui.define([
 
                     oAccGroupDialog.update();
                 }.bind(this));
-
-                // oAccGroupDialog.setTok/ens(t/his._oWhiteSpacesInput1.getTokens());
                 this._bWhitespaceDialogInitialized2 = true;
 
-
-
                 //한번이라도 열리지 않았다면, 계정과 목표의 필터만으로 프래그먼트 필터링
-                this._filterTableAccount1(new Filter({
+                this._filterTableAccount2(new Filter({
                     filters: groupfilter,
                     and: true
                 }));
-                //
                 oAccGroupDialog.open();
             }.bind(this));
         },
 
         onValueHelpOkPress2: function (oEvent) {
-            var aTokens1 = oEvent.getParameter("tokens");
-            console.log(aTokens1)
-
-            tokenNum1 = aTokens1.length;    //전역변수
-            console.log(tokenNum1)
-            var arr = [];
+            var aTokens = oEvent.getParameter("tokens");
+            tokenNum1 = aTokens.length;    //전역변수        
             for (let i = 0; i < tokenNum1; i++) {
-                aTokens1[i].mProperties.text = aTokens1[i].mProperties.key;
-                //arr.push(aTokens1[i].mProperties.text)
+                aTokens[i].mProperties.text = aTokens[i].mProperties.key;
             }
-            console.log(arr);
-
-            this._oWhiteSpacesInput1.setTokens(aTokens1);
+            this._oWhiteSpacesInput2.setTokens(aTokens);
             this.oAccGroupDialog.close();
-
-
         },
 
         onValueHelpCancelPress2: function () {
             this.oAccGroupDialog.close();
-
         },
 
         onFilterBarSearch2: function () {
-            var sSearchQuery = this._oBasicSearchField1.getValue();
+            var sSearchQuery = this._oBasicSearchField2.getValue();
             var aFilters = [];
             //계정과 목표에 값이 있다면 필터 추가
             if (groupfilter.length !== 0) {
-                aFilters.push(groupfilter);
+                for (var i = 0; i < groupfilter.length; i++) {
+                    aFilters.push(groupfilter[i]);
+                }
             }
             aFilters.push(new Filter({
                 filters: [
@@ -394,28 +354,21 @@ sap.ui.define([
                 ],
                 and: false
             }));
-
-            this._filterTableAccount1(new Filter({
+            this._filterTableAccount2(new Filter({
                 filters: aFilters,
                 and: true
             }));
         },
-
-
-        _filterTableAccount1: function (oFilter) {
-            var oValueHelpDialog1 = this.oAccGroupDialog;
-            oValueHelpDialog1.getTableAsync().then(function (oTable1) {
+        _filterTableAccount2: function (oFilter) {
+            var oValueHelpDialog2 = this.oAccGroupDialog;
+            oValueHelpDialog2.getTableAsync().then(function (oTable1) {
                 if (oTable1.bindRows) {
                     oTable1.getBinding("rows").filter(oFilter);
                 }
-                if (oTable1.bindItems) {
-                    oTable1.getBinding("items").filter(oFilter);
-                }
-                oValueHelpDialog1.update();
+                oValueHelpDialog2.update();
             });
         },
         //다이얼로그 컨트롤러 끝
-
 
 
         onCreateAccount: function () {
@@ -431,10 +384,10 @@ sap.ui.define([
             let i;
             for (i = 0; i < totalNumber; i++) {
                 let chk = '/' + i + '/CHK';
-                let key = '/' + i + '/accNumber';
+                let key = '/' + i + '/ID';
                 if (model.getProperty(chk) === true) {
-                    let accNumber = model.getProperty(key);
-                    let url = "/account/GLAcc/" + accNumber
+                    let ID = model.getProperty(key);
+                    let url = "/account/GLAcc/" + ID
                     await $.ajax({
                         type: "DELETE",
                         url: url
@@ -538,16 +491,24 @@ sap.ui.define([
                 type: EdmType.string
             });
             aCols.push({
-                label: "생성일자",
+                label: "내역",
+                property: "accContents",
+                type: EdmType.string
+            });
+            aCols.push({
+                label: "생성자",
+                property: "creator",
+                type: EdmType.string
+            });
+            aCols.push({
+                label: "생성일",
                 property: "createDate",
                 type: EdmType.string
             });
             return aCols;
 
         },
-        onNavToDetail: function (e) {
-            console.log(e.getParameter())
-            console.log(e.getSource())
+        onNavToDetail: function () {
             this.getOwnerComponent().getRouter().navTo("detailAccount");
 
         }

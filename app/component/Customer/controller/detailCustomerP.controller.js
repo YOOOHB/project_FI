@@ -1,13 +1,16 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/Fragment"
+    "../model/Cformatter",
+    "../model/Pformatter"
 ], function(
-    Controller, JSONModel, Fragment
+    Controller, JSONModel, Cformatter, Pformatter
 ) {
     "use strict";
 
     return Controller.extend("project3.controller.detailCustomerP", {
+        Cformatter: Cformatter,
+        Pformatter: Pformatter,
 
         onInit: function(){
 
