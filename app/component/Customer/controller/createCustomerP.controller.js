@@ -27,8 +27,12 @@ sap.ui.define([
         type: "get",
         url: "/customer/Customer"
      });
-     
 
+     let Today;
+
+     let now = new Date();
+     Today = now.getFullYear() + "-" + (now.getMonth()+1).toString().padStart(2,'0') + "-" + now.getDate().toString().padStart(2,"0");
+  
       let CustomerModel = new JSONModel(Customer.value);
       this.getView().setModel(CustomerModel, "CustomerModel");
       console.log(this.getView().getModel("CustomerModel"));
@@ -39,6 +43,7 @@ sap.ui.define([
       var newNumber = CustomerModelData[Customerlength-1].customerNumber + 1;
       
       this.byId("customerNumber").setText(newNumber);
+      this.byId("createDate").setText(Today);
 
 
       const CountryRegion = await $.ajax({
@@ -80,11 +85,11 @@ sap.ui.define([
 
       var temp ={
         customerNumber : parseInt(this.byId("customerNumber").getText()),
-        bpRange : this.byId("bpRange").getText(),
+        bpRange : this.byId("bpRange").getSelectedKey(),
         personalTitle : this.byId("personalTitle").getSelectedKey(),
         lastName : this.byId("lastName").getValue(),
         firstName : this.byId("firstName").getValue(),
-        createDate : this.byId("createDate").getValue(),
+        createDate : this.byId("createDate").getText(),
         street : this.byId("street").getValue(),
         houseNumber : this.byId("houseNumber").getValue(),
         postalCode : this.byId("postalCode").getValue(),
@@ -102,8 +107,10 @@ sap.ui.define([
         lgForm:null,
         postHold:null,
         requestHold:null,
-        name:null
-        
+        name:null,
+        orderHold_key:null,
+        requestHold_key:null,
+        customer_key:null        
       }
 
       await $.ajax({
@@ -119,11 +126,11 @@ sap.ui.define([
 
     onClearField: function() {
       // this.getView().byId("customerNumber").setValue("");
-      // this.getView().byId("bpRange").setValue("");
+      this.getView().byId("bpRange").setSelectedKey("A");
       this.getView().byId("personalTitle").setSelectedKey("Mr.");
       this.getView().byId("lastName").setValue("");
       this.getView().byId("firstName").setValue("");
-      this.getView().byId("createDate").setValue("");
+      // this.getView().byId("createDate").setValue("");
       this.getView().byId("street").setValue("");
       this.getView().byId("houseNumber").setValue("");
       this.getView().byId("postalCode").setValue("");
@@ -132,6 +139,8 @@ sap.ui.define([
       this.getView().byId("region").setValue("");
       this.getView().byId("cmpCode").setValue("");
       this.getView().byId("currency").setValue("");
+
+      this.getView().byId("lastName").focus();
 
 
     },

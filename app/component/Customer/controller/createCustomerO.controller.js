@@ -26,6 +26,12 @@ sap.ui.define([
         type: "get",
         url: "/customer/Customer"
      });
+
+     let Today;
+
+     let now = new Date();
+     Today = now.getFullYear() + "-" + (now.getMonth()+1).toString().padStart(2,'0') + "-" + now.getDate().toString().padStart(2,"0");
+  
      
 
       let CustomerModel = new JSONModel(Customer.value);
@@ -38,6 +44,7 @@ sap.ui.define([
       var newNumber = CustomerModelData[Customerlength-1].customerNumber + 1;
       
       this.byId("customerNumber").setText(newNumber);
+      this.byId("createDate").setText(Today);
 
       const CountryRegion = await $.ajax({
         type: "get",
@@ -78,10 +85,10 @@ sap.ui.define([
 
       var temp ={
         customerNumber : parseInt(this.byId("customerNumber").getText()),
-        bpRange : this.byId("bpRange").getText(),
+        bpRange : this.byId("bpRange").getSelectedKey(),
         orgName : this.byId("orgName").getValue(),
         name : this.byId("name").getValue(),
-        createDate : this.byId("createDate").getValue(),
+        createDate : this.byId("createDate").getText(),
         street : this.byId("street").getValue(),
         houseNumber : this.byId("houseNumber").getValue(),
         postalCode : this.byId("postalCode").getValue(),
@@ -100,7 +107,10 @@ sap.ui.define([
         postHold:null,
         requestHold:null,
         lastName:null,
-        firstName:null
+        firstName:null,
+        orderHold_key:null,
+        requestHold_key:null,
+        customer_key:null  
         
       }
 
@@ -118,10 +128,10 @@ sap.ui.define([
 
     onClearField: function() {
       // this.getView().byId("customerNumber").setValue("");
-      // this.getView().byId("bpRange").setValue("");
+      this.getView().byId("bpRange").setSelectedKey("B");
       this.getView().byId("orgName").setValue("");
       this.getView().byId("name").setValue("");
-      this.getView().byId("createDate").setValue("");
+      // this.getView().byId("createDate").setValue("");
       this.getView().byId("street").setValue("");
       this.getView().byId("houseNumber").setValue("");
       this.getView().byId("postalCode").setValue("");
@@ -130,6 +140,8 @@ sap.ui.define([
       this.getView().byId("region").setValue("");
       this.getView().byId("cmpCode").setValue("");
       this.getView().byId("currency").setValue("");
+
+      this.getView().byId("orgName").focus();
 
 
     },
