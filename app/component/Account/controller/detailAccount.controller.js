@@ -9,16 +9,13 @@ sap.ui.define([
 	return Controller.extend("project2.controller.detailAccount", {
 		formatter: aFormatter,
 		onInit: async function () {
-			this.getOwnerComponent().getRouter().getRoute("detailAccount").attachPatternMatched(this.onRecordNum, this);
 			this.getOwnerComponent().getRouter().getRoute("detailAccount").attachPatternMatched(this.onMyRoutePatternMatched, this);
 		},
-		onRecordNum: function (e) {
+		onMyRoutePatternMatched: function (e) {
 			ID = e.getParameter("arguments").ID;
 			num = e.getParameter("arguments").num;
-			console.log(e.getParameters())
-			console.log(e.getParameter("arguments"))
-		},
-		onMyRoutePatternMatched: async function () {
+			
+			this.byId("selectGLNum").setSelectedKey(ID);
 			this.onDataGLAcc();
 		},
 		onDataGLAcc: async function () {
@@ -27,6 +24,7 @@ sap.ui.define([
 				type: "get",
 				url: "/account/GLAcc?$filter=ID eq '" + ID + "'"
 			});
+
 			let AccountModel = new JSONModel(Account.value[0]);
 			let CmpCodeKey = Account.value[0].cmpCodeKey
 			this.getView().setModel(AccountModel, "AccountModel");
@@ -41,8 +39,10 @@ sap.ui.define([
 
 		},
 		onChangeAccNum: function() {
-			this.byId("selectGLNum").getSelectedKey();
-            this.getOwnerComponent().getRouter().navTo("detailAccount", {num: num, ID: sId});
+			ID = this.byId("selectGLNum").getSelectedKey();
+			// console.log(key);
+            // this.getOwnerComponent().getRouter().navTo("detailAccount", {num: num, ID: key});
+			this.onDataGLAcc();
 		},
 		onBack: function () {
 			if (num == "1") {

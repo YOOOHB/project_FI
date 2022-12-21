@@ -16,12 +16,13 @@
                 </expandedHeading>
 
                 <expandedContent>
-                    <m:Select id="selectGLNum" 
-                            selectedKey="{AccountModel>/accNumber}"                                
-                            items="{Account>/GLAcc}"
-                            change="onChangeAccNum">
+                    <m:HBox>
+                        <m:Text text="G/L account number : "/>
+                        <m:Select id="selectGLNum"                           
+                                items="{Account>/GLAcc}" change="onChangeAccNum" class="sapUiTinyMarginBegin">
                         <core:Item text="{Account>accNumber}" key="{Account>ID}"/>
-                    </m:Select>
+                        </m:Select>
+                    </m:HBox>
                 </expandedContent>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>        

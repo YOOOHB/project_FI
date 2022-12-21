@@ -189,9 +189,12 @@ sap.ui.define([
         onValueHelpCancelPress1: function () {
             this.oAccChartDialog.close();
         },
-        onFilterBarSearch: function (oEvent) {
+        onFilterBarSearch1: function (oEvent) {
             var sSearchQuery = this._oBasicSearchField1.getValue(),
                 aSelectionSet = oEvent.getParameter("selectionSet");
+
+                console.log(aSelectionSet[0].getValue())
+                console.log(aSelectionSet[1])
             
             var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
                 if (oControl.getValue()) {

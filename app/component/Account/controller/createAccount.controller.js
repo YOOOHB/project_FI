@@ -265,7 +265,8 @@ sap.ui.define([                                 //맨위
                                 url: "/account/CmpCode" + Gurl                                           
                         });
                         CmpCodeModel= new JSONModel(Cmppp.value);
-                        // console.log(CmpCodeModel)
+                        CmpCount = CmpCodeModel.oData.length;   //회사코드 개수
+                        this.byId("TitleName").setText("회사코드지정("+CmpCount+")"); // 회사코드 테이블 타이틀 회사코드 개수                         
                         this.getView().setModel(CmpCodeModel, "CmpCodeModel");                         
                 },        
                 onCreateCmpCode: function () {
