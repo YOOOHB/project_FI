@@ -2,9 +2,10 @@ sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
         "sap/ui/model/json/JSONModel",
-        "../model/Cformatter"
+        "../model/Cformatter",
+        "sap/m/MessageBox"
     ],
-    function(BaseController, JSONModel, Cformatter) {
+    function(BaseController, JSONModel, Cformatter, MessageBox) {
       "use strict";
 
       let SelectedNum;
@@ -113,6 +114,12 @@ sap.ui.define(
             country : this.byId("country").getValue(),
             region : this.byId("region").getValue()
           };
+
+          if(!edit.modifier){
+            this.getView().byId("modifier").setValueState("Error");
+            MessageBox.error("최종 변경자를 입력하세요.");
+            return;
+          }
 
         let url = "/customer/Customer/" + SelectedNum;
         await $.ajax({
