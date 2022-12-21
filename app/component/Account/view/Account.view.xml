@@ -27,7 +27,7 @@ height="100%">
                 <form:SimpleForm layout="ResponsiveGridLayout">
                     <form:content>
                         <VBox>
-                            <Label text="계정 번호"/>
+                            <Label text="G/L계정 번호"/>
                             <Input id="accNumber"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>

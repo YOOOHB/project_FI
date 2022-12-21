@@ -115,7 +115,7 @@
         },
         {
           "name": "detailAccount",
-          "pattern": "detailAccount",
+          "pattern": "detailAccount/{num}",
           "target": "detailAccount"
         },
         {

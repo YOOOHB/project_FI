@@ -36,6 +36,13 @@ sap.ui.define([
                 type: "get",
                 url: "/account/GLAcc"
             });
+
+            Account.value.sort(                             // Key 값이 String이라 1/10/~~/2/20 순서로 출력됐는데 1/2/3~으로 출력하기 위한 함수
+                function(a, b)  {
+                    return Number(a.ID) - Number(b.ID);
+                }
+            )
+            
             let AccountModel = new JSONModel(Account.value);
             this.getView().setModel(AccountModel, "AccountModel");
 
@@ -106,11 +113,13 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
-            this._oBasicSearchField1 = new SearchField({
-                search: function () {
-                    this.oAccChartDialog.getFilterBar().search();
-                }.bind(this)
-            });
+            if (!this._oBasicSearchField1) {
+                this._oBasicSearchField1 = new SearchField({
+                    search: function () {
+                        this.oAccChartDialog.getFilterBar().search();
+                    }.bind(this)
+                });
+            }
             if (!this.pWhitespaceDialog1) {
                 this.pWhitespaceDialog1 = this.loadFragment({
                     name: "project2.view.fragment.AccountChart"
@@ -183,7 +192,7 @@ sap.ui.define([
         onFilterBarSearch: function (oEvent) {
             var sSearchQuery = this._oBasicSearchField1.getValue(),
                 aSelectionSet = oEvent.getParameter("selectionSet");
-
+            
             var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
                 if (oControl.getValue()) {
                     aResult.push(new Filter({
@@ -508,9 +517,15 @@ sap.ui.define([
             return aCols;
 
         },
-        onNavToDetail: function () {
-            this.getOwnerComponent().getRouter().navTo("detailAccount");
+        onNavToDetail: function (oEvent) {
+            let oControl = oEvent.getSource(),      // navication control
+                oParent = oControl.getParent(),     // button control
+                oRowControl = oParent.getParent(),  // row control
+                oBindingContext = oRowControl.getBindingContext('AccountModel'),  // getBindingContext
+                oData = oBindingContext.getObject();    // bindingContext 바인딩되어있는 데이터
+            let sId = oData.ID;
 
+            this.getOwnerComponent().getRouter().navTo("detailAccount", {num: sId});
         }
 
 
