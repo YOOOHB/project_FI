@@ -64,6 +64,7 @@
                             required="true" valueStateText="회사 코드를 입력해 주세요." />
                         <Label id="_IDGenLabel14" text="통화" />
                         <Input id="currency" text="{currency}" />
+                        
                          <core:Title id="_IDGenTitle4" text="은행 정보" />
                         <Label id="_IDGenLabel17" text="은행명" />
                         <Input id="bankKey" text="{bankKey}" />
