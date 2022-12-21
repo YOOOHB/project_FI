@@ -297,6 +297,12 @@ onCellClick2 : function (oControlEvent) {
         this.byId("cmpCode").setValue(data2.cmpCode_key);
         this.byId("compop2").close();
 
+},
+
+
+onBack1: function(){
+  this.getOwnerComponent().getRouter().navTo("homeCustomer");
+
 }
 
     
