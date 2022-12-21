@@ -127,12 +127,7 @@ height="100%">
                             <Text text="{AccountModel>accNumber}" />
                         </t:template>
                     </t:Column>
-                    <t:Column hAlign="Center">
-                        <Label text="생성일" />
-                        <t:template>
-                            <Text text="{AccountModel>createDate}" />
-                        </t:template>
-                    </t:Column>
+                   
                     <t:Column hAlign="Center">
                         <Label text="계정과목표" />
                         <t:template>
@@ -147,6 +142,12 @@ height="100%">
                                     path: 'AccountModel>accCategory',
                                     formatter:'.formatter.statusText'
                                         }"/>
+                        </t:template>
+                    </t:Column>
+                     <t:Column hAlign="Center">
+                        <Label text="생성일" />
+                        <t:template>
+                            <Text text="{AccountModel>createDate}" />
                         </t:template>
                     </t:Column>
                     <t:Column hAlign="Center">

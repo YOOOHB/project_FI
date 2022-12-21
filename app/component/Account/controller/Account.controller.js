@@ -30,6 +30,16 @@ sap.ui.define([
 
             this._oWhiteSpacesInput1 = this.byId("accChart");
             this._oWhiteSpacesInput2 = this.byId("accGroup");
+
+            var table = this.byId("AccountTable").getBinding("rows");
+            console.log(table);
+
+            let countModel = new JSONModel({count: 0});
+            if(table != undefined){
+                this.getView().setModel(countModel, "co");
+                console.log(countModel);
+                this.getView().getModel("co").setProperty("/count", table.aIndices.length)
+            }
         },
         onMy: async function () {
             let Account = await $.ajax({
@@ -66,6 +76,17 @@ sap.ui.define([
             });
             let groupModel = new JSONModel(group.value);
             this.getView().setModel(groupModel, "groupModel");
+
+            var table = this.byId("AccountTable").getBinding("rows");
+            console.log(table);
+
+            let countModel = new JSONModel({count: 0});
+            if(table != undefined || table.aIndices != undefined){
+                this.getView().setModel(countModel, "co");
+                console.log(countModel);
+                this.getView().getModel("co").setProperty("/count", table.aIndices.length);
+            }
+            
         },
         onSearch: function () {
             let accNumber = this.byId("accNumber").getValue();
@@ -113,13 +134,20 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
-            if (!this._oBasicSearchField1) {
-                this._oBasicSearchField1 = new SearchField({
-                    search: function () {
-                        this.oAccChartDialog.getFilterBar().search();
-                    }.bind(this)
-                });
-            }
+            // if (!this._oBasicSearchField1) {
+            //     this._oBasicSearchField1 = new SearchField({
+            //         search: function () {
+            //             this.oAccChartDialog.getFilterBar().search();
+            //         }.bind(this)
+            //     });
+            // }
+            this._oBasicSearchField1 = new SearchField({
+                search: function () {
+                    this.oAccChartDialog.getFilterBar().search();
+                }.bind(this)
+            });
+
+
             if (!this.pWhitespaceDialog1) {
                 this.pWhitespaceDialog1 = this.loadFragment({
                     name: "project2.view.fragment.AccountChart"
@@ -189,10 +217,10 @@ sap.ui.define([
         onValueHelpCancelPress1: function () {
             this.oAccChartDialog.close();
         },
-        onFilterBarSearch: function (oEvent) {
+        onFilterBarSearch1: function (oEvent) {
             var sSearchQuery = this._oBasicSearchField1.getValue(),
                 aSelectionSet = oEvent.getParameter("selectionSet");
-            
+           
             var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
                 if (oControl.getValue()) {
                     aResult.push(new Filter({
@@ -202,7 +230,7 @@ sap.ui.define([
                     }));
                 }
                 return aResult;
-            });
+            }, []);
 
             aFilters.push(new Filter({
                 filters: [
