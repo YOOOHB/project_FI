@@ -7,32 +7,37 @@
 		
 		<form:SimpleForm layout="ResponsiveGridLayout">
 			<form:content>
-				<VBox>
-					<HBox>
-						<Label text="회사 코드 : " class="sapUiTinyMarginTopBottom"/>
-					</HBox>
-					<HBox>
-						<Label text="회사 이름 : " class="sapUiTinyMarginTopBottom"/>
-					</HBox>
-					<HBox>
-						<Label text="계정 통화 : " class="sapUiTinyMarginTopBottom"/>
-					</HBox>
-					<HBox>
-						<Label text="계정과목표 : " class="sapUiTinyMarginTopBottom"/>
-					</HBox>
+				
+				<HBox>
+					<Label text="회사 코드"/>
+					<Input id="createCmpCodeCmpCode"/>
 					<layoutData>
-						<layout:GridData span="XL5 L5 M5 S5" />
+						<layout:GridData span= "XL1 L2 M6 S12"/>
 					</layoutData>
-				</VBox>
-				<VBox>
-					<Input id="createCmpCodeCmpCode" width="auto" class="sapUiTinyMarginTop"/>				
-					<Input id="createCmpCodeCmpName" width="auto" class="sapUiTinyMarginTop"/>				
-					<Input id="createCmpCodeAccCurrency" width="auto" class="sapUiTinyMarginTop"/>				
-					<Input id="createCmpCodeAccChart" width="auto" class="sapUiTinyMarginTop"/>					
+				</HBox>  
+				<HBox>
+					<Label text="회사 이름"/>
+					<Input id="createCmpCodeCmpName"/>
 					<layoutData>
-						<layout:GridData span="XL5 L5 M5 S5" />
+						<layout:GridData span= "XL1 L2 M6 S12"/>
 					</layoutData>
-				</VBox>
+				</HBox>  
+				<HBox>
+					<Label text="계정 통화"/>
+					<Input id="createCmpCodeAccCurrency"/>			 
+					<layoutData>
+						<layout:GridData span= "XL1 L2 M6 S12"/>
+					</layoutData>
+				</HBox>  
+				<HBox>
+					<Label text="계정과목표"/>
+					<Select id="createCmpCodeAccChart" items="{Account>/COA}">
+						<core:Item key='{Account>accChart}' text="{Account>accChart}"/>
+					</Select> 
+					<layoutData>
+						<layout:GridData span= "XL1 L2 M6 S12"/>
+					</layoutData>
+				</HBox>
 			</form:content>
 		</form:SimpleForm>
 		

@@ -54,7 +54,7 @@ sap.ui.define(
         });
         let CustomerModel = new JSONModel(Customer.value);
         this.getView().setModel(CustomerModel, "CustomerModel");
-
+        
         let cmpCode = await $.ajax({
           type: "get",
           url: "/customer/cmpCode"
@@ -150,7 +150,6 @@ sap.ui.define(
         var customerNumber = this.byId("customerNumber").getValue();
         var cmpCode = this.byId("cmpCode").getValue();
         var createDate = this.byId("createDate").getValue();
-        console.log(createDate);
         var bpRange = (this.byId("bpRange").getSelectedKey());
 
         var aFilter = [];
@@ -160,7 +159,6 @@ sap.ui.define(
           for (var i = 0; i < tokenNum; i++) {
             cmp.push(cmpCode.split(",")[i])
             cmpcd.push(new Filter("cmpCode", FilterOperator.Contains, cmp[i]));
-
           }
           aFilter.push(new Filter({
             filters: cmpcd,
@@ -174,7 +172,6 @@ sap.ui.define(
         //   let cusday = createDate.split(". ")[2].padStart(2, '0');
         //   createDate = cusYear + "-" + cusMonth + "-" + cusday;
         // }
-
 
         if (name) { aFilter.push(new Filter("name", FilterOperator.Contains, name)) }
         if (customerNumber) { aFilter.push(new Filter("customerNumber", FilterOperator.EQ, customerNumber)) }
@@ -215,14 +212,12 @@ sap.ui.define(
           if (this._bWhitespaceDialogInitialized) {
 
             cValueHelpDialog.setTokens([]);
-            // cValueHelpDialog.setTokens(this._oWhiteSpacesInput.getTokens());
             cValueHelpDialog.update();
             cValueHelpDialog.open();
             return;
           }
           this.getView().addDependent(cValueHelpDialog);
 
-          // Set key fields for filtering in the Define Conditions Tab
           cValueHelpDialog.setRangeKeyFields([{
             label: "CompanyCode",
             key: "cmpCode_key"
@@ -273,24 +268,19 @@ sap.ui.define(
 
       onValueHelpOkPress: function (oEvent) {
         var aTokens = oEvent.getParameter("tokens");
-        console.log(aTokens)
-
         tokenNum = aTokens.length;
-        console.log(tokenNum)
+
         var cmp = [];
         for (let i = 0; i < tokenNum; i++) {
           aTokens[i].mProperties.text = aTokens[i].mProperties.key;
           cmp.push(aTokens[i].mProperties.text)
         }
-        console.log(cmp);
-
-
+     
         this.byId('cmpCode').setValue(cmp);
         this.cValueHelpDialog.close();
       },
 
       onValueHelpCancelPress: function () {
-        // this.byId("CompanyCodePop").close();
         this.cValueHelpDialog.close();
       },
 
@@ -323,7 +313,6 @@ sap.ui.define(
           and: true
         }));
       },
-
 
       _filterTableCompanyCode: function (oFilter) {
         var oValueHelpDialog = this.cValueHelpDialog;
@@ -376,8 +365,8 @@ sap.ui.define(
 
           }
         }
-        this.onMyRoutePatternMatched();
 
+        this.onMyRoutePatternMatched();
       },
 
       onSort: function () {
@@ -432,8 +421,6 @@ sap.ui.define(
           }
 
         }
-        console.log(oRowBinding);
-        console.log(oList);
 
         oSettings = {
           workbook: {
@@ -487,25 +474,20 @@ sap.ui.define(
         return aCols;
       },
 
-      oncheckselect: function () {
-        console.log(this.getView().getModel("CustomerModel"));
+      onCheckselect: function () {
+        this.getView().getModel("CustomerModel");
 
       },
-
       onNavToDetail: function (oEvent) {
         let dParams = oEvent.getParameters();
         let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
         let data = this.getView().getModel("CustomerModel").getProperty(sPath);
-        console.log(data);
         let selectedRange = data.bpRange;
-        console.log(selectedRange);
         let sRouteName = '';
 
         var SelectedNum = data.customerNumber;
-        
         if (selectedRange === 'A') {
           sRouteName = 'detailCustomerP';
-
         }
 
         if (selectedRange === 'B') {
@@ -514,8 +496,7 @@ sap.ui.define(
 
         this.getOwnerComponent().getRouter().navTo(sRouteName, {num: SelectedNum});
       }
-
-
+      
 
     });
   }
