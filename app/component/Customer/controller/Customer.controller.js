@@ -62,6 +62,8 @@ sap.ui.define(
         let CompanyCodeModel = new JSONModel(cmpCode.value);
         this.getView().setModel(CompanyCodeModel, "CompanyCodeModel");
 
+        this.onTableUnitCount()
+
         // let bpRange = await $.ajax({
         //   type: "get",
         //   url: "/customer/bpRange"
@@ -69,6 +71,14 @@ sap.ui.define(
         // let bpRangeModel = new JSONModel(bpRange.value);
         // this.getView().setModel(bpRangeModel, "bpRangeModel");
       },
+
+      onTableUnitCount: function() {
+        var table = this.byId("CustomerTable").getBinding("rows");
+        const tableRow= table.aIndices.length;
+        let countModel = new JSONModel(tableRow.value)
+        this.byId("CustomerList").setText("고객 목록("+tableRow+")");
+        this.getView().setModel(countModel, "countModel")
+    },
 
       onBack: function () {
         this.getOwnerComponent().getRouter().navTo("homeCustomer");
@@ -150,8 +160,9 @@ sap.ui.define(
         var customerNumber = this.byId("customerNumber").getValue();
         var cmpCode = this.byId("cmpCode").getValue();
         var createDate = this.byId("createDate").getValue();
+        var country = this.byId("country").getValue();
         var bpRange = (this.byId("bpRange").getSelectedKey());
-
+        
         var aFilter = [];
         if (cmpCode) {
           var cmp = [];
@@ -164,8 +175,9 @@ sap.ui.define(
             filters: cmpcd,
             and: false
           }));
+          
         }
-
+        
         // if (createDate) {
         //   let cusYear = createDate.split(". ")[0];
         //   let cusMonth = createDate.split(". ")[1].padStart(2, '0');
@@ -176,10 +188,12 @@ sap.ui.define(
         if (name) { aFilter.push(new Filter("name", FilterOperator.Contains, name)) }
         if (customerNumber) { aFilter.push(new Filter("customerNumber", FilterOperator.EQ, customerNumber)) }
         if (createDate) { aFilter.push(new Filter("createDate", FilterOperator.Contains, createDate)) }
+        if (country) { aFilter.push(new Filter("country", FilterOperator.Contains, country)) }
         if (bpRange) { aFilter.push(new Filter("bpRange", FilterOperator.Contains, bpRange)) }
         let oTable = this.byId("CustomerTable").getBinding("rows");
         oTable.filter(aFilter);
-
+        
+        this.onTableUnitCount()
       },
 
       onReset: function () {
@@ -187,6 +201,7 @@ sap.ui.define(
         this.byId("customerNumber").setValue("");
         this.byId("cmpCode").setValue("");
         this.byId("createDate").setValue("");
+        this.byId("country").setValue("");
         this.byId("bpRange").setSelectedKey("");
 
         this.onSearch();
