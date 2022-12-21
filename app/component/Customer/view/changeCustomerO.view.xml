@@ -26,9 +26,6 @@
 					<m:Text text="{CustomerModel>/customerNumber}"/>
 				</expandedContent>
 
-				<actions>
-					<m:Button text="편집" type="Emphasized" press=".onChange"/>
-				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
