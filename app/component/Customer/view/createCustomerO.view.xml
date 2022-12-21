@@ -27,7 +27,7 @@
                         <Label id="_IDGenLabel4" text="조직 명칭" />
                         <Input id="orgName" text="{orgName}" />
                         <Label id="_IDGenLabel5" text="고객 명" />
-                        <Input id="name" text="{name}"  required="true" valueStateText="이름을 입력해 주세요." />
+                        <Input id="name" text="{name}"  required="true" valueStateText="고객명을 입력해 주세요." />
                         <Label id="_IDGenLabel6" text="생성일" />
                         <Text id="createDate" text="{createDate}"/>
                         <Label id="_IDGenLabel15" text="담당자" />
