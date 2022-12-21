@@ -110,9 +110,6 @@ sap.ui.define([                                 //맨위
                         else if(!this.byId("accGroup").getValue()) {
                                 MessageToast.show("계정그룹을 선택하세요");
                         }
-                        else if(!this.byId("creator").getValue()) {
-                                MessageToast.show("생성자를 작성하세요");
-                        }
                         else if (!this.getView().byId("CompanyCodeTable").getSelectedIndices()[0]) {
                                 MessageToast.show("회사코드를 선택하세요");
                         }
@@ -283,28 +280,55 @@ sap.ui.define([                                 //맨위
                                 this.byId("createCmpCode").open();
                         }
                 },
-                onAcceptcreateCmpCode: async function () {           // create CompanyCode                                
-                        var temp={
-                                cmpCode : this.byId("createCmpCodeCmpCode").getValue(),
-                                cmpName : this.byId("createCmpCodeCmpName").getValue(),
-                                accCurrency : this.byId("createCmpCodeAccCurrency").getValue(),
-                                accChart : this.byId("createCmpCodeAccChart").getSelectedKey()
-                        }
-                      
-                        await $.ajax({
-                                type: "POST",
-                                url: "/account/CmpCode",
-                                contentType: "application/json;IEEE754Compatible=true", //IEE~ 를 작성하지 않으면 정밀도가 떨어짐
-                                data:JSON.stringify(temp)
-                        });
-                        
+                onAcceptcreateCmpCode: async function () {           // create CompanyCode
+                        let cmpCode = this.byId("createCmpCodeCmpCode").getValue();
+                        let cmpName = this.byId("createCmpCodeCmpName").getValue();
+                        let accCurrency = this.byId("createCmpCodeAccCurrency").getValue();
+                        let accChart = this.byId("createCmpCodeAccChart").getSelectedKey();
 
-                        this.byId("createCmpCodeCmpCode").setValue("");
-                        this.byId("createCmpCodeCmpName").setValue("");
-                        this.byId("createCmpCodeAccCurrency").setValue("");
-                        this.byId("createCmpCodeAccChart").setSelectedKey("");
-                        this.byId("createCmpCode").close();
-                        this.onMyRoutePatternMatched();
+                        let cmpCount=CmpCodeModel.oData.length;
+                        for (let i=0; i<cmpCount; i++) {
+                                if(CmpCodeModel.oData[i].cmpCode === cmpCode){
+                                        MessageToast.show("중복된 회사코드입니다");
+                                        continue
+                                }
+                        }
+
+                        if(!cmpCode) {
+                                MessageToast.show("회사코드를 입력하세요")
+                        }
+                        else if(!cmpName) {
+                                MessageToast.show("회사이름을 입력하세요")
+                        }
+                        else if(!accCurrency) {
+                                MessageToast.show("계정통화를 입력하세요")
+                        }
+                        else if(!accChart){
+                                MessageToast.show("계정과목표를 선택하세요")
+                        }
+                        else {
+                                var temp={
+                                        cmpCode : cmpCode,
+                                        cmpName : cmpName,
+                                        accCurrency : accCurrency,
+                                        accChart : accChart
+                                }
+                        
+                                await $.ajax({
+                                        type: "POST",
+                                        url: "/account/CmpCode",
+                                        contentType: "application/json;IEEE754Compatible=true", //IEE~ 를 작성하지 않으면 정밀도가 떨어짐
+                                        data:JSON.stringify(temp)
+                                });
+                                
+
+                                this.byId("createCmpCodeCmpCode").setValue("");
+                                this.byId("createCmpCodeCmpName").setValue("");
+                                this.byId("createCmpCodeAccCurrency").setValue("");
+                                this.byId("createCmpCodeAccChart").setSelectedKey("");
+                                this.byId("createCmpCode").close();
+                                this.onMyRoutePatternMatched();
+                        }
                 },
                 onBackcreateCmpCode: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
                         this.byId("createCmpCode").close();
