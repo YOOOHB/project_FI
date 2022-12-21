@@ -89,8 +89,8 @@
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
 										<m:Text id="changeDate" />
-										<m:Label text="최종 변경자" required="true"/>
-										<m:Input id="modifier" value="{CustomerModel>/modifier}"/>
+										<m:Label text="최종 변경자" required="true" />
+										<m:Input id="modifier" value="{CustomerModel>/modifier}" valueStateText="최종 변경자를 입력하세요."/>
 										
 									</f:content>
 								</f:SimpleForm>

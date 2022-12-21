@@ -41,7 +41,7 @@
                         <Input id="postalCode" text="{postalCode}" />
                         <Label id="_IDGenLabel10" text="도시" />
                         <Input id="city" text="{city}" />
-                        <Label id="_IDGenLabel11" text="국가/지역" />
+                        <Label id="_IDGenLabel11" text="국가" />
                         <Input id="country" text="{country}" 
                             showValueHelp="true"
                             valueHelpOnly="true"

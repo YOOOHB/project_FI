@@ -112,7 +112,8 @@ sap.ui.define(
             postalCode : this.byId("postalCode").getValue(),
             city : this.byId("city").getValue(),
             country : this.byId("country").getValue(),
-            region : this.byId("region").getValue()
+            region : this.byId("region").getValue(),
+            manager : this.byId("manager").getValue()
           };
 
           if(!edit.modifier){

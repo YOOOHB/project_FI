@@ -147,7 +147,7 @@
 						</t:template>
 					</t:Column>
 					<t:Column hAlign="Center">
-						<Label text="국가/지역" />
+						<Label text="국가" />
 						<t:template>
 							<Text text="{CustomerModel>country}" />
 						</t:template>
