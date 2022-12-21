@@ -11,9 +11,12 @@ sap.ui.define([
         onAccount: function() {
             this.getOwnerComponent().getRouter().navTo("Account");
         },
-
         oncreateAccount: function() {
-            this.getOwnerComponent().getRouter().navTo("createAccount");
+            let homeAccount = 1
+            this.getOwnerComponent().getRouter().navTo("createAccount", {num: homeAccount});
+        },
+        onchartAccount: function() {
+            this.getOwnerComponent().getRouter().navTo("chartAccount");
         }
 
     });

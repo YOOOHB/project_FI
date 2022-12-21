@@ -36,6 +36,13 @@ sap.ui.define([
                 type: "get",
                 url: "/account/GLAcc"
             });
+
+            Account.value.sort(                             // Key 값이 String이라 1/10/~~/2/20 순서로 출력됐는데 1/2/3~으로 출력하기 위한 함수
+                function(a, b)  {
+                    return Number(a.ID) - Number(b.ID);
+                }
+            )
+
             let AccountModel = new JSONModel(Account.value);
             this.getView().setModel(AccountModel, "AccountModel");
 
@@ -372,7 +379,8 @@ sap.ui.define([
 
 
         onCreateAccount: function () {
-            this.getOwnerComponent().getRouter().navTo("createAccount");
+            let Account = 2;
+            this.getOwnerComponent().getRouter().navTo("createAccount", {num: Account});
         },
         onhomeAccount: function () {
             this.getOwnerComponent().getRouter().navTo("homeAccount");
@@ -508,9 +516,15 @@ sap.ui.define([
             return aCols;
 
         },
-        onNavToDetail: function () {
-            this.getOwnerComponent().getRouter().navTo("detailAccount");
-
+        onNavToDetail: function (oEvent) {
+            let oControl = oEvent.getSource(),      // navication control
+                oParent = oControl.getParent(),     // button control
+                oRowControl = oParent.getParent(),  // row control
+                oBindingContext = oRowControl.getBindingContext('AccountModel'),  // getBindingContext
+                oData = oBindingContext.getObject();    // bindingContext 바인딩되어있는 데이터
+            let sId = oData.ID;
+            let Account = 2
+            this.getOwnerComponent().getRouter().navTo("detailAccount", {num: Account, ID: sId});
         }
 
 
