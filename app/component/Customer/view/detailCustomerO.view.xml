@@ -122,7 +122,7 @@
 										<m:Label text="청구 보류" />
 										<m:Text id="requestHold" text="{CustomerModel>/requestHold}" />
 										<m:Label text="전기 보류" />
-										<m:Text id="postHold" text="{CustomerModel>/postHold}" />
+										<m:CheckBox id="postHold" editable="false" selected="{CustomerModel>/postHold}"/>
 										<m:Label text="고객 분류" />
 										<m:Text id="customer" text="{CustomerModel>/customer}" />
 										<m:Label text="" />

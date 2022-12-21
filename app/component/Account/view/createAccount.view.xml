@@ -22,7 +22,7 @@
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
-		<sections >
+		<sections>
 			<ObjectPageSection titleUppercase="false" title="헤더">
 				<subSections>
 					<ObjectPageSubSection title="헤더" titleUppercase="false">
