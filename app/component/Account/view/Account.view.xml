@@ -43,10 +43,10 @@ height="100%">
                         </VBox>
                         <VBox>
                             <Label text="G/L계정 유형"/>
-                             <ComboBox width="100%" id="accCategory" 
+                             <Select width="100%" id="accCategory" 
                                 items="{path: 'Account>/AccCategory'}">
                                 <core:Item text="{Account>accCategory_kor}" key="{Account>accCategory_key}" />
-                            </ComboBox>
+                            </Select>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>
@@ -89,7 +89,7 @@ height="100%">
             
                 <t:extension>
                     <OverflowToolbar>
-                        <Title id="TableName" text="G/L계정"/>
+                        <Title id="TableName" text="G/L계정 ({co>/count})"/>
                         <ToolbarSpacer/>
                         <Button
                             text="G/L계정 생성"
