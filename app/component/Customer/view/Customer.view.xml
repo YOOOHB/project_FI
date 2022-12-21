@@ -57,6 +57,13 @@
                             </layoutData>
                         </VBox>
                         <VBox>
+                            <Label text="국가"/>
+                            <Input id="country"/>
+                            <layoutData>
+                                <layout:GridData span= "XL2 L2 M6 S12"/>
+                            </layoutData>
+                        </VBox>
+                        <VBox>
                             <Label text="비즈니스 파트너 범주"/>
                              <ComboBox width="100%" id="bpRange" 
                                 items="{path: 'Customer>/bpRange'}">
@@ -96,7 +103,7 @@
 				
                 <t:extension>
 					<OverflowToolbar>
-						<Title id="CustomerList" text="고객 목록"/>
+						<Title id="CustomerList"/>
 						<ToolbarSpacer/>
                             <MenuButton text="비즈니스 파트너 생성" buttonMode="Split" useDefaultActionOnly="true">
                                 <menu>
@@ -147,7 +154,7 @@
 						</t:template>
 					</t:Column>
 					<t:Column hAlign="Center">
-						<Label text="국가/지역" />
+						<Label text="국가" />
 						<t:template>
 							<Text text="{CustomerModel>country}" />
 						</t:template>
