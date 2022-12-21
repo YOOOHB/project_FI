@@ -9,8 +9,8 @@
             <ViewSettingsItem text="G/L계정 번호" key="accNumber" selected="true"/>
             <ViewSettingsItem text="계정과목표" key="accChart" />
             <ViewSettingsItem text="G/L계정 유형" key="accCategory" />
-            <ViewSettingsItem text="계정 그룹" key="accGroup" />
             <ViewSettingsItem text="생성일" key="createDate" />
+            <ViewSettingsItem text="계정 그룹" key="accGroup" />
             
         </sortItems>
     </ViewSettingsDialog>

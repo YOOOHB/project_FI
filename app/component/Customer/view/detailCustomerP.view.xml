@@ -71,10 +71,10 @@
 			</m:FlexBox>
 		</headerContent>
 
-		<sections>
-			<ObjectPageSection titleUppercase="false" title="일반 정보" >
-				<subSections>
-					<ObjectPageSubSection >
+			<sections>
+				<ObjectPageSection titleUppercase="false" title="일반 정보" >
+					<subSections>
+						<ObjectPageSubSection >
 							<m:VBox class="sapUiSmallMargin">
 								<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup234"
 												editable="false"

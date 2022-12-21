@@ -4,20 +4,34 @@
     xmlns:f="sap.f" 
     xmlns:form="sap.ui.layout.form"
     xmlns:layout="sap.ui.layout"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:uxap="sap.uxap">
+    
+    <uxap:ObjectPageLayout id="ObjectPageLayout"
+					showTitleInHeaderContent="true"
+					upperCaseAnchorBar="false"
+					showFooter="true"
+					toggleHeaderOnTitleClick="false"
+					headerContentPinnable="false">
 
-   <f:DynamicPage id="page" headerExpanded="false" showFooter="true" toggleHeaderOnTitleClick="true">
+    <uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:heading>
+                    <HBox>
+                        <Button type="Back" press=".onBack" class="sapUiTinyMarginTop"/>
+                        <Title text="고객마스터 생성(개인)" wrapping="true" />
+                    </HBox>
+				</uxap:heading>
 
-        <f:content>
-                <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
-                <form:SimpleForm id="ResponsiveLayout"
-                    editable="false"
-                    layout="ResponsiveGridLayout"
-                    title="조직 생성"
-                    singleContainerFullSize="false" >
-                    <form:content>
-                        <core:Title id="_IDGenTitle1" text="일반 데이터" />
-                        <Label  text="고객 번호" />
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+
+            <uxap:sections>
+			<uxap:ObjectPageSection titleUppercase="false" title="일반 데이터" >
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection >
+
+                            <Label  text="고객 번호" />
                         <Text id="customerNumber" text="{customerNumber}" />
                         <Label id="_IDGenLabel2" text="BP 범주" />
                          <Select width="100%" id="bpRange" editable="false">
@@ -32,7 +46,13 @@
                         <Text id="createDate" text="{createDate}"/>
                         <Label id="_IDGenLabel15" text="담당자" />
                         <Input id="manager" text="{manager}" />
-                        <core:Title id="_IDGenTitle2" text="표준 주소" />
+            </uxap:ObjectPageSubSection>
+            </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+                <uxap:ObjectPageSection titleUppercase="false" title="표준 주소" >
+                <uxap:subSections>
+                <uxap:ObjectPageSubSection >
                         <Label id="_IDGenLabel7" text="도로 주소" />
                         <Input id="street" text="{street}" />
                         <Label id="_IDGenLabel8" text="번지" />
@@ -48,8 +68,13 @@
 			                valueHelpRequest="onValueHelpRequest" />
                         <Label id="_IDGenLabel12" text="지역" />
                         <Input id="region" text="{region}" />
+                </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+                </uxap:ObjectPageSection>
 
-                        <core:Title id="_IDGenTitle3" text="조직 데이터" />
+                <uxap:ObjectPageSection titleUppercase="false" title="조직 데이터" >
+                <uxap:subSections>
+                <uxap:ObjectPageSubSection >
                         <Label id="_IDGenLabel13" text="회사 코드" />
                         <Input id="cmpCode" text="{cmpCode}"   
                             showValueHelp="true"
@@ -58,23 +83,32 @@
                             required="true" valueStateText="회사 코드를 입력해 주세요." />
                         <Label id="_IDGenLabel14" text="통화" />
                         <Input id="currency" text="{currency}" />
-                        <core:Title id="_IDGenTitle4" text="은행 정보" />
+                </uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection titleUppercase="false" title="은행 정보" >
+			    <uxap:subSections>
+			    <uxap:ObjectPageSubSection >    
                         <Label id="_IDGenLabel17" text="은행명" />
                         <Input id="bankKey" text="{bankKey}" />
                         <Label id="_IDGenLabe18" text="계좌 번호" />
                         <Input id="bankNumber" text="{bankNumber}" />
-                    </form:content>
-                </form:SimpleForm>
-            </VBox>
-        </f:content>
+                </uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
 
-        <f:footer>
+             </uxap:sections>
+
+        <uxap:footer>
             <OverflowToolbar id="_IDGenOverflowToolbar1" >
             <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
             <Button id="_IDGenButton1" type="Emphasized" text="생성" press="onCreate"/>
             <Button id="_IDGenButton2" type="Default" text="취소" press="onBack"/>
             </OverflowToolbar>
-        </f:footer> 
-     </f:DynamicPage>
+        </uxap:footer> 
+      
+     
+	</uxap:ObjectPageLayout>
 
    </mvc:View>

@@ -16,15 +16,6 @@
                 <fb:filterGroupItems>
                     <fb:FilterGroupItem
                         groupName="$INTERNAL$"
-                        name="accChart"
-                        label="계정과목표"
-                        visibleInFilterBar="true">
-                        <fb:control>
-                            <m:Input name="accChart" />
-                        </fb:control>
-                    </fb:FilterGroupItem>
-					<fb:FilterGroupItem
-                        groupName="$INTERNAL$"
                         name="accGroup"
                         label="계정그룹"
                         visibleInFilterBar="true">
@@ -32,6 +23,16 @@
                             <m:Input name="accGroup" />
                         </fb:control>
                     </fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        groupName="$INTERNAL$"
+                        name="accChart"
+                        label="계정과목표"
+                        visibleInFilterBar="true">
+                        <fb:control>
+                            <m:Input name="accChart" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+					
                     <fb:FilterGroupItem
                         groupName="$INTERNAL$"
                         name="accMean"

@@ -30,6 +30,15 @@ sap.ui.define([
 
             this._oWhiteSpacesInput1 = this.byId("accChart");
             this._oWhiteSpacesInput2 = this.byId("accGroup");
+
+            var table = this.byId("AccountTable").getBinding("rows");
+            console.log(table);
+
+            const countModel = new JSONModel({count: 0});
+            this.getView().setModel(countModel, "co");
+            if(table != undefined && table.aIndices != undefined){
+                this.getView().getModel("co").setProperty("/count", table.aIndices.length)
+            }
         },
         onMy: async function () {
             let Account = await $.ajax({
@@ -66,6 +75,25 @@ sap.ui.define([
             });
             let groupModel = new JSONModel(group.value);
             this.getView().setModel(groupModel, "groupModel");
+
+            this.onTableUnitCount();
+            this.onReset();
+
+            
+
+            // if(table != undefined && table.aIndices != undefined){
+            //     this.getView().getModel("co").setProperty("/count", table.aIndices.length);
+            // }
+            
+        },
+        onTableUnitCount: function() {
+            var table = this.byId("AccountTable").getBinding("rows");
+            console.log(table);
+            //console.log(this.getView().getModel("co"));
+            const tableRow= table.aIndices.length;
+            let countModel = new JSONModel(tableRow.value)
+            this.byId("TableName").setText("G/L계정("+tableRow+")");
+            this.getView().setModel(countModel, "countModel")
         },
         onSearch: function () {
             let accNumber = this.byId("accNumber").getValue();
@@ -96,6 +124,7 @@ sap.ui.define([
             if (createDate) { aFilter.push(new Filter("createDate", FilterOperator.Contains, createDate)) }
             let oTable = this.byId("AccountTable").getBinding("rows");
             oTable.filter(aFilter);
+            this.onTableUnitCount();
 
         },
         onReset: function () {
@@ -106,6 +135,7 @@ sap.ui.define([
             this.byId("accGroup").removeAllTokens();
 
             this.onSearch();
+            
         },
 
         //계정과목표 다이얼로그 
@@ -113,13 +143,20 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
-            if (!this._oBasicSearchField1) {
-                this._oBasicSearchField1 = new SearchField({
-                    search: function () {
-                        this.oAccChartDialog.getFilterBar().search();
-                    }.bind(this)
-                });
-            }
+            // if (!this._oBasicSearchField1) {
+            //     this._oBasicSearchField1 = new SearchField({
+            //         search: function () {
+            //             this.oAccChartDialog.getFilterBar().search();
+            //         }.bind(this)
+            //     });
+            // }
+            this._oBasicSearchField1 = new SearchField({
+                search: function () {
+                    this.oAccChartDialog.getFilterBar().search();
+                }.bind(this)
+            });
+
+
             if (!this.pWhitespaceDialog1) {
                 this.pWhitespaceDialog1 = this.loadFragment({
                     name: "project2.view.fragment.AccountChart"
@@ -205,7 +242,7 @@ sap.ui.define([
                     }));
                 }
                 return aResult;
-            });
+            }, []);
 
             aFilters.push(new Filter({
                 filters: [
@@ -234,8 +271,8 @@ sap.ui.define([
 
         //계정그룹 다이얼로그
         onValueHelpGroup2: function () {
-            var oCodeTemplate1 = new Text({ text: { path: 'groupModel>accChart' }, renderWhitespace: true });
             var oTextTemplate1 = new Text({ text: { path: 'groupModel>accGroup' }, renderWhitespace: true });
+            var oCodeTemplate1 = new Text({ text: { path: 'groupModel>accChart' }, renderWhitespace: true });
             var oTextTemplate2 = new Text({ text: { path: 'groupModel>accMean' }, renderWhitespace: true });
             //계정과목표용 필터 팝업 열릴떄마다 초기화
             /*
@@ -309,8 +346,8 @@ sap.ui.define([
 
                     // For Desktop and tabled the default table is sap.ui.table.Table
                     if (oTable.bindRows) {
-                        oTable.addColumn(new UIColumn({ label: "계정과목표", template: oCodeTemplate1 }));
                         oTable.addColumn(new UIColumn({ label: "계정 그룹", template: oTextTemplate1 }));
+                        oTable.addColumn(new UIColumn({ label: "계정과목표", template: oCodeTemplate1 }));
                         oTable.addColumn(new UIColumn({ label: "의미", template: oTextTemplate2 }));
                         oTable.bindAggregation("rows", {
                             path: "groupModel>/",
@@ -343,6 +380,7 @@ sap.ui.define([
             }
             this._oWhiteSpacesInput2.setTokens(aTokens);
             this.oAccGroupDialog.close();
+            console.log(aTokens);
         },
 
         onValueHelpCancelPress2: function () {
@@ -441,15 +479,18 @@ sap.ui.define([
 
         onDataExport: function () {
             let aCols, oRowBinding, oSettings, oSheet, oTable;
+
             oTable = this.byId('AccountTable');
             oRowBinding = oTable.getBinding('rows');
             aCols = this.createColumnConfig();
+
             let oList = [];
             for (let j = 0; j < oRowBinding.oList.length; j++) {
                 if (oRowBinding.aIndices.indexOf(j) > -1) {
                     oList.push(oRowBinding.oList[j]);
                 }
             }
+            console.log(oRowBinding.oList.length);
             for (let i = 0; i < oList.length; i++) {
                 if (oList[i].accCategory === 'P') {
                     oList[i].accCategory = '1차 원가 또는 수익';
@@ -472,7 +513,7 @@ sap.ui.define([
                     columns: aCols,
                     hierarchyLevel: 'Level'
                 },
-                dataSource: oRowBinding,
+                dataSource: oList,
                 fileName: 'AccountTable.xlsx',
                 worker: false
             };
@@ -497,27 +538,17 @@ sap.ui.define([
                 label: "G/L계정 유형",
                 property: "accCategory",
                 type: EdmType.int32
-            });
-            aCols.push({
-                label: "계정 그룹",
-                property: "accGroup",
-                type: EdmType.string
-            });
-            aCols.push({
-                label: "내역",
-                property: "accContents",
-                type: EdmType.string
-            });
-            aCols.push({
-                label: "생성자",
-                property: "creator",
-                type: EdmType.string
-            });
+            });                     
             aCols.push({
                 label: "생성일",
                 property: "createDate",
                 type: EdmType.string
             });
+            aCols.push({
+                label: "계정 그룹",
+                property: "accGroup",
+                type: EdmType.string
+            }) 
             return aCols;
 
         },
