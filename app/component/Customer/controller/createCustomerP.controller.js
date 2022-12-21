@@ -24,8 +24,9 @@ sap.ui.define([
 
 
     onMyRoutePatternMatched: async function(){
-      this.onClearField();
 
+      this.onClearField();
+      console.log("hi!")
       
       const Customer = await $.ajax({
         type: "get",
@@ -62,6 +63,7 @@ sap.ui.define([
      console.log(this.getView().getModel("CountryRegionModel"));
 
 
+     this.getView().byId("lastName").focus();
 
 
      const Companydata = await $.ajax({
@@ -178,7 +180,7 @@ sap.ui.define([
 
 
 
-      this.getView().byId("lastName").focus();
+   
 
 
     },
@@ -292,7 +294,7 @@ onCellClick2 : function (oControlEvent) {
         console.log(data2.cmpCode_kor);
 
         // this.byId("countryCode").setValue(data.code);
-        this.byId("cmpCode").setValue(data2.cmpCode_kor);
+        this.byId("cmpCode").setValue(data2.cmpCode_key);
         this.byId("compop2").close();
 
 }

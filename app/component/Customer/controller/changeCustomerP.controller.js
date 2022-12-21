@@ -96,7 +96,6 @@ sap.ui.define(
             }
 
             var edit = {
-              manager : this.byId("manager").getValue(),
               modifier : this.byId("modifier").getValue(),
               changeDate : year+ '-' + month + '-' + date,
               orderHold : orderHoldText,
@@ -112,6 +111,7 @@ sap.ui.define(
               city : this.byId("city").getValue(),
               country : this.byId("country").getValue(),
               region : this.byId("region").getValue(),
+              manager : this.byId("manager").getValue(),
               bankKey : this.byId("bankKey").getValue(),
               bankNumber : this.byId("bankNumber").getValue(),
             };

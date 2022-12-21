@@ -20,6 +20,12 @@
 					<ImageContent src="sap-icon://add-employee" />
 				</TileContent>
 			</GenericTile>
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="G/L 계정과목 차트"
+				subheader="" press="onchartAccount">
+				<TileContent unit="" footer="">
+					<ImageContent src="sap-icon://horizontal-bar-chart" />
+				</TileContent>
+			</GenericTile>
 		</content>
 	</Panel>
 </ScrollContainer>

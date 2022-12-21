@@ -1,0 +1,40 @@
+<mvc:View controllerName="project2.controller.Test"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+    <form:SimpleForm editable="true">
+        <Button text="BACK" press=".onBack"/>
+
+		<Label text="Products" labelFor="multiInput"/>
+		<MultiInput
+			id="multiInput"
+			width="60%"
+			valueHelpRequest=".onOpenAccountGroupDialog"
+			suggestionRows="{
+				path: '/test',
+				length: 10
+			}">
+			<suggestionColumns>
+				<Column>
+					<Label text="계정과목표"/>
+				</Column>
+				<Column>
+					<Label text="계정그룹"/>
+				</Column>
+                <Column>
+					<Label text="의미"/>
+				</Column>
+			</suggestionColumns>
+			<suggestionRows>
+				<ColumnListItem>
+					<Label text="{accChart}" />
+					<Label text="{accGroup}" />
+					<Label text="{accMean}" />
+				</ColumnListItem>
+			</suggestionRows>
+            
+		</MultiInput>
+	</form:SimpleForm>
+</mvc:View>
+        

@@ -381,7 +381,8 @@ sap.ui.define([
 
 
         onCreateAccount: function () {
-            this.getOwnerComponent().getRouter().navTo("createAccount");
+            let Account = 2;
+            this.getOwnerComponent().getRouter().navTo("createAccount", {num: Account});
         },
         onhomeAccount: function () {
             this.getOwnerComponent().getRouter().navTo("homeAccount");
@@ -524,8 +525,8 @@ sap.ui.define([
                 oBindingContext = oRowControl.getBindingContext('AccountModel'),  // getBindingContext
                 oData = oBindingContext.getObject();    // bindingContext 바인딩되어있는 데이터
             let sId = oData.ID;
-
-            this.getOwnerComponent().getRouter().navTo("detailAccount", {num: sId});
+            let Account = 2
+            this.getOwnerComponent().getRouter().navTo("detailAccount", {num: Account, ID: sId});
         }
 
 

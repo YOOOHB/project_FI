@@ -11,7 +11,10 @@
 	<ObjectPageLayout id="ObjectPageLayout"
 					showTitleInHeaderContent="true"
 					upperCaseAnchorBar="false"
-					showFooter="true">
+					showFooter="true"
+					toggleHeaderOnTitleClick="false"
+					headerContentPinnable="false"
+					>
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
@@ -62,14 +65,14 @@
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label id="manager" text="담당자" design="Bold" width="300px"/>
-					<m:Text text="{CustomerModel>/manager}" width="300px"/>
+					<m:Label text="담당자" design="Bold" width="300px"/>
+					<m:Text id="manager" text="{CustomerModel>/manager}" width="300px"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
 
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="기본 데이터" >
+			<ObjectPageSection titleUppercase="false" title="일반 정보" >
 				<subSections>
 					<ObjectPageSubSection >
 							<m:VBox class="sapUiSmallMargin">
@@ -110,6 +113,9 @@
 							</m:VBox>
 					</ObjectPageSubSection>
 				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="고객 정보" >
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
@@ -150,6 +156,9 @@
 							</m:VBox>
 					</ObjectPageSubSection>
 				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="은행 정보" >
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
