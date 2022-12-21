@@ -11,13 +11,19 @@
 			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="G/L 계정과목 조회"
 				subheader="" press="onAccount">
 				<TileContent unit="" footer="">
-					<ImageContent src="sap-icon://person-placeholder" />
+					<ImageContent src="sap-icon://detail-view" />
 				</TileContent>
 			</GenericTile>
 			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="G/L 계정과목 생성"
 				subheader="" press="oncreateAccount">
 				<TileContent unit="" footer="">
-					<ImageContent src="sap-icon://add-employee" />
+					<ImageContent src="sap-icon://add-document" />
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="G/L 계정과목 차트"
+				subheader="" press="onchartAccount">
+				<TileContent unit="" footer="">
+					<ImageContent src="sap-icon://horizontal-bar-chart" />
 				</TileContent>
 			</GenericTile>
 		</content>

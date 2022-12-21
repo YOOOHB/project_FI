@@ -110,18 +110,23 @@
         },
         {
           "name": "createAccount",
-          "pattern": "createAccount",
+          "pattern": "createAccount/{num}",
           "target": "createAccount"
         },
         {
           "name": "detailAccount",
-          "pattern": "detailAccount",
+          "pattern": "detailAccount/{num}/{ID}",
           "target": "detailAccount"
         },
         {
           "name": "Account",
           "pattern": "Account",
           "target": "Account"
+        },
+        {
+          "name": "chartAccount",
+          "pattern": "chartAccount",
+          "target": "chartAccount"
         }
       ],
       "targets": {
@@ -159,6 +164,13 @@
           "clearControlAggregation": false,
           "viewId": "Account",
           "viewName": "Account"
+        },
+        "chartAccount": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "chartAccount",
+          "viewName": "chartAccount"
         }
       }
     },

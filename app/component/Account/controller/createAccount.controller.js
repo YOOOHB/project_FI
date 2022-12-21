@@ -16,21 +16,26 @@ sap.ui.define([                                 //맨위
         let CmpCount;
         let Gurl;
         let Cmpppppp;
+        let num;
 
         return Controller.extend("project2.controller.createAccount", {
                 onInit: async function(){
                         this.getOwnerComponent().getRouter().getRoute("createAccount").attachPatternMatched(this.onMyRoutePatternMatched, this);
+                        this.getOwnerComponent().getRouter().getRoute("createAccount").attachPatternMatched(this.onRecordNum, this);
                 },
                 onTest: function() {
                         this.getOwnerComponent().getRouter().navTo("Test");
                 },
-                onMyRoutePatternMatched: async function(){
+                onMyRoutePatternMatched: async function(){                        
                         this.onDataCOA();
                         this.onDataGrp();
                         this.onDataGLAcc();
                         this.onDataCmpCode();
                         this.onValueReset();
 
+                },
+                onRecordNum: function(e) {
+                        num = e.getParameter("arguments").num;
                 },
                 onDataCOA: async function() {
                         let COA = await $.ajax({
@@ -87,6 +92,8 @@ sap.ui.define([                                 //맨위
                         this.byId("accCategory").setSelectedKey("");
                         this.byId("accGroup").setValue("");
                         this.byId("creator").setValue("");
+                        this.onCheckCmpCode();
+
                 },
 
         //createAccount
@@ -159,7 +166,11 @@ sap.ui.define([                                 //맨위
                         this.onBack();
                 },
                 onBack: function () {                   // createAccount 취소 버튼, 상단 백버튼
-                        this.getOwnerComponent().getRouter().navTo("Account");
+                        if (num=="1"){
+                                this.getOwnerComponent().getRouter().navTo("homeAccount");
+                        } else if(num=="2") {
+                                this.getOwnerComponent().getRouter().navTo("Account");
+                        }
                 },
                 
         //AccountGroup Dialog
@@ -254,7 +265,8 @@ sap.ui.define([                                 //맨위
                                 url: "/account/CmpCode" + Gurl                                           
                         });
                         CmpCodeModel= new JSONModel(Cmppp.value);
-                        // console.log(CmpCodeModel)
+                        CmpCount = CmpCodeModel.oData.length;   //회사코드 개수
+                        this.byId("TitleName").setText("회사코드지정("+CmpCount+")"); // 회사코드 테이블 타이틀 회사코드 개수                         
                         this.getView().setModel(CmpCodeModel, "CmpCodeModel");                         
                 },        
                 onCreateCmpCode: function () {
@@ -285,6 +297,7 @@ sap.ui.define([                                 //맨위
                                 contentType: "application/json;IEEE754Compatible=true", //IEE~ 를 작성하지 않으면 정밀도가 떨어짐
                                 data:JSON.stringify(temp)
                         });
+                        
 
                         this.byId("createCmpCodeCmpCode").setValue("");
                         this.byId("createCmpCodeCmpName").setValue("");

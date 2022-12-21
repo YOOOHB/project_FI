@@ -30,12 +30,29 @@ sap.ui.define([
 
             this._oWhiteSpacesInput1 = this.byId("accChart");
             this._oWhiteSpacesInput2 = this.byId("accGroup");
+
+            var table = this.byId("AccountTable").getBinding("rows");
+            console.log(table);
+
+            let countModel = new JSONModel({count: 0});
+            if(table != undefined){
+                this.getView().setModel(countModel, "co");
+                console.log(countModel);
+                this.getView().getModel("co").setProperty("/count", table.aIndices.length)
+            }
         },
         onMy: async function () {
             let Account = await $.ajax({
                 type: "get",
                 url: "/account/GLAcc"
             });
+
+            Account.value.sort(                             // Key 값이 String이라 1/10/~~/2/20 순서로 출력됐는데 1/2/3~으로 출력하기 위한 함수
+                function(a, b)  {
+                    return Number(a.ID) - Number(b.ID);
+                }
+            )
+            
             let AccountModel = new JSONModel(Account.value);
             this.getView().setModel(AccountModel, "AccountModel");
 
@@ -59,6 +76,17 @@ sap.ui.define([
             });
             let groupModel = new JSONModel(group.value);
             this.getView().setModel(groupModel, "groupModel");
+
+            var table = this.byId("AccountTable").getBinding("rows");
+            console.log(table);
+
+            let countModel = new JSONModel({count: 0});
+            if(table != undefined || table.aIndices != undefined){
+                this.getView().setModel(countModel, "co");
+                console.log(countModel);
+                this.getView().getModel("co").setProperty("/count", table.aIndices.length);
+            }
+            
         },
         onSearch: function () {
             let accNumber = this.byId("accNumber").getValue();
@@ -106,11 +134,20 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
+            // if (!this._oBasicSearchField1) {
+            //     this._oBasicSearchField1 = new SearchField({
+            //         search: function () {
+            //             this.oAccChartDialog.getFilterBar().search();
+            //         }.bind(this)
+            //     });
+            // }
             this._oBasicSearchField1 = new SearchField({
                 search: function () {
                     this.oAccChartDialog.getFilterBar().search();
                 }.bind(this)
             });
+
+
             if (!this.pWhitespaceDialog1) {
                 this.pWhitespaceDialog1 = this.loadFragment({
                     name: "project2.view.fragment.AccountChart"
@@ -180,10 +217,17 @@ sap.ui.define([
         onValueHelpCancelPress1: function () {
             this.oAccChartDialog.close();
         },
-        onFilterBarSearch: function (oEvent) {
+        onFilterBarSearch1: function (oEvent) {
             var sSearchQuery = this._oBasicSearchField1.getValue(),
                 aSelectionSet = oEvent.getParameter("selectionSet");
+<<<<<<< HEAD
+           
+=======
 
+                console.log(aSelectionSet[0].getValue())
+                console.log(aSelectionSet[1])
+            
+>>>>>>> a6ebb11172700ff70263c315371fe19028c5cb2d
             var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
                 if (oControl.getValue()) {
                     aResult.push(new Filter({
@@ -193,7 +237,7 @@ sap.ui.define([
                     }));
                 }
                 return aResult;
-            });
+            }, []);
 
             aFilters.push(new Filter({
                 filters: [
@@ -372,7 +416,8 @@ sap.ui.define([
 
 
         onCreateAccount: function () {
-            this.getOwnerComponent().getRouter().navTo("createAccount");
+            let Account = 2;
+            this.getOwnerComponent().getRouter().navTo("createAccount", {num: Account});
         },
         onhomeAccount: function () {
             this.getOwnerComponent().getRouter().navTo("homeAccount");
@@ -508,9 +553,15 @@ sap.ui.define([
             return aCols;
 
         },
-        onNavToDetail: function () {
-            this.getOwnerComponent().getRouter().navTo("detailAccount");
-
+        onNavToDetail: function (oEvent) {
+            let oControl = oEvent.getSource(),      // navication control
+                oParent = oControl.getParent(),     // button control
+                oRowControl = oParent.getParent(),  // row control
+                oBindingContext = oRowControl.getBindingContext('AccountModel'),  // getBindingContext
+                oData = oBindingContext.getObject();    // bindingContext 바인딩되어있는 데이터
+            let sId = oData.ID;
+            let Account = 2
+            this.getOwnerComponent().getRouter().navTo("detailAccount", {num: Account, ID: sId});
         }
 
 

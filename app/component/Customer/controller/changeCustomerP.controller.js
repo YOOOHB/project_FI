@@ -2,9 +2,10 @@ sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
         "sap/ui/model/json/JSONModel",
-        "../model/Cformatter"
+        "../model/Cformatter",
+        "sap/m/MessageBox"
     ],
-    function(BaseController, JSONModel, Cformatter) {
+    function(BaseController, JSONModel, Cformatter, MessageBox) {
       "use strict";
 
       let SelectedNum;
@@ -115,6 +116,13 @@ sap.ui.define(
               bankKey : this.byId("bankKey").getValue(),
               bankNumber : this.byId("bankNumber").getValue(),
             };
+
+          if(!edit.modifier){
+            this.getView().byId("modifier").setValueState("Error");
+            MessageBox.error("최종 변경자를 입력하세요.");
+            return;
+          }
+
 
           let url = "/customer/Customer/" + SelectedNum;
           await $.ajax({
