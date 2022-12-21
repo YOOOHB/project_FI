@@ -146,7 +146,7 @@ sap.ui.define([
         return;
       }
 
-      await $.ajax({S
+      await $.ajax({
         type: "POST",
         url: "/customer/Customer",
         contentType: "application/json;IEEE754Compatible=true",
