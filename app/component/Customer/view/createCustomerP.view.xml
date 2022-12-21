@@ -1,10 +1,11 @@
-<mvc:View xmlns:uxap="sap.uxap" controllerName="project3.controller.createCustomerP"
+<mvc:View controllerName="project3.controller.createCustomerP"
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns="sap.m" 
     xmlns:f="sap.f" 
     xmlns:form="sap.ui.layout.form"
     xmlns:layout="sap.ui.layout"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:uxap="sap.uxap">
 
 <uxap:ObjectPageLayout id="ObjectPageLayout"
 					showTitleInHeaderContent="true"
@@ -29,7 +30,6 @@
 			<uxap:ObjectPageSection titleUppercase="false" title="일반 데이터" >
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection >
-                        <!-- <core:Title id="_IDGenTitle1" text="일반 데이터" /> -->
                         <Label  text="고객 번호" />
                         <Text id="customerNumber" text="{customerNumber}" />
                         <Label id="_IDGenLabel2" text="BP 범주" />
@@ -77,63 +77,6 @@
 				    </uxap:subSections>
 			        </uxap:ObjectPageSection>
 
-        </uxap:ObjectPageDynamicHeaderTitle>
-    </uxap:headerTitle>
-        <uxap:sections>
-			<uxap:ObjectPageSection titleUppercase="false" title="일반 데이터">
-				<uxap:subSections>
-                    <uxap:ObjectPageSubSection>
-                        <form:SimpleForm id="ResponsiveLayout"
-                            editable="false"
-                            layout="ResponsiveGridLayout"
-                            title="개인 고객 생성"
-                            singleContainerFullSize="false" >
-                            <form:content>
-                                <VBox>
-                                <core:Title id="_IDGenTitle1" text="일반 데이터" />
-                                <Label  text="고객 번호" />
-                                <Text id="customerNumber" text="{customerNumber}" />
-                                <Label id="_IDGenLabel2" text="BP 범주" />
-                                    <Select width="100%" id="bpRange" editable="false">
-                                        <core:Item text="개인(1)" key="A" />
-                                        <core:Item text="조직(2)" key="B" />
-                                    </Select>
-                                <Label id="_IDGenLabel3" text="개인 칭호" />
-                                <Select width="100%" id="personalTitle">
-                                    <core:Item id="_IDGenItem1" text="Mr." key="Mr." />
-                                    <core:Item id="_IDGenItem2" text="Mrs." key="Mrs." />
-                                </Select>
-                                <Label id="_IDGenLabel4" text="이름" />
-                                <Input id="lastName" text="{lastName}" required="true" valueStateText="이름을 입력해 주세요." />
-                                <Label id="_IDGenLabel5" text="성" />
-                                <Input id="firstName" text="{firstName}"  required="true" valueStateText="성을 입력해 주세요." />
-                                <Label id="_IDGenLabel6" text="생성일" />
-                                <Text id="createDate" text="{createDate}"/>
-                                <Label id="_IDGenLabel15" text="담당자" />
-                                <Input id="manager" text="{manager}" />
-                                <core:Title id="_IDGenTitle2" text="표준 주소" />
-                                <Label id="_IDGenLabel7" text="도로 주소" />
-                                <Input id="street" text="{street}" />
-                                <Label id="_IDGenLabel8" text="번지" />
-                                <Input id="houseNumber" text="{houseNumber}" />
-                                <Label id="_IDGenLabel9" text="우편번호" />
-                                <Input id="postalCode" text="{postalCode}" />
-                                <Label id="_IDGenLabel10" text="도시" />
-                                <Input id="city" text="{city}" />
-                                <Label id="_IDGenLabel11" text="국가" />
-                                <Input id="country" text="{country}" 
-                                    showValueHelp="true"
-                                    valueHelpOnly="true"
-                                    valueHelpRequest="onValueHelpRequest" />
-                                <Label id="_IDGenLabel12" text="지역" />
-                                <Input id="region" text="{region}" />
-                                </VBox>
-                            </form:content>
-                        </form:SimpleForm>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-        </uxap:sections>
 
             <uxap:ObjectPageSection titleUppercase="false" title="조직 데이터" >
 			<uxap:subSections>
