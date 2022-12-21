@@ -478,7 +478,6 @@ sap.ui.define(
         this.getView().getModel("CustomerModel");
 
       },
-
       onNavToDetail: function (oEvent) {
         let dParams = oEvent.getParameters();
         let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
@@ -487,7 +486,6 @@ sap.ui.define(
         let sRouteName = '';
 
         var SelectedNum = data.customerNumber;
-        
         if (selectedRange === 'A') {
           sRouteName = 'detailCustomerP';
         }
@@ -498,6 +496,7 @@ sap.ui.define(
 
         this.getOwnerComponent().getRouter().navTo(sRouteName, {num: SelectedNum});
       }
+      
 
     });
   }
