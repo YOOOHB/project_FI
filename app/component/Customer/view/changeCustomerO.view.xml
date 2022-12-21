@@ -89,7 +89,7 @@
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
 										<m:Text id="changeDate" />
-										<m:Label text="최종 변경자"/>
+										<m:Label text="최종 변경자" required="true"/>
 										<m:Input id="modifier" value="{CustomerModel>/modifier}"/>
 										
 									</f:content>

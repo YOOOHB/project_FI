@@ -97,7 +97,7 @@ sap.ui.define([
       this.errorclear();
       var lastName = this.byId("lastName").getValue();
       var firstName = this.byId("firstName").getValue();
-      var name = lastName + firstName;
+      var name = firstName + lastName;
       var temp ={
         customerNumber : parseInt(this.byId("customerNumber").getText()),
         bpRange : this.byId("bpRange").getSelectedKey(),
@@ -118,7 +118,7 @@ sap.ui.define([
         modifier:null,
         orderHold:null,
         customer:null,
-        accGroup:null,
+        accGroup:"고객(CUST)",
         orgName:null,
         lgForm:null,
         postHold:null,

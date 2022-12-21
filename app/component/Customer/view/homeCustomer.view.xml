@@ -1,31 +1,87 @@
 <mvc:View
 	controllerName="project3.controller.homeCustomer"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m">
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards">
 <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
 		<HBox width="100%" height="3rem">
 			<Title text="BP(고객마스터)"  />
 		</HBox>
 		<content class="panelbottomline">
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 조회"
-				subheader="" press="onCustomer">
-				<TileContent unit="" footer="">
-					<ImageContent src="sap-icon://person-placeholder" />
-				</TileContent>
-			</GenericTile>
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 생성(개인)"
-				subheader="" press="oncreateCustomerP">
-				<TileContent unit="" footer="">
-					<ImageContent src="sap-icon://add-employee" />
-				</TileContent>
-			</GenericTile>
-			<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 생성(조직)"
-				subheader="" press="oncreateCustomerO">
-				<TileContent unit="" footer="">
-					<ImageContent src="sap-icon://building" />
-				</TileContent>
-			</GenericTile>
+			<HBox>
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 조회"
+					subheader="" press="onCustomer">
+					<TileContent unit="" footer="">
+						<ImageContent src="sap-icon://person-placeholder" />
+					</TileContent>
+				</GenericTile>
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 생성(개인)"
+					subheader="" press="oncreateCustomerP">
+					<TileContent unit="" footer="">
+						<ImageContent src="sap-icon://add-employee" />
+					</TileContent>
+				</GenericTile>
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="BP(고객마스터) 생성(조직)"
+					subheader="" press="oncreateCustomerO">
+					<TileContent unit="" footer="">
+						<ImageContent src="sap-icon://building" />
+					</TileContent>
+				</GenericTile>
+			</HBox>
+		</content>
+	</Panel>
+
+	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+		<content class="panelbottomline">
+			<HBox width="100%" height="3rem">
+				<Title text="보류 상황"  />
+			</HBox>	
+			<HBox>
+				<f:Card class="sapUiMediumMargin" width="300px">
+					<f:header>
+						<card:Header title="오더 보류 상황 " subtitle="최신 3개의 오더 보류 고객" />
+					</f:header>
+					<f:content>
+						<List showSeparators="None" items="{
+							path: 'orderHoldModel>/'
+						}">
+							<CustomListItem press="onDetailPageOrder" type="Active">
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+										<Title level="H3" text="{orderHoldModel>name}" />
+										<Text text="{orderHoldModel>customerNumber}" />
+									</VBox>
+									<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{orderHoldModel>orderHold}" state="Warning" />
+								</HBox>
+							</CustomListItem>
+						</List>
+					</f:content>
+				</f:Card>
+
+				<f:Card class="sapUiMediumMargin" width="300px">
+					<f:header>
+						<card:Header title="청구 보류 상황" subtitle="최신 3개의 청구 보류 고객" />
+					</f:header>
+					<f:content>
+						<List showSeparators="None" items="{
+							path: 'requestHoldModel>/'
+						}">
+							<CustomListItem press="onDetailPageRequest" type="Active">
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+										<Title level="H3" text="{requestHoldModel>name}" />
+										<Text text="{requestHoldModel>customerNumber}" />
+									</VBox>
+									<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{requestHoldModel>requestHold}" state="Warning" />
+								</HBox>
+							</CustomListItem>
+						</List>
+					</f:content>
+				</f:Card>
+
+			</HBox>
 		</content>
 	</Panel>
 </ScrollContainer>

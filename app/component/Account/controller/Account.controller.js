@@ -220,7 +220,14 @@ sap.ui.define([
         onFilterBarSearch1: function (oEvent) {
             var sSearchQuery = this._oBasicSearchField1.getValue(),
                 aSelectionSet = oEvent.getParameter("selectionSet");
+<<<<<<< HEAD
            
+=======
+
+                console.log(aSelectionSet[0].getValue())
+                console.log(aSelectionSet[1])
+            
+>>>>>>> a6ebb11172700ff70263c315371fe19028c5cb2d
             var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
                 if (oControl.getValue()) {
                     aResult.push(new Filter({

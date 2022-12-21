@@ -26,7 +26,7 @@
             <HBox>
 				<f:Card class="sapUiMediumMargin" width="300px">
 					<f:header>
-						<card:Header title="G/L account number 목록" subtitle="최신 3개의 생성 데이터가 보입니다."/>
+						<card:Header title="G/L account number 목록" subtitle="최신 3개의 생성 데이터"/>
 					</f:header>
 					<f:content>
 						<List showSeparators="None" items="{path: 'RctGLAccModel>/'}">
@@ -37,6 +37,21 @@
 										<Title text="{RctGLAccModel>createDate}"/>
 									</VBox>
 									<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{RctGLAccModel>creator}" state="None"/>  
+								</HBox>
+							</CustomListItem>
+						</List>
+					</f:content>
+				</f:Card>
+				<f:Card class="sapUiMediumMargin" width="300px">
+					<f:header>
+						<card:Header title="회사별 계정과목 개수" subtitle="개정과목이 많은 회사 Top3"/>
+					</f:header>
+					<f:content>
+						<List showSeparators="None" items="{path: 'CmpCodeModel>/'}">
+							<CustomListItem press=".onNavToDetail" type="Active">
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<Title level="H3" text="{CmpCodeModel>cmpName}" />										
+									<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{CmpCodeModel>creator}" state="None"/>  
 								</HBox>
 							</CustomListItem>
 						</List>
