@@ -30,31 +30,58 @@
 					</TileContent>
 				</GenericTile>
 			</HBox>
+		</content>
+	</Panel>
 
-			<f:Card class="sapUiMediumMargin" width="300px">
-				<f:header>
-					<card:Header title="물품 요청 대기 목록" subtitle="최신 3개의 처리 대기 데이터가 보입니다." />
-				</f:header>
-				<f:content>
-					<List showSeparators="None" items="{
-						path: 'RequestModel>/'
-					}">
-						<CustomListItem press="onDetailPage" type="Active">
-							<HBox alignItems="Center" justifyContent="SpaceBetween">
-								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
-									<Title level="H3" text="{RequestModel>request_product}" />
-									<Text text="{RequestModel>requestor}" />
-								</VBox>
-								<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{
-									path: 'RequestModel>request_state',
-									formatter: '.formatter.statusText'
-									}" state="None" />
-							</HBox>
-						</CustomListItem>
-					</List>
-				</f:content>
-			</f:Card>
+	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+		<content class="panelbottomline">
+			<HBox width="100%" height="3rem">
+				<Title text="보류 상황"  />
+			</HBox>	
+			<HBox>
+				<f:Card class="sapUiMediumMargin" width="300px">
+					<f:header>
+						<card:Header title="오더 보류 상황 " subtitle="최신 3개의 오더 보류 고객" />
+					</f:header>
+					<f:content>
+						<List showSeparators="None" items="{
+							path: 'orderHoldModel>/'
+						}">
+							<CustomListItem press="onDetailPageOrder" type="Active">
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+										<Title level="H3" text="{orderHoldModel>name}" />
+										<Text text="{orderHoldModel>customerNumber}" />
+									</VBox>
+									<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{orderHoldModel>orderHold}" state="Warning" />
+								</HBox>
+							</CustomListItem>
+						</List>
+					</f:content>
+				</f:Card>
 
+				<f:Card class="sapUiMediumMargin" width="300px">
+					<f:header>
+						<card:Header title="청구 보류 상황" subtitle="최신 3개의 청구 보류 고객" />
+					</f:header>
+					<f:content>
+						<List showSeparators="None" items="{
+							path: 'requestHoldModel>/'
+						}">
+							<CustomListItem press="onDetailPageRequest" type="Active">
+								<HBox alignItems="Center" justifyContent="SpaceBetween">
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+										<Title level="H3" text="{requestHoldModel>name}" />
+										<Text text="{requestHoldModel>customerNumber}" />
+									</VBox>
+									<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="{requestHoldModel>requestHold}" state="Warning" />
+								</HBox>
+							</CustomListItem>
+						</List>
+					</f:content>
+				</f:Card>
+
+			</HBox>
 		</content>
 	</Panel>
 </ScrollContainer>
