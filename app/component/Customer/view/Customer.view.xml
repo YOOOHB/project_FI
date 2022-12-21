@@ -125,7 +125,7 @@
                     <t:Column hAlign="Center" width="5rem">
                         <Label text=""/>
                             <t:template>
-                                <CheckBox visible="true" selected="{CustomerModel>CHK}" textAlign="Center" select=".oncheckselect"/>
+                                <CheckBox visible="true" selected="{CustomerModel>CHK}" textAlign="Center" select=".onCheckselect"/>
                             </t:template>
                     </t:Column>
 					<t:Column hAlign="Center" sortProperty="name">

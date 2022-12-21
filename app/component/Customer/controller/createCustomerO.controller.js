@@ -47,6 +47,10 @@ sap.ui.define([
       this.byId("customerNumber").setText(newNumber);
       this.byId("createDate").setText(Today);
 
+
+      
+      this.getView().byId("orgName").focus();
+
       const CountryRegion = await $.ajax({
         type: "get",
         url: "/customer/CountryRegion"
@@ -163,7 +167,6 @@ sap.ui.define([
       this.getView().byId("bankKey").setValue("");
       this.getView().byId("bankNumber").setValue("");
 
-      this.getView().byId("orgName").focus();
 
 
     },
@@ -281,7 +284,7 @@ onCellClick2 : function (oControlEvent) {
         console.log(data2.cmpCode_kor);
 
         // this.byId("countryCode").setValue(data.code);
-        this.byId("cmpCode").setValue(data2.cmpCode_kor);
+        this.byId("cmpCode").setValue(data2.cmpCode_key);
         this.byId("compop2").close();
 
 }

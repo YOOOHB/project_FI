@@ -11,7 +11,9 @@
 	<ObjectPageLayout id="ObjectPageLayout"
 					showTitleInHeaderContent="true"
 					upperCaseAnchorBar="false"
-					showFooter="true">
+					showFooter="true"
+					toggleHeaderOnTitleClick="false"
+					headerContentPinnable="false">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
@@ -51,8 +53,8 @@
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label id="manager" text="담당자" design="Bold" width="300px"/>
-					<m:Input value="{CustomerModel>/manager}" width="300px"/>
+					<m:Label text="담당자" design="Bold" width="300px"/>
+					<m:Input id="manager" value="{CustomerModel>/manager}" width="300px"/>
 				</layout:VerticalLayout>
 
 				
@@ -60,7 +62,7 @@
 		</headerContent>
 
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="기본 데이터" >
+			<ObjectPageSection titleUppercase="false" title="일반 정보" >
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
@@ -92,7 +94,7 @@
 										<m:Text text="" />
 										<m:Label text="최종 변경일" />
 										<m:Text id="changeDate" />
-										<m:Label text="최종 변경자" required="true"/>
+										<m:Label text="최종 변경자"/>
 										<m:Input id="modifier" value="{CustomerModel>/modifier}" />
 										<m:Label text="" />
 										<m:Text text="" />
@@ -101,6 +103,9 @@
 							</m:VBox>
 					</ObjectPageSubSection>
 				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="고객 정보">
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
@@ -159,6 +164,9 @@
 							</m:VBox>
 					</ObjectPageSubSection>
 				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="은행 정보">
 				<subSections>
 					<ObjectPageSubSection>
 							<m:VBox class="sapUiSmallMargin">
