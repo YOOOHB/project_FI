@@ -215,10 +215,14 @@ sap.ui.define([
                 aTokens[i].mProperties.text = aTokens[i].mProperties.key;
             }
             this._oWhiteSpacesInput1.setTokens(aTokens)
+            this._oBasicSearchField1.setValue("")
+            this.oAccChartDialog.getFilterBar().search();
             this.oAccChartDialog.close();
         },
         //취소
         onValueHelpCancelPress1: function () {
+            this._oBasicSearchField1.setValue("")
+            this.oAccChartDialog.getFilterBar().search();
             this.oAccChartDialog.close();
         },
         onFilterBarSearch1: function (oEvent) {
@@ -488,19 +492,19 @@ sap.ui.define([
             console.log(oRowBinding.oList.length);
             for (let i = 0; i < oList.length; i++) {
                 if (oList[i].accCategory === 'P') {
-                    oList[i].accCategory1 = '1차 원가 또는 수익';
+                    oList[i].accCategory = '1차 원가 또는 수익';
                 }
                 if (oList[i].accCategory === 'S') {
-                    oList[i].accCategory1 = '2차 원가';
+                    oList[i].accCategory = '2차 원가';
                 }
                 if (oList[i].accCategory === 'N') {
-                    oList[i].accCategory1 = '영업 외 비용 또는 수익';
+                    oList[i].accCategory = '영업 외 비용 또는 수익';
                 }
                 if (oList[i].accCategory === 'X') {
-                    oList[i].accCategory1 = '대차대조표 계정';
+                    oList[i].accCategory = '대차대조표 계정';
                 }
                 if (oList[i].accCategory === 'C') {
-                    oList[i].accCategory1 = '현금 계정';
+                    oList[i].accCategory = '현금 계정';
                 }
             }
             oSettings = {

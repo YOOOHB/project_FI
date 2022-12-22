@@ -83,6 +83,8 @@ sap.ui.define([
 
     onBack: function(){
         this.getOwnerComponent().getRouter().navTo("Customer");
+        this.getView().byId("name").setValueState("None");
+        this.getView().byId("cmpCode").setValueState("None");
 
     },
 
@@ -291,6 +293,8 @@ onCellClick2 : function (oControlEvent) {
 
 onBack1: function(){
   this.getOwnerComponent().getRouter().navTo("homeCustomer");
+  this.getView().byId("name").setValueState("None");
+  this.getView().byId("cmpCode").setValueState("None");
 
 }
 
