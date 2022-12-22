@@ -28,7 +28,7 @@
         </headerTitle>        
 
         <sections>
-            <ObjectPageSection titleUppercase="false" title="기본 데이터">
+            <ObjectPageSection titleUppercase="false" title="일반 정보">
                 <subSections>
                     <ObjectPageSubSection>
                         <m:VBox class="sapUiSmallMargin">
@@ -56,6 +56,8 @@
                         </m:VBox>
                     </ObjectPageSubSection>
                 </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection titleUppercase="false" title="회사 코드 데이터">
                 <subSections>
                     <ObjectPageSubSection>
                         <m:VBox class="sapUiSmallMargin">

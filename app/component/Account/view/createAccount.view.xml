@@ -22,7 +22,7 @@
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
-		<sections >
+		<sections>
 			<ObjectPageSection titleUppercase="false" title="헤더">
 				<subSections>
 					<ObjectPageSubSection title="헤더" titleUppercase="false">
@@ -30,7 +30,7 @@
                             <form:content>
                                 <m:VBox class="sapUiTinyMarginTop">
                                     <m:HBox alignItems="Center">
-                                        <m:Label text="G/L 계정 번호 : " />
+                                        <m:Label text="G/L 계정 번호 : "  required="true"/>
                                         <m:layoutData>
                                             <layout:GridData span="XL1 L1 M1 S1" />
                                         </m:layoutData>
@@ -60,7 +60,7 @@
                          <form:SimpleForm layout="ResponsiveGridLayout">
                             <form:content>
                                 <m:VBox>
-                                    <m:Label text="계정과목표"/>
+                                    <m:Label text="계정과목표" required="true"/>
                                     <m:ComboBox id="accChart" items="{Account>/COA}">
                                         <core:Item key='{Account>accChart}' text="{Account>accChart}"/>
                                     </m:ComboBox> 
@@ -69,7 +69,7 @@
                                     </m:layoutData>
                                 </m:VBox>                               
                                 <m:VBox>
-                                    <m:Label text="계정 유형"/> 
+                                    <m:Label text="계정 유형" required="true"/> 
                                     <m:ComboBox id="accCategory" items="{Account>/AccCategory}">
                                         <core:Item text="{Account>accCategory_kor}" key="{Account>accCategory_key}" />
                                     </m:ComboBox> 
@@ -78,7 +78,7 @@
                                     </m:layoutData>
                                 </m:VBox>                               
                                 <m:VBox>
-                                    <m:Label text="계정 그룹"/>
+                                    <m:Label text="계정 그룹" required="true"/>
                                     <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"/>
                                     <m:layoutData>
                                         <layout:GridData span= "XL1 L2 M6 S12"/>

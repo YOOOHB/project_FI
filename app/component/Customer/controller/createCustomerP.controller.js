@@ -297,7 +297,25 @@ onCellClick2 : function (oControlEvent) {
         this.byId("cmpCode").setValue(data2.cmpCode_key);
         this.byId("compop2").close();
 
+},
+
+
+onBack1: function(){
+  this.getOwnerComponent().getRouter().navTo("homeCustomer");
+
 }
+
+// onDataCmpCode: async function() {
+//   let CmpCode = await $.ajax({
+//           type: "get",
+//           url: "/customer/CmpCode"
+//   });
+//   CmpCodeModel= new JSONModel(CmpCode.value);
+//   CmpCount = CmpCodeModel.oData.length;   //회사코드 개수
+//   this.byId("TitleName").setText("회사코드지정("+CmpCount+")"); // 회사코드 테이블 타이틀 회사코드 개수 
+//   this.getView().setModel(CmpCodeModel, "CmpCodeModel");
+
+// },
 
     
   });

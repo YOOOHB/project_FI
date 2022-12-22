@@ -21,8 +21,11 @@ sap.ui.define([
 		},
 		onDataCmpCode: async function() {
 			let CmpCount;
-			let Cmp = {};
+			let OCmp = {};
+			let ACmp = [];
 			let cCodeName;
+			let CmpKey =[];
+			let CmpValue =[];
 			
 			let GLAcc = await $.ajax({			//회사코드 3개 
 				type: "GET",
@@ -37,9 +40,19 @@ sap.ui.define([
 					url: "/account/GLAcc?$filter=cmpCodeKey eq '" + GLAcc.value[i].cmpCode + "'&$count=true"
 				})
 				cCodeName = GLAcc.value[i].cmpCode;		//회사 이름을 변수에 넣고
-				Cmp[cCodeName] = CmpCode.value.length;	//회사 이름과 GLNum 개수를 객체에 넣음
+
+				CmpKey.push(cCodeName);					//회사 이름 넣은 변수를 배열에 넣고
+				CmpValue.push(CmpCode.value.length);	//회사가 가진 GLNum 개수 배열에 넣고
+				OCmp[cCodeName] = CmpCode.value.length;	//회사 이름과 GLNum 개수를 객체에 넣음
 			}
-			console.log(Cmp)
+			ACmp = Object.entries(OCmp);				//객체를 회사이름,GLNum 형태의 배열로 변환
+			ACmp.sort(function (a,b) {
+				return a-b;
+			});
+					
+			console.log(OCmp)
+			console.log(CmpKey)
+			console.log(CmpValue)
 
 			
 			// this.getView().setModel(CmpCodeModel, "CmpCodeModel")
@@ -47,7 +60,7 @@ sap.ui.define([
 
 
 
-
+2
 
 
 		},
