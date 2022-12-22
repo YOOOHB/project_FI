@@ -367,6 +367,8 @@ sap.ui.define(
        * @param oEvent {object}
        * @param sGubun {string}
        */
+
+      //BP 생성 페이지로 이동
       onCreateCustomer: function (oEvent, sGubun) {
 
         let sRouteName = '';
@@ -382,6 +384,7 @@ sap.ui.define(
         this.getOwnerComponent().getRouter().navTo(sRouteName);
       },
 
+      //BP 삭제
       onDeleteCustomer: async function () {
         var totalNumber = this.getView().getModel("CustomerModel").oData.length;
         let model = this.getView().getModel("CustomerModel");
@@ -403,6 +406,7 @@ sap.ui.define(
         this.onMyRoutePatternMatched();
       },
 
+      //검색값 초기화
       onClearField: function () {
         this.getView().byId("name").setValue("");
         this.getView().byId("customerNumber").setValue("");
@@ -413,6 +417,7 @@ sap.ui.define(
 
       },
 
+      //정렬 팝업
       onSort: function () {
         if (!this.byId("CSortDialog")) {
           Fragment.load({
@@ -429,6 +434,7 @@ sap.ui.define(
 
       },
 
+      //정렬 팝업의 확인 버튼
       onConfirmCSortDialog: function (oEvent) {
         let mParams = oEvent.getParameters();
         let sPath = mParams.sortItem.getKey();
@@ -441,6 +447,7 @@ sap.ui.define(
         oBinding.sort(aSorters);
       },
 
+      //엑셀 다운로드 기능
       onDataExport: function () {
         let aCols, oRowBinding, oSettings, oSheet, oTable;
 
@@ -479,6 +486,7 @@ sap.ui.define(
         });
       },
 
+      //엑셀 파일
       createColumnConfig: function () {
         const aCols = [];
 
@@ -516,11 +524,13 @@ sap.ui.define(
         return aCols;
       },
 
+      //체크박스 체크 기능
       onCheckselect: function () {
         this.getView().getModel("CustomerModel");
    
       },
 
+      //BP 상세 페이지로 이동
       onNavToDetail: function (oEvent) {
         let dParams = oEvent.getParameters();
         let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
