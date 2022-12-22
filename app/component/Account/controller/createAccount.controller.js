@@ -29,8 +29,8 @@ sap.ui.define([                                 //맨위
                 onMyRoutePatternMatched: async function(){                        
                         this.onDataCOA();
                         this.onDataGrp();
-                        this.onDataGLAcc();
-                        this.onDataCmpCode();
+                        this.onDataGLAcc();  
+                        this.onDataCmpCode();                      
                         this.onValueReset();
 
                 },
@@ -78,50 +78,65 @@ sap.ui.define([                                 //맨위
                 },
                 onValueReset: function() {
                         this.byId("accNumber").setValue("");
-                        this.onReset();
-                        var y = new Date().getFullYear();
-                        var m = new Date().getMonth() + 1;
-                        var d = new Date().getDate();
-                        var currentDate = y + "-" + m + "-" + d;
-                        this.byId("createDate").setText(currentDate);
-                        //createCmpCode                        
-                },
-                onReset: function() {
                         this.byId("accNumber").setSelectedKey("");
                         this.byId("accChart").setSelectedKey("");
                         this.byId("accCategory").setSelectedKey("");
                         this.byId("accGroup").setValue("");
                         this.byId("creator").setValue("");
+                        var y = new Date().getFullYear();
+                        var m = new Date().getMonth() + 1;
+                        var d = new Date().getDate();
+                        var currentDate = y + "-" + m + "-" + d;
+                        this.byId("createDate").setText(currentDate);
                         this.onCheckCmpCode();
+                        //createCmpCode                        
+                },
+                onReset: function() {
+                        
 
                 },
 
         //createAccount
                 onCreate: async function () {                 // createAccount 생성 버튼
+
+                        let GLNum = this.byId("accNumber").getValue();
+                        let urll = "?$filter=accNumber eq " + "'" + GLNum + "'";
+                        let GLAcc = await $.ajax({
+                                type: "get",
+                                url: "/account/GLAcc" + urll                 
+                        });
+                        let GModel= new JSONModel(GLAcc.value);
+                        let aaa = GModel.oData[0].cmpCodeKey;   //작성한 GLNum이 쓰는 회사코드명
+
+                        let model = this.getView().getModel("CmpCodeModel");                    //회사코드 모델 가져오기
+                        let CHK = this.getView().byId("CompanyCodeTable").getSelectedIndices()[0];   //회사코드 테이블에서 선택한 열 정보 가져오기
+                        Cmp = model.oData[CHK].cmpCode                                          //테이블에서 선택한 회사코드명 
+
+
+                        
                         if(!this.byId("accNumber").getValue()) {
                                 MessageToast.show("계정번호를 작하세요"); 
                         }                               
                         else if(!this.byId("accChart").getSelectedKey()) {
                                 MessageToast.show("계정과목표를 선택하세요");
                         }
-                        else if(!this.byId("accCategory").getSelectedKey()) {
+                        else if(!this.byId("accCategory").getSelectedKey() || this.byId("accCategory").getSelectedKey()=="전체") {
                                 MessageToast.show("계정유형을 선택하세요");
                         }
                         else if(!this.byId("accGroup").getValue()) {
                                 MessageToast.show("계정그룹을 선택하세요");
                         }
-                        else if (!this.getView().byId("CompanyCodeTable").getSelectedIndices()[0]) {
+                        else if (this.getView().byId("CompanyCodeTable").getSelectedIndices()[0] == null) {
                                 MessageToast.show("회사코드를 선택하세요");
                         }
-                        else {
+                        else if(Cmp == aaa) {
+                                MessageToast.show("중복된 회사코드입니다 '사용가능한 회사코드 조회'를 눌러주세요");
+                        }
+                        else {                                
                                 this.onCreate1();
                         }                        
                 },
                 onCreate1: async function() {
-                        let model = this.getView().getModel("CmpCodeModel");                    //회사코드 모델 가져오기
-                        let CHK = this.getView().byId("CompanyCodeTable").getSelectedIndices()[0];   //회사코드 테이블에서 선택한 열 정보 가져오기
-                        Cmp = model.oData[CHK].cmpCode                                      //선택한 회사코드명 
-
                         let accChart=this.byId("accChart").getSelectedKey();                          //입력한 계정과목표
                         let accContents;                                                        // 에 따른 계정과목표 의미
                         switch (accChart){
@@ -159,14 +174,14 @@ sap.ui.define([                                 //맨위
                                 contentType: "application/json;IEEE754Compatible=true", //IEE~ 를 작성하지 않으면 정밀도가 떨어짐
                                 data:JSON.stringify(temp)
                         });
-                        this.onMyRoutePatternMatched(); // input reset 포함
                         this.onBack();
+                        this.onMyRoutePatternMatched(); // input reset 포함
                 },
                 onBack: function () {                   // createAccount 취소 버튼, 상단 백버튼
                         if (num=="1"){
                                 this.getOwnerComponent().getRouter().navTo("homeAccount");
                         } else if(num=="2") {
-                                this.getOwnerComponent().getRouter().navTo("Account");
+                                this.getOwnerComponent().getRouter().navTo("Account", {name: 1});
                         }
                 },
                 
@@ -232,6 +247,7 @@ sap.ui.define([                                 //맨위
 
         //createCmpCode Dialog
                 onCheckCmpCode: async function() {                              // G/L num이 중복되는 cmpCode 제외
+                        
                         //GLNumModel 가져와서  아래 넘버를 쓰는 CmpCode 가져오기
                         let GLNum = this.byId("accNumber").getValue();
                         let urll = "?$filter=accNumber eq " + "'" + GLNum + "'";
@@ -240,7 +256,7 @@ sap.ui.define([                                 //맨위
                                 url: "/account/GLAcc" + urll                 
                         });
                         GLModel= new JSONModel(GLAcc.value);
-                        
+
                         if(this.byId("accNumber").getValue()){
                                 Cmpppppp = GLModel.oData[0].cmpCodeKey;               //위 GLNum이 쓰는 CmpCode
                         }
@@ -263,8 +279,10 @@ sap.ui.define([                                 //맨위
                         });
                         CmpCodeModel= new JSONModel(Cmppp.value);
                         CmpCount = CmpCodeModel.oData.length;   //회사코드 개수
-                        this.byId("TitleName").setText("회사코드지정("+CmpCount+")"); // 회사코드 테이블 타이틀 회사코드 개수                         
-                        this.getView().setModel(CmpCodeModel, "CmpCodeModel");                         
+                        this.byId("TitleName").setText("회사코드지정("+CmpCount+")"); // 회사코드 테이블 타이틀 회사코드 개수    
+                                             
+                        this.getView().setModel(CmpCodeModel, "CmpCodeModel");    
+                                             
                 },        
                 onCreateCmpCode: function () {
                         if (!this.byId("createCmpCode")) {
@@ -319,19 +337,20 @@ sap.ui.define([                                 //맨위
                                         url: "/account/CmpCode",
                                         contentType: "application/json;IEEE754Compatible=true", //IEE~ 를 작성하지 않으면 정밀도가 떨어짐
                                         data:JSON.stringify(temp)
-                                });
-                                
-
-                                this.byId("createCmpCodeCmpCode").setValue("");
-                                this.byId("createCmpCodeCmpName").setValue("");
-                                this.byId("createCmpCodeAccCurrency").setValue("");
-                                this.byId("createCmpCodeAccChart").setSelectedKey("");
-                                this.byId("createCmpCode").close();
-                                this.onMyRoutePatternMatched();
+                                });                                
+                                this.onCrtCCodeReset();                                
                         }
                 },
-                onBackcreateCmpCode: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
+                onCrtCCodeReset: function() {
+                        this.byId("createCmpCodeCmpCode").setValue("");
+                        this.byId("createCmpCodeCmpName").setValue("");
+                        this.byId("createCmpCodeAccCurrency").setValue("");
+                        this.byId("createCmpCodeAccChart").setSelectedKey("");
                         this.byId("createCmpCode").close();
+                        this.onMyRoutePatternMatched();
+                },
+                onBackcreateCmpCode: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
+                        this.onCrtCCodeReset(); 
                 }
                 
 

@@ -9,7 +9,7 @@
 				<HBox width="100%" height="3rem">
 					<Title text="G/L 계정과목 페이지"  />
 				</HBox>
-				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="G/L 계정과목" press=".onAccount">
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="G/L 계정과목 관리" press=".onAccount">
 					<TileContent>
 						<ImageContent src="sap-icon://course-book"/>
 					</TileContent>
@@ -18,7 +18,7 @@
 				<HBox width="100%" height="3rem">
 					<Title text="BP(고객마스터) 페이지"/>
 				</HBox>
-        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="BP(고객마스터)" press=".onCustomer">
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="BP(고객마스터) 관리" press=".onCustomer">
 					<TileContent>
 						<ImageContent src="sap-icon://person-placeholder"/>
 					</TileContent>

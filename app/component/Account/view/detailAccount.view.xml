@@ -19,8 +19,8 @@
                     <m:HBox>
                         <m:Text text="G/L account number : "/>
                         <m:Select id="selectGLNum"                           
-                                items="{Account>/GLAcc}" change="onChangeAccNum" class="sapUiTinyMarginBegin">
-                        <core:Item text="{Account>accNumber}" key="{Account>ID}"/>
+                                items="{accModel>/}" change="onChangeAccNum" class="sapUiTinyMarginBegin">
+                        <core:Item text="{accModel>accNumber}" key="{accModel>ID}"/>
                         </m:Select>
                     </m:HBox>
                 </expandedContent>
