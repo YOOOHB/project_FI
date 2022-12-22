@@ -167,17 +167,17 @@ sap.ui.define(
       onSearch: function () {
         var name = this.byId("name").getValue();
         var customerNumber = this.byId("customerNumber").getValue();
-        var cmpCode = this.byId("cmpCode").getValue();
+        var cmpCode = this.byId("cmpCode").getTokens();
         var createDate = this.byId("createDate").getValue();
         var country = this.byId("country").getValue();
         var bpRange = (this.byId("bpRange").getSelectedKey());
 
         var aFilter = [];
-        if (cmpCode) {
+        if (cmpCode[0]) {
           var cmp = [];
           var cmpcd = [];
           for (var i = 0; i < tokenNum; i++) {
-            cmp.push(cmpCode.split(",")[i])
+            cmp.push(cmpCode[i].mProperties.key.split(","))
             cmpcd.push(new Filter("cmpCode", FilterOperator.Contains, cmp[i]));
           }
           aFilter.push(new Filter({
@@ -207,9 +207,10 @@ sap.ui.define(
 
       //초기화 기능
       onReset: function () {
+        console.log(this.byId("cmpCode"));
         this.byId("name").setValue("");
         this.byId("customerNumber").setValue("");
-        this.byId("cmpCode").setValue("");
+        this.byId("cmpCode").removeAllTokens();
         this.byId("createDate").setValue("");
         this.byId("country").setValue("");
         this.byId("bpRange").setSelectedKey("");
@@ -227,7 +228,7 @@ sap.ui.define(
             name: "project3.view.fragment.comcdCustomer"
           });
         }
-      
+
         this.pWhitespaceDialog.then(function (cValueHelpDialog) {
           var oFilterBar = cValueHelpDialog.getFilterBar();
           this.cValueHelpDialog = cValueHelpDialog;
@@ -309,11 +310,15 @@ sap.ui.define(
         }
 
         this._oWhiteSpacesInput.setTokens(aTokens)
+        this._oBasicSearchField.setValue("")
+        this.cValueHelpDialog.getFilterBar().search();
         this.cValueHelpDialog.close();
       },
 
       //다이얼로그 취소 버튼 함수
       onValueHelpCancelPress: function () {
+        this._oBasicSearchField.setValue("")
+        this.cValueHelpDialog.getFilterBar().search();
         this.cValueHelpDialog.close();
       },
 
@@ -367,8 +372,6 @@ sap.ui.define(
        * @param oEvent {object}
        * @param sGubun {string}
        */
-
-      //BP 생성 페이지로 이동
       onCreateCustomer: function (oEvent, sGubun) {
 
         let sRouteName = '';
@@ -384,7 +387,6 @@ sap.ui.define(
         this.getOwnerComponent().getRouter().navTo(sRouteName);
       },
 
-      //BP 삭제
       onDeleteCustomer: async function () {
         var totalNumber = this.getView().getModel("CustomerModel").oData.length;
         let model = this.getView().getModel("CustomerModel");
@@ -406,18 +408,18 @@ sap.ui.define(
         this.onMyRoutePatternMatched();
       },
 
-      //검색값 초기화
       onClearField: function () {
+
+        console.log(this.getView().byId("cmpCode"));
         this.getView().byId("name").setValue("");
         this.getView().byId("customerNumber").setValue("");
-        this.getView().byId("cmpCode").setValue("");
+        this.getView().byId("cmpCode").removeAllTokens();
         this.getView().byId("createDate").setValue("");
         this.getView().byId("country").setValue("");
         this.getView().byId("bpRange").setSelectedKey("");
 
       },
 
-      //정렬 팝업
       onSort: function () {
         if (!this.byId("CSortDialog")) {
           Fragment.load({
@@ -434,7 +436,6 @@ sap.ui.define(
 
       },
 
-      //정렬 팝업의 확인 버튼
       onConfirmCSortDialog: function (oEvent) {
         let mParams = oEvent.getParameters();
         let sPath = mParams.sortItem.getKey();
@@ -447,7 +448,6 @@ sap.ui.define(
         oBinding.sort(aSorters);
       },
 
-      //엑셀 다운로드 기능
       onDataExport: function () {
         let aCols, oRowBinding, oSettings, oSheet, oTable;
 
@@ -486,7 +486,6 @@ sap.ui.define(
         });
       },
 
-      //엑셀 파일
       createColumnConfig: function () {
         const aCols = [];
 
@@ -524,13 +523,11 @@ sap.ui.define(
         return aCols;
       },
 
-      //체크박스 체크 기능
       onCheckselect: function () {
         this.getView().getModel("CustomerModel");
-   
+
       },
 
-      //BP 상세 페이지로 이동
       onNavToDetail: function (oEvent) {
         let dParams = oEvent.getParameters();
         let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
