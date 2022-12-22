@@ -3,11 +3,13 @@ sap.ui.define(
         "sap/ui/core/mvc/Controller",
         "sap/ui/model/json/JSONModel",
         "../model/Cformatter",
+        "../model/Pformatter",
         "sap/m/MessageBox"
     ],
-    function(BaseController, JSONModel, Cformatter, MessageBox) {
+    function(BaseController, JSONModel, Cformatter, Pformatter, MessageBox) {
       "use strict";
 
+      let number;
       let SelectedNum;
 
       let today = new Date();
@@ -17,9 +19,14 @@ sap.ui.define(
   
       return BaseController.extend("project3.controller.changeCustomerO", {
         Cformatter: Cformatter,
+        Pformatter: Pformatter,
         
         
         onInit() {
+            this.getView().byId("modifier").setValueState("None");
+            this.getView().byId("modifier").setValue("");
+            
+            
             this.getOwnerComponent().getRouter().getRoute("changeCustomerO").attachPatternMatched(this.onMyRoutePatternMatched, this);
             this.getOwnerComponent().getRouter().getRoute("detailCustomerO").attachPatternMatched(this.onMyRoutePatternMatched, this);
             this.getOwnerComponent().getRouter().getRoute("homeCustomer").attachPatternMatched(this.onMyRoutePatternMatched, this);
@@ -27,9 +34,13 @@ sap.ui.define(
             this.byId("changeDate").setText(year+ '-' + month + '-' + date);
             
             
-        },
-        
-        onMyRoutePatternMatched: async function(oEvent){
+          },
+          
+          onMyRoutePatternMatched: async function(oEvent){
+          number = oEvent.getParameter("arguments").number;
+
+          this.getView().byId("modifier").setValue("");
+
           this.getView().byId("modifier").setValueState("None")
 
           SelectedNum = oEvent.getParameter("arguments").num;
@@ -136,12 +147,18 @@ sap.ui.define(
         });
 
         this.onCancel();
+        this.getView().byId("modifier").setValue("")
 
       },
 
         onCancel: function() {
-            this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:SelectedNum})
+          if (number == "1") {
+            this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:SelectedNum, ID:1});
+          } else if (number == "2") {
+            this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:SelectedNum, ID:2});
+          }
             this.getView().byId("modifier").setValueState("None")
+            this.getView().byId("modifier").setValue("")
         }
       });
     }

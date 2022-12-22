@@ -48,6 +48,13 @@
 				</layout:VerticalLayout>
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label id="status" text="상태" design="Bold" width="300px"/>
+					<m:Text text="오더 보류: {CustomerModel>/orderHold}" width="300px"/>
+					<m:Text text="청구 보류: {CustomerModel>/requestHold}" width="300px"/>
+					<m:Text text="전기 보류: {path:'CustomerModel>/postHold', formatter:'.Pformatter.statusText'}" width="300px"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:Label text="회사 코드" design="Bold"/>
 					<m:Text text="{CustomerModel>/cmpCode}" width="500px"/>
 				</layout:VerticalLayout>
@@ -87,7 +94,7 @@
 										<m:Label text="최종 변경일" />
 										<m:Text id="changeDate" />
 										<m:Label text="최종 변경자" required="true" />
-										<m:Input id="modifier" value="{CustomerModel>/modifier}" valueStateText="최종 변경자를 입력하세요."/>
+										<m:Input id="modifier" valueStateText="최종 변경자를 입력하세요."/>
 										
 									</f:content>
 								</f:SimpleForm>
