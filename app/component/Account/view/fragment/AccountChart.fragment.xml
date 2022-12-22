@@ -12,7 +12,7 @@
         key="accChart"
         >
         <filterBar>
-            <fb:FilterBar advancedMode="true" search=".onFilterBarSearch1" isRunningInValueHelpDialog="true">
+            <fb:FilterBar id="FilterBar11" advancedMode="true" search=".onFilterBarSearch1" isRunningInValueHelpDialog="true">
                 <fb:filterGroupItems>
                     <fb:FilterGroupItem
                         groupName="$INTERNAL$"

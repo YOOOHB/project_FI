@@ -143,14 +143,6 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
-            //다이얼로그 내 검색창
-            this._oBasicSearchField1 = new SearchField({
-                search: function () {
-                    this.oAccChartDialog.getFilterBar().search();
-                }.bind(this)
-            });
-
-
             if (!this.pWhitespaceDialog1) {
                 this.pWhitespaceDialog1 = this.loadFragment({
                     name: "project2.view.fragment.AccountChart"
@@ -167,6 +159,14 @@ sap.ui.define([
                     oAccChartDialog.open();
                     return;
                 }
+                
+                //다이얼로그 내 검색창
+                this._oBasicSearchField1 = new SearchField({
+                    search: function () {
+                        this.oAccChartDialog.getFilterBar().search();
+                    }.bind(this)
+                });
+
                 this.getView().addDependent(oAccChartDialog);
 
                 // Set key fields for filtering in the Define Conditions Tab
@@ -203,7 +203,7 @@ sap.ui.define([
                 oAccChartDialog.open();
             }.bind(this));
         },
-
+        //확인
         onValueHelpOkPress1: function (oEvent) {
             var aTokens = oEvent.getParameter("tokens");
             console.log(aTokens)
@@ -217,6 +217,7 @@ sap.ui.define([
             this._oWhiteSpacesInput1.setTokens(aTokens)
             this.oAccChartDialog.close();
         },
+        //취소
         onValueHelpCancelPress1: function () {
             this.oAccChartDialog.close();
         },
@@ -487,19 +488,19 @@ sap.ui.define([
             console.log(oRowBinding.oList.length);
             for (let i = 0; i < oList.length; i++) {
                 if (oList[i].accCategory === 'P') {
-                    oList[i].accCategory = '1차 원가 또는 수익';
+                    oList[i].accCategory1 = '1차 원가 또는 수익';
                 }
                 if (oList[i].accCategory === 'S') {
-                    oList[i].accCategory = '2차 원가';
+                    oList[i].accCategory1 = '2차 원가';
                 }
                 if (oList[i].accCategory === 'N') {
-                    oList[i].accCategory = '영업 외 비용 또는 수익';
+                    oList[i].accCategory1 = '영업 외 비용 또는 수익';
                 }
                 if (oList[i].accCategory === 'X') {
-                    oList[i].accCategory = '대차대조표 계정';
+                    oList[i].accCategory1 = '대차대조표 계정';
                 }
                 if (oList[i].accCategory === 'C') {
-                    oList[i].accCategory = '현금 계정';
+                    oList[i].accCategory1 = '현금 계정';
                 }
             }
             oSettings = {
