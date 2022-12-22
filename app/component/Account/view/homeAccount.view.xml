@@ -43,7 +43,7 @@
                     </f:Card>
                     <f:Card class="sapUiMediumMargin" width="300px">
                         <f:header>
-                            <card:Header title="회사별 계정과목 개수" subtitle="개정과목이 많은 회사 Top3" />
+                            <card:Header title="회사별 계정과목 개수" subtitle="계정과목이 많은 회사 Top3" />
                         </f:header>
                         <f:content>
                             <List showSeparators="None" items="{path: 'CmpCodeModel>/'}">
