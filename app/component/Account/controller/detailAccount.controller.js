@@ -16,7 +16,16 @@ sap.ui.define([
 			num = e.getParameter("arguments").num;
 			
 			this.byId("selectGLNum").setSelectedKey(ID);
+			this.onDataGLAccAll();
 			this.onDataGLAcc();
+		},
+		onDataGLAccAll: async function() {
+			let Account = await $.ajax({
+				type: "get",
+				url: "/account/GLAcc"
+			});
+			let accModel = new JSONModel(Account.value);
+			this.getView().setModel(accModel, "accModel");
 		},
 		onDataGLAcc: async function () {
 			//GLModel
@@ -46,9 +55,9 @@ sap.ui.define([
 		},
 		onBack: function () {
 			if (num == "1") {
-				this.getOwnerComponent().getRouter().navTo("chartAccount");
+				this.getOwnerComponent().getRouter().navTo("homeAccount");
 			} else if (num == "2") {
-				this.getOwnerComponent().getRouter().navTo("Account");
+				this.getOwnerComponent().getRouter().navTo("Account", {name: 1});
 			}
 		}
 	});

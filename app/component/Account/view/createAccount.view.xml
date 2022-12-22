@@ -43,7 +43,7 @@
                                     </m:layoutData>                        
                                 </m:VBox>
                                 <m:HBox justifyContent="End">
-                                    <m:Button text="초기화" type="Transparent" press=".onReset" class="sapUiTinyMarginBegin"/>
+                                    <m:Button text="초기화" type="Transparent" press=".onValueReset" class="sapUiTinyMarginBegin"/>
                                     <m:layoutData>
                                         <layout:GridData span="XL12 L12 M12 S12"/>
                                     </m:layoutData>                          
@@ -117,7 +117,7 @@
                                 <m:OverflowToolbar>
                                     <m:Title id="TitleName"/>
                                     <m:ToolbarSpacer/>
-                                    <m:Button text="조회" press=".onCheckCmpCode"/> 
+                                    <m:Button text="사용 가능한 회사코드 조회" press=".onCheckCmpCode"/> 
                                     <m:Button text="생성" press=".onCreateCmpCode" type="Transparent" ariaHasPopup="Dialog"/> 
                                 </m:OverflowToolbar>
                             </ui:extension>

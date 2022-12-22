@@ -120,13 +120,8 @@
         },
         {
           "name": "Account",
-          "pattern": "Account",
+          "pattern": "Account/{name}",
           "target": "Account"
-        },
-        {
-          "name": "chartAccount",
-          "pattern": "chartAccount",
-          "target": "chartAccount"
         }
       ],
       "targets": {
@@ -164,13 +159,6 @@
           "clearControlAggregation": false,
           "viewId": "Account",
           "viewName": "Account"
-        },
-        "chartAccount": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "chartAccount",
-          "viewName": "chartAccount"
         }
       }
     },

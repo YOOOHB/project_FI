@@ -429,10 +429,10 @@ sap.ui.define(
 
         for (let i = 0; i < oList.length; i++) {
           if (oList[i].bpRange === 'A') {
-            oList[i].bpRange = '개인(1)';
+            oList[i].bpRange2 = '개인(1)';
           }
           if (oList[i].bpRange === 'B') {
-            oList[i].bpRange = '조직(2)';
+            oList[i].bpRange2 = '조직(2)';
           }
 
         }
@@ -482,7 +482,7 @@ sap.ui.define(
         });
         aCols.push({
           label: 'BP 범주',
-          property: 'bpRange',
+          property: 'bpRange2',
           type: EdmType.String
         });
 
