@@ -138,6 +138,7 @@ sap.ui.define(
 
         onCancel: function() {
             this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:SelectedNum})
+            this.getView().byId("modifier").setValueState("None")
         }
       });
     }
