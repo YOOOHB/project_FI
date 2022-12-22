@@ -143,13 +143,7 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
-            // if (!this._oBasicSearchField1) {
-            //     this._oBasicSearchField1 = new SearchField({
-            //         search: function () {
-            //             this.oAccChartDialog.getFilterBar().search();
-            //         }.bind(this)
-            //     });
-            // }
+            //다이얼로그 내 검색창
             this._oBasicSearchField1 = new SearchField({
                 search: function () {
                     this.oAccChartDialog.getFilterBar().search();
@@ -444,7 +438,7 @@ sap.ui.define([
                         url: url
                     });
                 }
-            } this.onMy();
+           this.onMy(); } 
         },
 
         onSortAccount: function () {
