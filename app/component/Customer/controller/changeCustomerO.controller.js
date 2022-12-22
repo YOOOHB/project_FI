@@ -21,6 +21,8 @@ sap.ui.define(
         
         onInit() {
             this.getOwnerComponent().getRouter().getRoute("changeCustomerO").attachPatternMatched(this.onMyRoutePatternMatched, this);
+            this.getOwnerComponent().getRouter().getRoute("detailCustomerO").attachPatternMatched(this.onMyRoutePatternMatched, this);
+            this.getOwnerComponent().getRouter().getRoute("homeCustomer").attachPatternMatched(this.onMyRoutePatternMatched, this);
             
             this.byId("changeDate").setText(year+ '-' + month + '-' + date);
 
@@ -136,6 +138,7 @@ sap.ui.define(
 
         onCancel: function() {
             this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:SelectedNum})
+            this.getView().byId("modifier").setValueState("None")
         }
       });
     }

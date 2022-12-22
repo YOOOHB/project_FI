@@ -2,7 +2,7 @@
     <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
             <HBox width="100%" height="3rem">
-                <Title text="G/L 계정과목" />
+                <Title text="G/L 계정과목 관리" />
             </HBox>
             <content>
                 <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="G/L 계정과목 조회" subheader="" press="onAccount">
@@ -19,7 +19,7 @@
         </Panel>
         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
             <HBox width="100%" height="3rem">
-                <Title text="G/L 데이터" />
+                <Title text="G/L 데이터 overview" />
             </HBox>
             <content>
                 <HBox>

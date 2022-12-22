@@ -28,6 +28,11 @@
              cellClick ="onCellClick2">
 
         <t:columns>
+                                <!-- <OverflowToolbar>
+                                    <m:Title id="TitleName"/>
+                                    <ToolbarSpacer/>
+                                </OverflowToolbar> -->
+
 
             <t:Column hAlign="Center">
                 <Label text="회사 코드" />

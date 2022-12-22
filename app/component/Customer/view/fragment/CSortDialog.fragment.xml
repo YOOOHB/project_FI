@@ -9,7 +9,7 @@
             <ViewSettingsItem text="회사 코드" key="cmpCode"/>
             <ViewSettingsItem text="생성 일자" key="createDate"/>
             <ViewSettingsItem text="국가/지역" key="country"/>
-            <ViewSettingsItem text="BP 범주" key="bpRange"/>
+            <ViewSettingsItem text="비즈니스 파트너 범주" key="bpRange"/>
         </sortItems>
     </ViewSettingsDialog>
 </core:FragmentDefinition>
