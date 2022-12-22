@@ -85,14 +85,14 @@
                                     </m:layoutData>
                                 </m:VBox>                               
                                 <m:VBox>
-                                    <m:Label text="생성일 : " class="sapUiTinyMarginTop"/>
+                                    <m:Label text="생성일" class="sapUiTinyMarginTop"/>
                                     <m:Text id="createDate"/> 
                                     <m:layoutData>
                                         <layout:GridData span= "XL1 L2 M6 S12"/>
                                     </m:layoutData>
                                 </m:VBox>                               
                                 <m:VBox>
-                                    <m:Label text="생성자 : " class="sapUiTinyMarginTop"/>  
+                                    <m:Label text="생성자" class="sapUiTinyMarginTop"/>  
                                     <m:Input id="creator"/>
                                     <m:layoutData>
                                         <layout:GridData span= "XL1 L2 M6 S12"/>
