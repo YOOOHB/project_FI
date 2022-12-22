@@ -84,8 +84,8 @@
 									<f:content>
 										<m:Label text="고객 명" />
 										<m:Text id="name" text="{CustomerModel>/name}" />
-										<m:Label text="" />
-										<m:Text text="" />
+										<m:Label text="조직 명칭" />
+										<m:Text id="orgName" text="{CustomerModel>/orgName}"/>
 										<m:Label id="lgForm" text="{CustomerModel>/lgForm}" />
 										<m:Text text="" />
 										<m:Label text="" />

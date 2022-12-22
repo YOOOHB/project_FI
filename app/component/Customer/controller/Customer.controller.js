@@ -538,7 +538,7 @@ sap.ui.define(
           sRouteName = 'detailCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum });
+        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum, ID:2 });
       }
 
     });
