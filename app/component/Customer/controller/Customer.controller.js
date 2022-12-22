@@ -384,7 +384,7 @@ sap.ui.define(
           sRouteName = 'createCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName);
+        this.getOwnerComponent().getRouter().navTo(sRouteName, {num:2});
       },
 
       onDeleteCustomer: async function () {
@@ -544,7 +544,7 @@ sap.ui.define(
           sRouteName = 'detailCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum });
+        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum, ID:2 });
       }
 
     });

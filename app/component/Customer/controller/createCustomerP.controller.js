@@ -10,6 +10,7 @@ sap.ui.define([
   "use strict";
 
   let Today, CreateNum;
+  let num;
 
   return Controller.extend("project3.controller.createCustomerP", {
 
@@ -23,7 +24,12 @@ sap.ui.define([
     },
 
 
-    onMyRoutePatternMatched: async function(){
+    onMyRoutePatternMatched: async function(e){
+      num = e.getParameter("arguments").num;
+
+      this.getView().byId("lastName").setValueState("None");
+      this.getView().byId("firstName").setValueState("None");
+      this.getView().byId("cmpCode").setValueState("None");
 
       this.onClearField();
       console.log("hi!")
@@ -83,7 +89,13 @@ sap.ui.define([
     
 
     onBack: function(){
+
+      if (num == "1") {
+        this.getOwnerComponent().getRouter().navTo("homeCustomer");
+      } else if (num == "2") {
         this.getOwnerComponent().getRouter().navTo("Customer");
+      }
+
         this.getView().byId("lastName").setValueState("None");
         this.getView().byId("firstName").setValueState("None");
         this.getView().byId("cmpCode").setValueState("None");
@@ -224,6 +236,7 @@ sap.ui.define([
   onCloseDialog : function() {
       this.byId("compop").close();
       this.pDialog = null;
+      this.onReset1();
   },
 
   onCellClick : function (oControlEvent) {
@@ -281,6 +294,7 @@ onReset2 : function(){
 onCloseDialog2 : function() {
     this.byId("compop2").close();
     this.pDialog1 = null;
+    this.onReset2();
 },
 
 onCellClick2 : function (oControlEvent) {
@@ -304,7 +318,12 @@ onCellClick2 : function (oControlEvent) {
 
 
 onBack1: function(){
-  this.getOwnerComponent().getRouter().navTo("homeCustomer");
+
+  if (num == "1") {
+    this.getOwnerComponent().getRouter().navTo("homeCustomer");
+  } else if (num == "2") {
+    this.getOwnerComponent().getRouter().navTo("Customer");
+  }
   this.getView().byId("lastName").setValueState("None");
   this.getView().byId("firstName").setValueState("None");
   this.getView().byId("cmpCode").setValueState("None");
