@@ -43,10 +43,10 @@
                             <core:Item id="_IDGenItem1" text="Mr." key="Mr." />
                             <core:Item id="_IDGenItem2" text="Mrs." key="Mrs." />
                         </Select>
-                        <Label id="_IDGenLabel4" text="이름" />
-                        <Input id="lastName" text="{lastName}" required="true" valueStateText="이름을 입력해 주세요." />
-                        <Label id="_IDGenLabel5" text="성" />
-                        <Input id="firstName" text="{firstName}"  required="true" valueStateText="성을 입력해 주세요." />
+                        <Label id="_IDGenLabel4" text="이름" required="true" />
+                        <Input id="lastName" text="{lastName}"  valueStateText="이름을 입력해 주세요." />
+                        <Label id="_IDGenLabel5" text="성" required="true"/>
+                        <Input id="firstName" text="{firstName}"   valueStateText="성을 입력해 주세요." />
                         <Label id="_IDGenLabel6" text="생성일" />
                         <Text id="createDate" text="{createDate}"/>
                         <Label id="_IDGenLabel15" text="담당자" />
@@ -82,12 +82,12 @@
             <uxap:ObjectPageSection titleUppercase="false" title="조직 데이터" >
 			<uxap:subSections>
 			<uxap:ObjectPageSubSection >
-                        <Label id="_IDGenLabel13" text="회사 코드" />
+                        <Label id="_IDGenLabel13" text="회사 코드" required="true"  />
                         <Input id="cmpCode" text="{cmpCode}"   
                             showValueHelp="true"
                             valueHelpOnly="true"
 			                valueHelpRequest="onValueHelpRequest2"
-                            required="true" valueStateText="회사 코드를 입력해 주세요." />
+                            valueStateText="회사 코드를 입력해 주세요." />
                         <Label id="_IDGenLabel14" text="통화" />
                         <Input id="currency" text="{currency}" />
                             </uxap:ObjectPageSubSection>

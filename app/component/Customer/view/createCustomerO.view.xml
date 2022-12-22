@@ -19,7 +19,7 @@
 				<uxap:heading>
                     <HBox>
                         <Button type="Back" press=".onBack" class="sapUiTinyMarginTop"/>
-                        <Title text="고객마스터 생성(개인)" wrapping="true" />
+                        <Title text="고객마스터 생성(조직)" wrapping="true" />
                     </HBox>
 				</uxap:heading>
 
@@ -40,8 +40,8 @@
                          </Select>
                         <Label id="_IDGenLabel4" text="조직 명칭" />
                         <Input id="orgName" text="{orgName}" />
-                        <Label id="_IDGenLabel5" text="고객 명" />
-                        <Input id="name" text="{name}"  required="true" valueStateText="고객명을 입력해 주세요." />
+                        <Label id="_IDGenLabel5" text="고객 명"  required="true" />
+                        <Input id="name" text="{name}"  valueStateText="고객명을 입력해 주세요." />
                         <Label id="_IDGenLabel6" text="생성일" />
                         <Text id="createDate" text="{createDate}"/>
                         <Label id="_IDGenLabel15" text="담당자" />
@@ -75,12 +75,12 @@
                 <uxap:ObjectPageSection titleUppercase="false" title="조직 데이터" >
                 <uxap:subSections>
                 <uxap:ObjectPageSubSection >
-                        <Label id="_IDGenLabel13" text="회사 코드" />
+                        <Label id="_IDGenLabel13" text="회사 코드" required="true" />
                         <Input id="cmpCode" text="{cmpCode}"   
                             showValueHelp="true"
                             valueHelpOnly="true"
 			                valueHelpRequest="onValueHelpRequest2"
-                            required="true" valueStateText="회사 코드를 입력해 주세요." />
+                            valueStateText="회사 코드를 입력해 주세요." />
                         <Label id="_IDGenLabel14" text="통화" />
                         <Input id="currency" text="{currency}" />
                 </uxap:ObjectPageSubSection>
