@@ -155,7 +155,7 @@
         <footer>
             <m:OverflowToolbar >
                 <m:ToolbarSpacer/>
-                <m:Button type="Emphasized" text="생성" press=".onCreate"/>
+                <m:Button type="Emphasized" text="생성" press=".onBeforeCreate"/>
                 <m:Button type="Default" text="취소" press=".onBack"/>
             </m:OverflowToolbar>
         </footer> 
