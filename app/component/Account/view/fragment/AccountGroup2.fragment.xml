@@ -5,9 +5,9 @@
     <Dialog id="AccountGroup" title="계정 그룹">
         <content>
             <VBox>
-                <Label text="검색 및 선택 : " />
-                <Input id="searchAccGrp" class="sapUiSmallMarginBottom" showValueHelp="true"
-                valueHelpIconSrc="sap-icon://search" valueHelpRequest="onSearchAccountGroupFragment" />
+                <Label text="검색 및 선택 : " class="sapUiLargeMarginBeginEnd"/>
+                <Input id="searchAccGrp" class="sapUiLargeMarginBeginEnd" showValueHelp="true"
+                valueHelpIconSrc="sap-icon://search" valueHelpRequest="onSearchAccountGroupFragment" width="90%"/>
             </VBox>
         </content>
         <t:Table id="AccountGroupTable" rows="{GrpModel>/}" selectionMode="None" cellClick=".onCellClickAccountGroup">

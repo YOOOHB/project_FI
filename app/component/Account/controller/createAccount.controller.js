@@ -88,6 +88,7 @@ sap.ui.define([                                 //맨위
                         var d = new Date().getDate();
                         var currentDate = y + "-" + m + "-" + d;
                         this.byId("createDate").setText(currentDate);
+                        this.getView().byId("CompanyCodeTable").clearSelection();
                         this.onCheckCmpCode();
                         //createCmpCode                        
                 },
@@ -98,26 +99,35 @@ sap.ui.define([                                 //맨위
 
         //createAccount
                 onCreate: async function () {                 // createAccount 생성 버튼
+                        let aaa;                        
 
                         let GLNum = this.byId("accNumber").getValue();
                         let urll = "?$filter=accNumber eq " + "'" + GLNum + "'";
                         let GLAcc = await $.ajax({
                                 type: "get",
-                                url: "/account/GLAcc" + urll                 
+                                url: "/account/GLAcc" + urll                 //입력한 G/LNum 중복체크
                         });
                         let GModel= new JSONModel(GLAcc.value);
-                        let aaa = GModel.oData[0].cmpCodeKey;   //작성한 GLNum이 쓰는 회사코드명
-
-                        let model = this.getView().getModel("CmpCodeModel");                    //회사코드 모델 가져오기
-                        let CHK = this.getView().byId("CompanyCodeTable").getSelectedIndices()[0];   //회사코드 테이블에서 선택한 열 정보 가져오기
-                        Cmp = model.oData[CHK].cmpCode                                          //테이블에서 선택한 회사코드명 
-
+                        console.log(GModel.oData.length)                        // length = 0 중복x, length > 0 중복o
+                        if(GModel.oData.length==0){
+                                aaa = false;
+                        } else {
+                                let model = this.getView().getModel("CmpCodeModel");                    //회사코드 모델 가져오기
+                                let CHK = this.getView().byId("CompanyCodeTable").getSelectedIndices()[0];   //회사코드 테이블에서 선택한 열 정보 가져오기
+                                console.log(CHK)
+                                if(CHK) {
+                                        Cmp = model.oData[CHK].cmpCode 
+                                        aaa = true;   
+                                }
+                        }
+                        console.log(Cmp)        //테이블에서 선택한 회사코드명  
+                        console.log(aaa)        //aaa=false -> 중복x, aaa=true -> 중복
 
                         
                         if(!this.byId("accNumber").getValue()) {
                                 MessageToast.show("계정번호를 작하세요"); 
                         }                               
-                        else if(!this.byId("accChart").getSelectedKey()) {
+                        if(!this.byId("accChart").getSelectedKey()) {
                                 MessageToast.show("계정과목표를 선택하세요");
                         }
                         else if(!this.byId("accCategory").getSelectedKey() || this.byId("accCategory").getSelectedKey()=="전체") {
@@ -129,7 +139,7 @@ sap.ui.define([                                 //맨위
                         else if (this.getView().byId("CompanyCodeTable").getSelectedIndices()[0] == null) {
                                 MessageToast.show("회사코드를 선택하세요");
                         }
-                        else if(Cmp == aaa) {
+                        else if(Cmp === GModel.oData[0].cmpCodeKey && aaa===true) {     //선택한 회사코드명 = 작성한 GLNum이 쓰는 회사코드명 && 작성한 G/L이 중복
                                 MessageToast.show("중복된 회사코드입니다 '사용가능한 회사코드 조회'를 눌러주세요");
                         }
                         else {                                
@@ -222,9 +232,11 @@ sap.ui.define([                                 //맨위
                         var path = this.getView().getModel("GrpModel").getProperty(parameter);                      
                         this.byId("accGroup").setValue(path.accGroup);
                         this.byId("accChart").setSelectedKey(path.accChart);
+                        
                         this.onBackAccountGroup();
                 },
                 onBackAccountGroup: function () {           // Dialog 에서 creatAccount로 돌아가는 버튼 공통
+                        this.byId("searchAccGrp").setValue("");
                         this.byId("AccountGroup").close();                        
                 },
                 onSearchAccountGroupFragment: function() {
@@ -256,19 +268,25 @@ sap.ui.define([                                 //맨위
                                 url: "/account/GLAcc" + urll                 
                         });
                         GLModel= new JSONModel(GLAcc.value);
-
-                        if(this.byId("accNumber").getValue()){
-                                Cmpppppp = GLModel.oData[0].cmpCodeKey;               //위 GLNum이 쓰는 CmpCode
-                        }
+                                
                         let accCht = this.byId("accChart").getSelectedKey();
                         if (!GLNum && !accCht) {                                // G/L num이 없고, 계정과목표가 없으면 전체 조회
                                 Gurl = "";                                
-                        } else if(GLNum && !accCht){                            // G/L num이 있고, 계정과목표가 없으면                               
-                                Gurl= "?$filter=cmpCode ne " + "'" + Cmpppppp + "'";       //GLNum을 쓰는 comCode 제외
-                        } else if(!GLNum && accCht) {                            // G/L num이 없고, 계정과목표가 있으면                                 
+                        } else if(GLNum && !accCht){                            // G/L num이 있고, 계정과목표가 없으면   
+                                if(GLModel.oData[0]) {
+                                        Cmpppppp = GLModel.oData[0].cmpCodeKey;               //위 GLNum이 쓰는 CmpCode                        }
+                                        Gurl = "?$filter=cmpCode ne " + "'" + Cmpppppp + "'";       //GLNum을 쓰는 comCode 제외
+                                } else {
+                                        Gurl = "";
+                                }
+                        } else if(!GLNum && accCht) {                            // G/L num이 없고, 계정과목표가 있으면    
+
                                 Gurl= "?$filter=accChart eq " + "'" + accCht + "'";
+
                         } else {
-                                Gurl= "?$filter=cmpCode ne " + "'" + Cmpppppp + "'" + " and accChart eq " + "'" + accCht + "'";                                
+
+                                Gurl= "?$filter=cmpCode ne " + "'" + Cmpppppp + "'" + " and accChart eq " + "'" + accCht + "'"; 
+
                         }
                         this.onCheckCmpCode2();
                 },
