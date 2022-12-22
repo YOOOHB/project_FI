@@ -381,7 +381,7 @@ sap.ui.define(
           sRouteName = 'createCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName);
+        this.getOwnerComponent().getRouter().navTo(sRouteName, {num:2});
       },
 
       //BP 삭제
@@ -547,7 +547,7 @@ sap.ui.define(
           sRouteName = 'detailCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum });
+        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum, ID:2 });
       }
 
     });

@@ -8,9 +8,12 @@ sap.ui.define([
 ) {
     "use strict";
 
+    let ID;
+
     return Controller.extend("project3.controller.detailCustomerP", {
         Cformatter: Cformatter,
         Pformatter: Pformatter,
+
 
         onInit: function(){
 
@@ -20,6 +23,9 @@ sap.ui.define([
         },
         
         onMyRoutePatternMatched: async function(oEvent){
+            ID = oEvent.getParameter("arguments").ID;
+            console.log(ID);
+
             var SelectedNum = oEvent.getParameter("arguments").num;
             console.log(SelectedNum);
             let url = "/customer/Customer/" + SelectedNum;
@@ -41,13 +47,21 @@ sap.ui.define([
         var SelectedNum = this.byId("customerNumber").mProperties.text;
         // console.log(SelectedNum);
 
-
-            this.getOwnerComponent().getRouter().navTo("changeCustomerP", {num:SelectedNum})
+        if (ID == "1") {
+            this.getOwnerComponent().getRouter().navTo("changeCustomerP", {num:SelectedNum, number:1});
+          } else if (ID == "2") {
+            this.getOwnerComponent().getRouter().navTo("changeCustomerP", {num:SelectedNum, number:2})
+          }
             
         },
         
         onCustomer: function() {
-            this.getOwnerComponent().getRouter().navTo("Customer")
+
+            if (ID == "1") {
+                this.getOwnerComponent().getRouter().navTo("homeCustomer");
+              } else if (ID == "2") {
+                this.getOwnerComponent().getRouter().navTo("Customer");
+              }
 
         }
 

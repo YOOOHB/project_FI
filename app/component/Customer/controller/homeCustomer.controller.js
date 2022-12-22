@@ -37,11 +37,11 @@ sap.ui.define([
         },
 
         oncreateCustomerP:function() {
-            this.getOwnerComponent().getRouter().navTo("createCustomerP")
+            this.getOwnerComponent().getRouter().navTo("createCustomerP", {num:1});
         },
 
         oncreateCustomerO:function() {
-            this.getOwnerComponent().getRouter().navTo("createCustomerO")
+            this.getOwnerComponent().getRouter().navTo("createCustomerO", {num:1})
         },
 
         onDetailPageOrder: function(oEvent) {
@@ -52,9 +52,9 @@ sap.ui.define([
             var num = data.customerNumber;
 
             if(data.bpRange === 'A'){
-                this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:num})
+                this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:num, ID:1})
             }else if(data.bpRange === 'B'){
-                this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:num})
+                this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:num, ID:1})
             }
         },
 
@@ -66,9 +66,9 @@ sap.ui.define([
             var num = data.customerNumber;
 
             if(data.bpRange === 'A'){
-                this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:num})
+                this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:num, ID:1})
             }else if(data.bpRange === 'B'){
-                this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:num})
+                this.getOwnerComponent().getRouter().navTo("detailCustomerO", {num:num, ID:1})
             }
         }
     });
