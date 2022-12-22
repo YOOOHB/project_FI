@@ -43,10 +43,14 @@ sap.ui.define(
       //     )
       // },
 
+      // 프로그램 처음 실행할때 딱한번만 실행되는 함수
       onInit: async function () {
         this.getOwnerComponent().getRouter().getRoute("Customer").attachPatternMatched(this.onMyRoutePatternMatched, this);
+
+        this._oWhiteSpacesInput = this.byId("cmpCode");
       },
 
+      //모델 선언
       onMyRoutePatternMatched: async function () {
         let Customer = await $.ajax({
           type: "get",
@@ -74,6 +78,7 @@ sap.ui.define(
         // this.getView().setModel(bpRangeModel, "bpRangeModel");
       },
 
+      //테이블 컬럼 수 표시
       onTableUnitCount: function () {
         var table = this.byId("CustomerTable").getBinding("rows");
         const tableRow = table.aIndices.length;
@@ -82,6 +87,7 @@ sap.ui.define(
         this.getView().setModel(countModel, "countModel")
       },
 
+      //뒤로 가기 기능
       onBack: function () {
         this.getOwnerComponent().getRouter().navTo("homeCustomer");
       },
@@ -157,6 +163,7 @@ sap.ui.define(
       //   this.byId('CustomerTable').getBinding("rows").filter(aTableFilters);
       // },
 
+      //검색 기능
       onSearch: function () {
         var name = this.byId("name").getValue();
         var customerNumber = this.byId("customerNumber").getValue();
@@ -198,6 +205,7 @@ sap.ui.define(
         this.onTableUnitCount()
       },
 
+      //초기화 기능
       onReset: function () {
         this.byId("name").setValue("");
         this.byId("customerNumber").setValue("");
@@ -209,30 +217,36 @@ sap.ui.define(
         this.onSearch();
       },
 
+      //회사 코드 검색 다이얼로그
       onValueHelpRequest: function () {
         var oCodeTemplate = new Text({ text: { path: 'CompanyCodeModel>cmpCode_key' }, renderWhitespace: true });
         var oTextTemplate = new Text({ text: { path: 'CompanyCodeModel>cmpCode_kor' }, renderWhitespace: true });
 
-        this._oBasicSearchField = new SearchField({
-          search: function () {
-            this.cValueHelpDialog.getFilterBar().search();
-          }.bind(this)
-        });
         if (!this.pWhitespaceDialog) {
           this.pWhitespaceDialog = this.loadFragment({
             name: "project3.view.fragment.comcdCustomer"
           });
         }
+      
         this.pWhitespaceDialog.then(function (cValueHelpDialog) {
           var oFilterBar = cValueHelpDialog.getFilterBar();
           this.cValueHelpDialog = cValueHelpDialog;
           if (this._bWhitespaceDialogInitialized) {
 
             cValueHelpDialog.setTokens([]);
+            cValueHelpDialog.setTokens(this._oWhiteSpacesInput.getTokens());
             cValueHelpDialog.update();
             cValueHelpDialog.open();
             return;
           }
+
+          //다이얼로그 내 검색창
+          this._oBasicSearchField = new SearchField({
+            search: function () {
+              this.cValueHelpDialog.getFilterBar().search();
+            }.bind(this)
+          });
+
           this.getView().addDependent(cValueHelpDialog);
 
           cValueHelpDialog.setRangeKeyFields([{
@@ -283,6 +297,7 @@ sap.ui.define(
         }.bind(this));
       },
 
+      //다이얼로그 확인 버튼 함수
       onValueHelpOkPress: function (oEvent) {
         var aTokens = oEvent.getParameter("tokens");
         tokenNum = aTokens.length;
@@ -293,14 +308,16 @@ sap.ui.define(
           cmp.push(aTokens[i].mProperties.text)
         }
 
-        this.byId('cmpCode').setValue(cmp);
+        this._oWhiteSpacesInput.setTokens(aTokens)
         this.cValueHelpDialog.close();
       },
 
+      //다이얼로그 취소 버튼 함수
       onValueHelpCancelPress: function () {
         this.cValueHelpDialog.close();
       },
 
+      //다이얼로그 필터 기능
       onFilterBarSearch: function (oEvent) {
         var sSearchQuery = this._oBasicSearchField.getValue(),
           aSelectionSet = oEvent.getParameter("selectionSet");
