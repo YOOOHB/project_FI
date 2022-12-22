@@ -312,6 +312,8 @@ onCellClick2 : function (oControlEvent) {
 
 onBack1: function(){
   this.getOwnerComponent().getRouter().navTo("homeCustomer");
+
+  
   this.getView().byId("lastName").setValueState("None");
   this.getView().byId("firstName").setValueState("None");
   this.getView().byId("cmpCode").setValueState("None");
