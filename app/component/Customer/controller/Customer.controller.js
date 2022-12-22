@@ -54,7 +54,7 @@ sap.ui.define(
         });
         let CustomerModel = new JSONModel(Customer.value);
         this.getView().setModel(CustomerModel, "CustomerModel");
-        
+
         let cmpCode = await $.ajax({
           type: "get",
           url: "/customer/cmpCode"
@@ -62,7 +62,9 @@ sap.ui.define(
         let CompanyCodeModel = new JSONModel(cmpCode.value);
         this.getView().setModel(CompanyCodeModel, "CompanyCodeModel");
 
-        this.onTableUnitCount()
+        this.onTableUnitCount();
+
+        this.onClearField();
 
         // let bpRange = await $.ajax({
         //   type: "get",
@@ -72,13 +74,13 @@ sap.ui.define(
         // this.getView().setModel(bpRangeModel, "bpRangeModel");
       },
 
-      onTableUnitCount: function() {
+      onTableUnitCount: function () {
         var table = this.byId("CustomerTable").getBinding("rows");
-        const tableRow= table.aIndices.length;
+        const tableRow = table.aIndices.length;
         let countModel = new JSONModel(tableRow.value)
-        this.byId("CustomerList").setText("고객 목록("+tableRow+")");
+        this.byId("CustomerList").setText("고객 목록(" + tableRow + ")");
         this.getView().setModel(countModel, "countModel")
-    },
+      },
 
       onBack: function () {
         this.getOwnerComponent().getRouter().navTo("homeCustomer");
@@ -162,7 +164,7 @@ sap.ui.define(
         var createDate = this.byId("createDate").getValue();
         var country = this.byId("country").getValue();
         var bpRange = (this.byId("bpRange").getSelectedKey());
-        
+
         var aFilter = [];
         if (cmpCode) {
           var cmp = [];
@@ -175,9 +177,9 @@ sap.ui.define(
             filters: cmpcd,
             and: false
           }));
-          
+
         }
-        
+
         // if (createDate) {
         //   let cusYear = createDate.split(". ")[0];
         //   let cusMonth = createDate.split(". ")[1].padStart(2, '0');
@@ -192,7 +194,7 @@ sap.ui.define(
         if (bpRange) { aFilter.push(new Filter("bpRange", FilterOperator.Contains, bpRange)) }
         let oTable = this.byId("CustomerTable").getBinding("rows");
         oTable.filter(aFilter);
-        
+
         this.onTableUnitCount()
       },
 
@@ -290,7 +292,7 @@ sap.ui.define(
           aTokens[i].mProperties.text = aTokens[i].mProperties.key;
           cmp.push(aTokens[i].mProperties.text)
         }
-     
+
         this.byId('cmpCode').setValue(cmp);
         this.cValueHelpDialog.close();
       },
@@ -384,6 +386,16 @@ sap.ui.define(
         this.onMyRoutePatternMatched();
       },
 
+      onClearField: function () {
+        this.getView().byId("name").setValue("");
+        this.getView().byId("customerNumber").setValue("");
+        this.getView().byId("cmpCode").setValue("");
+        this.getView().byId("createDate").setValue("");
+        this.getView().byId("country").setValue("");
+        this.getView().byId("bpRange").setSelectedKey("");
+
+      },
+
       onSort: function () {
         if (!this.byId("CSortDialog")) {
           Fragment.load({
@@ -397,7 +409,6 @@ sap.ui.define(
         } else {
           this.byId("CSortDialog").open();
         }
-        this.onSearch();
 
       },
 
@@ -429,12 +440,11 @@ sap.ui.define(
 
         for (let i = 0; i < oList.length; i++) {
           if (oList[i].bpRange === 'A') {
-            oList[i].bpRange = '개인(1)';
+            oList[i].bpRange2 = '개인(1)';
           }
           if (oList[i].bpRange === 'B') {
-            oList[i].bpRange = '조직(2)';
+            oList[i].bpRange2 = '조직(2)';
           }
-
         }
 
         oSettings = {
@@ -476,13 +486,13 @@ sap.ui.define(
           type: EdmType.String
         });
         aCols.push({
-          label: '국가/지역',
+          label: '국가',
           property: 'country',
           type: EdmType.String
         });
         aCols.push({
-          label: 'BP 범주',
-          property: 'bpRange',
+          label: '비즈니스 파트너 범주',
+          property: 'bpRange2',
           type: EdmType.String
         });
 
@@ -491,8 +501,9 @@ sap.ui.define(
 
       onCheckselect: function () {
         this.getView().getModel("CustomerModel");
-
+   
       },
+
       onNavToDetail: function (oEvent) {
         let dParams = oEvent.getParameters();
         let sPath = dParams.row.oBindingContexts.CustomerModel.sPath;
@@ -509,9 +520,8 @@ sap.ui.define(
           sRouteName = 'detailCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName, {num: SelectedNum});
+        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum });
       }
-      
 
     });
   }

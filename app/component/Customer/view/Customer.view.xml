@@ -160,7 +160,7 @@
 						</t:template>
 					</t:Column>
 					<t:Column hAlign="Center">
-						<Label text="BP 범주" />
+						<Label text="비즈니스 파트너 범주" />
 						<t:template>
 							<ObjectStatus
                              text="{

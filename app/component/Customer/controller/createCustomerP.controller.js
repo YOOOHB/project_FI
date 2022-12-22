@@ -305,6 +305,18 @@ onBack1: function(){
 
 }
 
+// onDataCmpCode: async function() {
+//   let CmpCode = await $.ajax({
+//           type: "get",
+//           url: "/customer/CmpCode"
+//   });
+//   CmpCodeModel= new JSONModel(CmpCode.value);
+//   CmpCount = CmpCodeModel.oData.length;   //회사코드 개수
+//   this.byId("TitleName").setText("회사코드지정("+CmpCount+")"); // 회사코드 테이블 타이틀 회사코드 개수 
+//   this.getView().setModel(CmpCodeModel, "CmpCodeModel");
+
+// },
+
     
   });
 });
