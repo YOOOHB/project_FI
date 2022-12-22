@@ -13,6 +13,7 @@ sap.ui.define([                                 //맨위
         let GrpModel;           //계정그룹 모델
         let GLAccModel;         //통합 모델     
         let RouteNum;
+        let checkCount = parseInt(0);         //회사코드 검사 
 
         return Controller.extend("project2.controller.createAccount", {
                 onInit: async function(){                        
@@ -87,21 +88,26 @@ sap.ui.define([                                 //맨위
 
         //createAccount
                 onBeforeCreate: function() {                                    //이 함수 실행 후 데이터 로딩까지 시간이 걸릴 수 있음
-                        this.onCheckCmpCode();
-                        if(!this.byId("accNumber").getValue()) {
-                                MessageToast.show("계정번호를 작성하세요"); 
-                        }                               
-                        else if(!this.byId("accChart").getSelectedKey()) {
-                                MessageToast.show("계정과목표를 선택하세요");
-                        }
-                        else if(!this.byId("accCategory").getSelectedKey() || this.byId("accCategory").getSelectedKey()=="전체") {
-                                MessageToast.show("계정유형을 선택하세요");
-                        }
-                        else if(!this.byId("accGroup").getValue()) {
-                                MessageToast.show("계정그룹을 선택하세요");
+                        if(checkCount===0) {
+                                console.log("nononono")
                         }
                         else {
-                                this.onCreate();                                        //시간이 걸리면 create로 넘어가기전에 시간 멈추는(?) 함수 실행
+
+                                if(!this.byId("accNumber").getValue()) {
+                                        MessageToast.show("계정번호를 작성하세요"); 
+                                }                               
+                                else if(!this.byId("accChart").getSelectedKey()) {
+                                        MessageToast.show("계정과목표를 선택하세요");
+                                }
+                                else if(!this.byId("accCategory").getSelectedKey() || this.byId("accCategory").getSelectedKey()=="전체") {
+                                        MessageToast.show("계정유형을 선택하세요");
+                                }
+                                else if(!this.byId("accGroup").getValue()) {
+                                        MessageToast.show("계정그룹을 선택하세요");
+                                }
+                                else {
+                                        this.onCreate();                                        //시간이 걸리면 create로 넘어가기전에 시간 멈추는(?) 함수 실행
+                                }
                         }
                 },
                 onCreate: async function () {                 // createAccount 생성 버튼
@@ -147,7 +153,7 @@ sap.ui.define([                                 //맨위
                                 accGroup        : this.byId("accGroup").getValue(),
                                 creator         : this.byId("creator").getValue(),
                                 accContents     : accContents,
-                                cmpCodeKey      : selectCmpCode
+                                cmpCodeKey      : String(selectCmpCode)
                         }
                       
                         await $.ajax({
@@ -259,6 +265,7 @@ sap.ui.define([                                 //맨위
                         }
 
                         this.onDataCmpCode(url2);
+                        checkCount++;
                         
                 },
                 onCreateCmpCode: function () {                                          //회사코드 생성 다이얼로그 오픈
