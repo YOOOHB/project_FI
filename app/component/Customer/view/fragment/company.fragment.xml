@@ -6,9 +6,9 @@
     xmlns:t="sap.ui.table"    >
     <Dialog id="compop2" title="회사코드 검색">
         <content>
-            <VBox>
+            <VBox class="sapUiSmallMarginBeginEnd" >
                 <Label text="업체명: " />
-                    <Input id="fragcomname"/>
+                    <Input id="fragcomname" width="90%"/>
                     <layoutData>
                         <layout:GridData span="XL2 L2 M6 S12"/>
                     </layoutData>

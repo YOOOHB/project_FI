@@ -143,14 +143,6 @@ sap.ui.define([
             var oCodeTemplate = new Text({ text: { path: 'chartModel>accChart' }, renderWhitespace: true });
             var oTextTemplate = new Text({ text: { path: 'chartModel>accContents' }, renderWhitespace: true });
 
-            //다이얼로그 내 검색창
-            this._oBasicSearchField1 = new SearchField({
-                search: function () {
-                    this.oAccChartDialog.getFilterBar().search();
-                }.bind(this)
-            });
-
-
             if (!this.pWhitespaceDialog1) {
                 this.pWhitespaceDialog1 = this.loadFragment({
                     name: "project2.view.fragment.AccountChart"
@@ -167,6 +159,14 @@ sap.ui.define([
                     oAccChartDialog.open();
                     return;
                 }
+                
+                //다이얼로그 내 검색창
+                this._oBasicSearchField1 = new SearchField({
+                    search: function () {
+                        this.oAccChartDialog.getFilterBar().search();
+                    }.bind(this)
+                });
+
                 this.getView().addDependent(oAccChartDialog);
 
                 // Set key fields for filtering in the Define Conditions Tab
@@ -203,7 +203,7 @@ sap.ui.define([
                 oAccChartDialog.open();
             }.bind(this));
         },
-
+        //확인
         onValueHelpOkPress1: function (oEvent) {
             var aTokens = oEvent.getParameter("tokens");
             console.log(aTokens)
@@ -215,9 +215,14 @@ sap.ui.define([
                 aTokens[i].mProperties.text = aTokens[i].mProperties.key;
             }
             this._oWhiteSpacesInput1.setTokens(aTokens)
+            this._oBasicSearchField1.setValue("")
+            this.oAccChartDialog.getFilterBar().search();
             this.oAccChartDialog.close();
         },
+        //취소
         onValueHelpCancelPress1: function () {
+            this._oBasicSearchField1.setValue("")
+            this.oAccChartDialog.getFilterBar().search();
             this.oAccChartDialog.close();
         },
         onFilterBarSearch1: function (oEvent) {

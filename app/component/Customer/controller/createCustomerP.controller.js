@@ -84,6 +84,9 @@ sap.ui.define([
 
     onBack: function(){
         this.getOwnerComponent().getRouter().navTo("Customer");
+        this.getView().byId("lastName").setValueState("None");
+        this.getView().byId("firstName").setValueState("None");
+        this.getView().byId("cmpCode").setValueState("None");
 
     },
 
@@ -302,20 +305,18 @@ onCellClick2 : function (oControlEvent) {
 
 onBack1: function(){
   this.getOwnerComponent().getRouter().navTo("homeCustomer");
+  this.getView().byId("lastName").setValueState("None");
+  this.getView().byId("firstName").setValueState("None");
+  this.getView().byId("cmpCode").setValueState("None");
+
+
+
+
+
+  
 
 }
 
-// onDataCmpCode: async function() {
-//   let CmpCode = await $.ajax({
-//           type: "get",
-//           url: "/customer/CmpCode"
-//   });
-//   CmpCodeModel= new JSONModel(CmpCode.value);
-//   CmpCount = CmpCodeModel.oData.length;   //회사코드 개수
-//   this.byId("TitleName").setText("회사코드지정("+CmpCount+")"); // 회사코드 테이블 타이틀 회사코드 개수 
-//   this.getView().setModel(CmpCodeModel, "CmpCodeModel");
-
-// },
 
     
   });

@@ -26,6 +26,7 @@ sap.ui.define(
 
             this.byId("changeDate").setText(year+ '-' + month + '-' + date);
             
+            this.getView().byId("modifier").setValueState("None")
 
         },
         
@@ -143,6 +144,8 @@ sap.ui.define(
           // console.log(SelectedNum);
   
           this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:SelectedNum})
+          
+          this.getView().byId("modifier").setValueState("None")
         }
       });
     }
