@@ -25,10 +25,13 @@ sap.ui.define(
             this.getOwnerComponent().getRouter().getRoute("homeCustomer").attachPatternMatched(this.onMyRoutePatternMatched, this);
             
             this.byId("changeDate").setText(year+ '-' + month + '-' + date);
-
+            
+            
         },
         
         onMyRoutePatternMatched: async function(oEvent){
+          this.getView().byId("modifier").setValueState("None")
+
           SelectedNum = oEvent.getParameter("arguments").num;
             let url = "/customer/Customer/" + SelectedNum;
 
