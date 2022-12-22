@@ -8,7 +8,7 @@
         <content>
             <VBox class="sapUiSmallMarginBeginEnd" >
                 <Label text="업체명: " />
-                    <Input id="fragcomname" width="90%"/>
+                    <Input id="fragcomname"/>
                     <layoutData>
                         <layout:GridData span="XL2 L2 M6 S12"/>
                     </layoutData>
