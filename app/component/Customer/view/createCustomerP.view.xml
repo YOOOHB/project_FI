@@ -50,6 +50,8 @@
                         <Text id="createDate" text="{createDate}"/>
                         <Label id="_IDGenLabel15" text="담당자" />
                         <Input id="manager" text="{manager}" />
+                        <Text text=""/>
+                        <Text text=""/>
                         </uxap:ObjectPageSubSection>
 				        </uxap:subSections>
 			            </uxap:ObjectPageSection>

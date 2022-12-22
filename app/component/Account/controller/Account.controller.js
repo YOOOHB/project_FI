@@ -101,7 +101,7 @@ sap.ui.define([
             let accCategory = this.byId("accCategory").getSelectedKey();
             let createDate = this.byId("createDate").getValue();
             let accGroup = this.byId("accGroup").getTokens();
-
+            
             var aFilter = [];
 
             if (accChart) {

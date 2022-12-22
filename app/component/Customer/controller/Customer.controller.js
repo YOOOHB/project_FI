@@ -167,17 +167,18 @@ sap.ui.define(
       onSearch: function () {
         var name = this.byId("name").getValue();
         var customerNumber = this.byId("customerNumber").getValue();
-        var cmpCode = this.byId("cmpCode").getTokens();
+        var cmpCode = this.byId("cmpCode").getValue();
         var createDate = this.byId("createDate").getValue();
         var country = this.byId("country").getValue();
         var bpRange = (this.byId("bpRange").getSelectedKey());
+        console.log(customerNumber);
 
         var aFilter = [];
-        if (cmpCode[0]) {
+        if (cmpCode) {
           var cmp = [];
           var cmpcd = [];
           for (var i = 0; i < tokenNum; i++) {
-            cmp.push(cmpCode[i].mProperties.key.split(","))
+            cmp.push(cmpCode.split(",")[i])
             cmpcd.push(new Filter("cmpCode", FilterOperator.Contains, cmp[i]));
           }
           aFilter.push(new Filter({
@@ -207,10 +208,9 @@ sap.ui.define(
 
       //초기화 기능
       onReset: function () {
-        console.log(this.byId("cmpCode"));
         this.byId("name").setValue("");
         this.byId("customerNumber").setValue("");
-        this.byId("cmpCode").removeAllTokens();
+        this.byId("cmpCode").setValue("");
         this.byId("createDate").setValue("");
         this.byId("country").setValue("");
         this.byId("bpRange").setSelectedKey("");
@@ -228,7 +228,7 @@ sap.ui.define(
             name: "project3.view.fragment.comcdCustomer"
           });
         }
-
+      
         this.pWhitespaceDialog.then(function (cValueHelpDialog) {
           var oFilterBar = cValueHelpDialog.getFilterBar();
           this.cValueHelpDialog = cValueHelpDialog;
@@ -310,15 +310,11 @@ sap.ui.define(
         }
 
         this._oWhiteSpacesInput.setTokens(aTokens)
-        this._oBasicSearchField.setValue("")
-        this.cValueHelpDialog.getFilterBar().search();
         this.cValueHelpDialog.close();
       },
 
       //다이얼로그 취소 버튼 함수
       onValueHelpCancelPress: function () {
-        this._oBasicSearchField.setValue("")
-        this.cValueHelpDialog.getFilterBar().search();
         this.cValueHelpDialog.close();
       },
 
@@ -384,7 +380,7 @@ sap.ui.define(
           sRouteName = 'createCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName, {num:2});
+        this.getOwnerComponent().getRouter().navTo(sRouteName);
       },
 
       onDeleteCustomer: async function () {
@@ -409,11 +405,9 @@ sap.ui.define(
       },
 
       onClearField: function () {
-
-        console.log(this.getView().byId("cmpCode"));
         this.getView().byId("name").setValue("");
         this.getView().byId("customerNumber").setValue("");
-        this.getView().byId("cmpCode").removeAllTokens();
+        this.getView().byId("cmpCode").setValue("");
         this.getView().byId("createDate").setValue("");
         this.getView().byId("country").setValue("");
         this.getView().byId("bpRange").setSelectedKey("");
@@ -525,7 +519,7 @@ sap.ui.define(
 
       onCheckselect: function () {
         this.getView().getModel("CustomerModel");
-
+   
       },
 
       onNavToDetail: function (oEvent) {
@@ -544,7 +538,7 @@ sap.ui.define(
           sRouteName = 'detailCustomerO';
         }
 
-        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum, ID:2 });
+        this.getOwnerComponent().getRouter().navTo(sRouteName, { num: SelectedNum });
       }
 
     });
