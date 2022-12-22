@@ -20,6 +20,11 @@ sap.ui.define([
 
 
     onMyRoutePatternMatched: async function(){
+
+      // this.getView().byId("lastName").setValueState("None");
+      this.getView().byId("name").setValueState("None");
+      this.getView().byId("cmpCode").setValueState("None");
+
       this.onClearField();
 
       
@@ -213,6 +218,7 @@ sap.ui.define([
   onCloseDialog : function() {
       this.byId("compop").close();
       this.pDialog = null;
+      this.onReset1();
   },
 
   onCellClick : function (oControlEvent) {
@@ -270,6 +276,7 @@ onReset2 : function(){
 onCloseDialog2 : function() {
     this.byId("compop2").close();
     this.pDialog1 = null;
+    this.onReset2();
 },
 
 onCellClick2 : function (oControlEvent) {
