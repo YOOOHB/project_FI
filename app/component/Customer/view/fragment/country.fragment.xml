@@ -7,7 +7,7 @@
     <Dialog id="compop" title="국가 검색">
         <content>
             <VBox  class="sapUiSmallMarginBeginEnd">
-                <Label text="국가/지역: " />
+                <Label text="국가: " />
                     <Input id="fragcountry" />
                     <layoutData>
                         <layout:GridData span="XL2 L2 M6 S12"/>
@@ -38,7 +38,7 @@
                 </t:template>
             </t:Column>
             <t:Column hAlign="Center">
-                <Label text="국가/지역 이름" />
+                <Label text="국가 이름" />
                 <t:template>
                     <Text text="{CountryRegionModel>country}" />
                 </t:template>

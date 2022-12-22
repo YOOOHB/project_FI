@@ -41,7 +41,7 @@
                         </VBox>
                         <VBox>
                             <Label text="회사 코드"/>
-                            <MultiInput id="cmpCode" showValueHelp="true" valueHelpRequest=".onValueHelpRequest"/>
+                            <MultiInput id="cmpCode" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest"/>
                             <layoutData>
                                 <layout:GridData span= "XL2 L2 M6 S12"/>
                             </layoutData>

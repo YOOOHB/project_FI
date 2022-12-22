@@ -3,11 +3,13 @@ sap.ui.define(
         "sap/ui/core/mvc/Controller",
         "sap/ui/model/json/JSONModel",
         "../model/Cformatter",
+        "../model/Pformatter",
         "sap/m/MessageBox"
     ],
-    function(BaseController, JSONModel, Cformatter, MessageBox) {
+    function(BaseController, JSONModel, Cformatter, Pformatter, MessageBox) {
       "use strict";
 
+      let number;
       let SelectedNum;
 
       let today = new Date();
@@ -17,8 +19,11 @@ sap.ui.define(
   
       return BaseController.extend("project3.controller.changeCustomerP", {
         Cformatter: Cformatter,
+        Pformatter: Pformatter,
         
         onInit() {
+            this.getView().byId("modifier").setValue("");
+
             this.getOwnerComponent().getRouter().getRoute("changeCustomerP").attachPatternMatched(this.onMyRoutePatternMatched, this);
             this.getOwnerComponent().getRouter().getRoute("detailCustomerP").attachPatternMatched(this.onMyRoutePatternMatched, this);
             this.getOwnerComponent().getRouter().getRoute("homeCustomer").attachPatternMatched(this.onMyRoutePatternMatched, this);
@@ -31,6 +36,11 @@ sap.ui.define(
         },
         
         onMyRoutePatternMatched: async function(oEvent){
+          number = oEvent.getParameter("arguments").number;
+
+          this.getView().byId("modifier").setValue("");
+          this.getView().byId("modifier").setValueState("None");
+
           SelectedNum = oEvent.getParameter("arguments").num;
             let url = "/customer/Customer/" + SelectedNum;
 
@@ -136,15 +146,21 @@ sap.ui.define(
           });
 
           this.onCancel();
+          this.getView().byId("modifier").setValue("");
 
         },
 
         onCancel: function() {
           SelectedNum = this.byId("customerNumber").mProperties.text;
           // console.log(SelectedNum);
-  
-          this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:SelectedNum})
           
+          if (number == "1") {
+            this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:SelectedNum, ID:1});
+          } else if (number == "2") {
+            this.getOwnerComponent().getRouter().navTo("detailCustomerP", {num:SelectedNum, ID:2});
+          }
+
+          this.getView().byId("modifier").setValue("");
           this.getView().byId("modifier").setValueState("None")
         }
       });

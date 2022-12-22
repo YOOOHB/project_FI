@@ -18,7 +18,7 @@
 			<uxap:ObjectPageDynamicHeaderTitle>
 				<uxap:heading>
                     <HBox>
-                        <Button type="Back" press=".onBack" class="sapUiTinyMarginTop"/>
+                        <Button type="Back" press=".onBack1" class="sapUiTinyMarginTop"/>
                         <Title text="고객마스터 생성(조직)" wrapping="true" />
                     </HBox>
 				</uxap:heading>

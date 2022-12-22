@@ -17,7 +17,7 @@
 			<uxap:ObjectPageDynamicHeaderTitle>
 				<uxap:heading>
                     <HBox>
-                        <Button type="Back" press=".onBack" class="sapUiTinyMarginTop"/>
+                        <Button type="Back" press=".onBack1" class="sapUiTinyMarginTop"/>
                         <Title text="고객마스터 생성(개인)" wrapping="true" />
                     </HBox>
 				</uxap:heading>
@@ -50,6 +50,8 @@
                         <Text id="createDate" text="{createDate}"/>
                         <Label id="_IDGenLabel15" text="담당자" />
                         <Input id="manager" text="{manager}" />
+                        <Text text=""/>
+                        <Text text=""/>
                         </uxap:ObjectPageSubSection>
 				        </uxap:subSections>
 			            </uxap:ObjectPageSection>

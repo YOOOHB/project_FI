@@ -106,22 +106,22 @@
         },
         {
           "name": "detailCustomerP",
-          "pattern": "detailCustomerP/{num}",
+          "pattern": "detailCustomerP/{num}/{ID}",
           "target": "detailCustomerP"
         },
         {
           "name": "detailCustomerO",
-          "pattern": "detailCustomerO/{num}",
+          "pattern": "detailCustomerO/{num}/{ID}",
           "target": "detailCustomerO"
         },
         {
           "name": "changeCustomerP",
-          "pattern": "changeCustomerP/{num}",
+          "pattern": "changeCustomerP/{num}/{number}",
           "target": "changeCustomerP"
         },
         {
           "name": "changeCustomerO",
-          "pattern": "changeCustomerO/{num}",
+          "pattern": "changeCustomerO/{num}/{number}",
           "target": "changeCustomerO"
         },
         
@@ -132,12 +132,12 @@
         },
         {
           "name": "createCustomerP",
-          "pattern": "createCustomerP",
+          "pattern": "createCustomerP/{num}",
           "target": "createCustomerP"
         },
         {
           "name": "createCustomerO",
-          "pattern": "createCustomerO",
+          "pattern": "createCustomerO/{num}",
           "target": "createCustomerO"
         }
       ],

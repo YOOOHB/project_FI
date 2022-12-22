@@ -171,6 +171,7 @@ sap.ui.define(
         var createDate = this.byId("createDate").getValue();
         var country = this.byId("country").getValue();
         var bpRange = (this.byId("bpRange").getSelectedKey());
+        console.log(customerNumber);
 
         var aFilter = [];
         if (cmpCode) {
