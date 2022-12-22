@@ -79,7 +79,7 @@
                                 </m:VBox>                               
                                 <m:VBox>
                                     <m:Label text="계정 그룹" required="true"/>
-                                    <m:Input id="accGroup" showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"/>
+                                    <m:Input id="accGroup" valueHelpOnly="true"  showValueHelp="true" valueHelpRequest=".onOpenAccountGroup"/>
                                     <m:layoutData>
                                         <layout:GridData span= "XL1 L2 M6 S12"/>
                                     </m:layoutData>
