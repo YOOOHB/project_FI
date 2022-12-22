@@ -9,31 +9,31 @@
 			<form:content>
 				
 				<HBox>
-					<Label text="회사 코드"/>
-					<Input id="createCmpCodeCmpCode"/>
+					<Label text="회사 코드" required="true"/>
+					<Input id="createCmpCodeCmpCode" />
 					<layoutData>
 						<layout:GridData span= "XL1 L2 M6 S12"/>
 					</layoutData>
 				</HBox>  
 				<HBox>
-					<Label text="회사 이름"/>
-					<Input id="createCmpCodeCmpName"/>
+					<Label text="회사 이름" required="true"/>
+					<Input id="createCmpCodeCmpName" />
 					<layoutData>
 						<layout:GridData span= "XL1 L2 M6 S12"/>
 					</layoutData>
 				</HBox>  
 				<HBox>
-					<Label text="계정 통화"/>
-					<Input id="createCmpCodeAccCurrency"/>			 
+					<Label text="계정 통화" required="true"/>
+					<Input id="createCmpCodeAccCurrency" />			 
 					<layoutData>
 						<layout:GridData span= "XL1 L2 M6 S12"/>
 					</layoutData>
 				</HBox>  
 				<HBox>
-					<Label text="계정과목표"/>
-					<Select id="createCmpCodeAccChart" items="{Account>/COA}">
+					<Label text="계정과목표" required="true"/>
+					<ComboBox id="createCmpCodeAccChart" items="{Account>/COA}">
 						<core:Item key='{Account>accChart}' text="{Account>accChart}"/>
-					</Select> 
+					</ComboBox> 
 					<layoutData>
 						<layout:GridData span= "XL1 L2 M6 S12"/>
 					</layoutData>

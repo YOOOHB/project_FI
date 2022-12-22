@@ -13,7 +13,7 @@
                     <menu>
                         <Menu>
                             <MenuItem text="Home" press=".onHome" />
-                            <MenuItem text="G/L 계정과목 조회" press=".onAccount" />
+                            <MenuItem text="G/L 계정과목 관리" press=".onAccount" />
                             <MenuItem text="BP(고객마스터) 관리" press=".onCustomer" />
                         </Menu>
                     </menu>

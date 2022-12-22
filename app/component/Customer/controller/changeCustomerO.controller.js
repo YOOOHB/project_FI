@@ -21,6 +21,8 @@ sap.ui.define(
         
         onInit() {
             this.getOwnerComponent().getRouter().getRoute("changeCustomerO").attachPatternMatched(this.onMyRoutePatternMatched, this);
+            this.getOwnerComponent().getRouter().getRoute("detailCustomerO").attachPatternMatched(this.onMyRoutePatternMatched, this);
+            this.getOwnerComponent().getRouter().getRoute("homeCustomer").attachPatternMatched(this.onMyRoutePatternMatched, this);
             
             this.byId("changeDate").setText(year+ '-' + month + '-' + date);
 
@@ -112,7 +114,8 @@ sap.ui.define(
             postalCode : this.byId("postalCode").getValue(),
             city : this.byId("city").getValue(),
             country : this.byId("country").getValue(),
-            region : this.byId("region").getValue()
+            region : this.byId("region").getValue(),
+            manager : this.byId("manager").getValue()
           };
 
           if(!edit.modifier){

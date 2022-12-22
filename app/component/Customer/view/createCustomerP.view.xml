@@ -30,7 +30,6 @@
 			<uxap:ObjectPageSection titleUppercase="false" title="일반 데이터" >
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection >
-                        <!-- <core:Title id="_IDGenTitle1" text="일반 데이터" /> -->
                         <Label  text="고객 번호" />
                         <Text id="customerNumber" text="{customerNumber}" />
                         <Label id="_IDGenLabel2" text="BP 범주" />
