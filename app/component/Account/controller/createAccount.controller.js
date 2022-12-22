@@ -110,7 +110,7 @@ sap.ui.define([                                 //맨위
                         let GModel= new JSONModel(GLAcc.value);
                         console.log(GModel.oData.length)                        // length = 0 중복x, length > 0 중복o
                         if(GModel.oData.length==0){
-                                aaa = false;
+                                aaa = false;                                    //중복x
                         } else {
                                 let model = this.getView().getModel("CmpCodeModel");                    //회사코드 모델 가져오기
                                 let CHK = this.getView().byId("CompanyCodeTable").getSelectedIndices()[0];   //회사코드 테이블에서 선택한 열 정보 가져오기
@@ -139,8 +139,10 @@ sap.ui.define([                                 //맨위
                         else if (this.getView().byId("CompanyCodeTable").getSelectedIndices()[0] == null) {
                                 MessageToast.show("회사코드를 선택하세요");
                         }
-                        else if(Cmp === GModel.oData[0].cmpCodeKey && aaa===true) {     //선택한 회사코드명 = 작성한 GLNum이 쓰는 회사코드명 && 작성한 G/L이 중복
-                                MessageToast.show("중복된 회사코드입니다 '사용가능한 회사코드 조회'를 눌러주세요");
+                        else if(aaa===true) {     //선택한 회사코드명 = 작성한 GLNum이 쓰는 회사코드명 && 작성한 G/L이 중복
+                                if(Cmp === GModel.oData[0].cmpCodeKey) {
+                                        MessageToast.show("중복된 회사코드입니다 '사용가능한 회사코드 조회'를 눌러주세요");
+                                }
                         }
                         else {                                
                                 this.onCreate1();
