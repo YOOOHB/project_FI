@@ -2,18 +2,18 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:t="sap.ui.table">
-    <Dialog id="AccountGroup" title="계정 그룹">
+    <Dialog id="AccountGroup" title="계정 그룹" class="sapUiMediumMarginBegin">
         <content>
             <VBox>
-                <Label text="검색 및 선택 : " class="sapUiLargeMarginBeginEnd"/>
-                <Input id="searchAccGrp" class="sapUiLargeMarginBeginEnd" showValueHelp="true"
-                valueHelpIconSrc="sap-icon://search" valueHelpRequest="onSearchAccountGroupFragment" width="90%"/>
+                <Label text="검색 및 선택 : " class="sapUiMediumMarginBeginEnd"/>
+                <Input id="searchAccGrp" class="sapUiMediumMarginBeginEnd" showValueHelp="true"
+                valueHelpIconSrc="sap-icon://search" valueHelpRequest="onSearchAccountGroupFragment" width="30%"/>
             </VBox>
         </content>
         <t:Table id="AccountGroupTable" rows="{GrpModel>/}" selectionMode="None" cellClick=".onCellClickAccountGroup">
             <t:extension>
                 <OverflowToolbar>
-                    <Title id="SPrdTableName" text="항목" />
+                    <Title id="SPrdTableName" text="항목" class="sapUiMediumMarginBeginEnd"/>
                 </OverflowToolbar>
             </t:extension>
             <t:columns>
