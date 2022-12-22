@@ -9,9 +9,9 @@
             <VBox  class="sapUiSmallMarginBeginEnd">
                 <Label text="국가/지역: " />
                     <Input id="fragcountry" />
-                    <!-- <layoutData>
+                    <layoutData>
                         <layout:GridData span="XL2 L2 M6 S12"/>
-                    </layoutData> -->
+                    </layoutData>
             </VBox>
             <HBox justifyContent="End" >
                 <Button text="검색" type="Emphasized" press="onSearch1"/> 
